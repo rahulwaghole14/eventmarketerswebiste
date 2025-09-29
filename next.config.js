@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Fix workspace root detection for deployment
+  outputFileTracingRoot: __dirname,
   async headers() {
     return [
       {
@@ -54,6 +56,15 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
+  },
+  // Ensure proper module resolution
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Ensure proper path resolution
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': require('path').resolve(__dirname, 'src'),
+    };
+    return config;
   },
 }
 
