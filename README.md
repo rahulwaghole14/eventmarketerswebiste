@@ -1,36 +1,138 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MarketBrand.ai - Marketing Website
 
-## Getting Started
+A modern, responsive marketing website built with Next.js 15, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Modern Design**: Clean, professional design with smooth animations
+- **Responsive**: Fully responsive across all devices
+- **Fast Performance**: Built with Next.js 15 for optimal performance
+- **SEO Optimized**: Built-in SEO features and meta tags
+- **Category Pages**: Dynamic category pages for different business types
+- **Contact Forms**: Interactive contact and inquiry forms
+- **Blog System**: Ready-to-use blog functionality
+- **Pricing Tables**: Dynamic pricing components
+- **Testimonials**: Customer testimonial sections
+
+## 📁 Project Structure
+
+```
+marketbrand-marketing-website/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── about/             # About page
+│   │   ├── blog/              # Blog listing page
+│   │   ├── careers/           # Careers page
+│   │   ├── categories/        # Categories listing
+│   │   ├── category/          # Individual category pages
+│   │   ├── contact/           # Contact page
+│   │   ├── download/          # Download page
+│   │   ├── features/          # Features page
+│   │   ├── help/              # Help/Support page
+│   │   ├── partners/          # Partners page
+│   │   ├── press/             # Press page
+│   │   ├── pricing/           # Pricing page
+│   │   ├── privacy/           # Privacy policy
+│   │   ├── status/            # Status page
+│   │   ├── templates/         # Templates page
+│   │   └── terms/             # Terms of service
+│   ├── components/            # Reusable React components
+│   │   ├── Breadcrumb.tsx
+│   │   ├── CategoryGrid.tsx
+│   │   ├── CTAButton.tsx
+│   │   ├── FAQ.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── Logo.tsx
+│   │   ├── MarketBrandLogo.tsx
+│   │   ├── PricingTable.tsx
+│   │   ├── Section.tsx
+│   │   ├── Seo.tsx
+│   │   └── Testimonial.tsx
+│   └── globals.css            # Global styles
+├── public/                    # Static assets
+├── next.config.js            # Next.js configuration
+├── tailwind.config.js        # Tailwind CSS configuration
+├── tsconfig.json             # TypeScript configuration
+└── package.json              # Dependencies and scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Installation & Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/rahulwaghole14/eventmarketerswebiste.git
+   cd eventmarketerswebiste
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Open your browser**
+   - Local: http://localhost:3000
+   - Network: http://[YOUR_IP]:3000
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Local Development
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+### Production Build
+```bash
+npm run build
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Network Access
+To access from other devices on your network:
+```bash
+npm run dev -- --hostname 0.0.0.0
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📱 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🌐 Live Demo
+
+The website is currently running and accessible at:
+- **Local**: http://localhost:3000
+- **Network**: http://192.168.0.122:3000
+
+## 🎨 Technologies Used
+
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Utility-first CSS
+- **React 19** - UI library
+- **ESLint** - Code linting
+
+## 📄 License
+
+This project is proprietary software owned by MarketBrand.ai
+
+## 🤝 Contributing
+
+This is a private project. For contributions, please contact the development team.
+
+## 📞 Support
+
+For support and questions, please contact:
+- Email: support@marketbrand.ai
+- Website: https://marketbrand.ai
+
+---
+
+**MarketBrand.ai** - Empowering businesses with AI-driven marketing solutions.
