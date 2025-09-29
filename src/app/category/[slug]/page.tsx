@@ -44,18 +44,20 @@ export function generateStaticParams() {
   return Object.keys(MAP).map(slug => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const item = MAP[params.slug];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const item = MAP[slug];
   if (!item) return {};
   return {
     title: `${item.title} — MarketBrand.ai`,
     description: item.intro,
-    alternates: { canonical: `/category/${params.slug}` }
+    alternates: { canonical: `/category/${slug}` }
   };
 }
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
-  const item = MAP[params.slug];
+export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const item = MAP[slug];
   if (!item) return notFound();
   return (
     <Section title={item.title} subtitle={item.intro}>
