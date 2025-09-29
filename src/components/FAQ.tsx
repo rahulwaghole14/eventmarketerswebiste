@@ -55,3 +55,4 @@ export default function FAQ({ faqs, title = "Frequently Asked Questions", subtit
   );
 }
 
+
