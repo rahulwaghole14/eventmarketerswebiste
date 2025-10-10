@@ -47,7 +47,7 @@ export default function PricingPage() {
       {
         "@type": "Offer",
         "name": "Pro Plan",
-        "price": "2000",
+        "price": "599",
         "priceCurrency": "INR",
         "description": "Annual subscription with unlimited designs and no watermarks",
         "availability": "InStock"
@@ -55,7 +55,7 @@ export default function PricingPage() {
       {
         "@type": "Offer",
         "name": "Business Plan",
-        "price": "3999",
+        "price": "2099",
         "priceCurrency": "INR",
         "description": "Advanced features with team collaboration and API access",
         "availability": "InStock"
@@ -87,10 +87,10 @@ export default function PricingPage() {
     },
     {
       name: "Pro",
-      price: "₹2,000",
+      price: "₹599",
       period: "/year",
       originalPrice: "₹5,988",
-      savings: "Save ₹3,988",
+      savings: "Save ₹5,389",
       description: "Most popular for growing businesses",
       features: [
         "Unlimited designs",
@@ -108,20 +108,20 @@ export default function PricingPage() {
     },
     {
       name: "Business",
-      price: "₹3,999",
+      price: "₹2,099",
       period: "/year",
       originalPrice: "₹7,998",
-      savings: "Save ₹3,999",
+      savings: "Save ₹5,899",
       description: "Advanced features for teams",
       features: [
-        "Everything in Pro",
-        "Team collaboration",
-        "Advanced analytics",
-        "Custom branding",
-        "API access",
-        "White-label options",
-        "Dedicated support",
-        "Custom integrations"
+        "Unlimited designs",
+        "All 1000+ templates",
+        "No watermarks",
+        "Priority support",
+        "Commercial license",
+        "HD quality exports",
+        "All business categories",
+        "Festival templates"
       ],
       cta: "Start 7-Day Free Trial",
       popular: false,
@@ -131,7 +131,7 @@ export default function PricingPage() {
 
   const testimonials = [
     {
-      text: "The Pro plan saved me thousands! I was paying ₹15,000/month for a designer. Now I create professional marketing materials myself for just ₹167/month.",
+      text: "The Pro plan saved me thousands! I was paying ₹15,000/month for a designer. Now I create professional marketing materials myself for just ₹50/month.",
       author: "Priya Sharma",
       role: "Restaurant Owner",
       business: "Spice Garden",
@@ -175,7 +175,7 @@ export default function PricingPage() {
     },
     {
       question: "How much can I save compared to hiring a designer?",
-      answer: "Our Pro plan costs ₹167/month (₹2,000/year). A professional designer typically charges ₹15,000-25,000/month. That's a savings of ₹180,000+ per year!"
+      answer: "Our Pro plan costs ₹50/month (₹599/year). A professional designer typically charges ₹15,000-25,000/month. That's a savings of ₹179,000+ per year!"
     },
     {
       question: "What's included in the commercial license?",
@@ -239,7 +239,7 @@ export default function PricingPage() {
               {/* Statistics */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">₹2,000</div>
+                  <div className="text-3xl font-bold text-white mb-2">₹599</div>
                   <div className="text-gray-400 text-sm">Pro Plan/Year</div>
                 </div>
                 <div className="text-center">
@@ -396,7 +396,7 @@ export default function PricingPage() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-300">Annual cost:</span>
-                      <span className="text-white font-bold">₹2,000</span>
+                      <span className="text-white font-bold">₹599</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-300">Designs per month:</span>
@@ -408,7 +408,7 @@ export default function PricingPage() {
                     </div>
                     <div className="flex justify-between items-center border-t border-green-500/30 pt-4">
                       <span className="text-green-300 font-bold">Annual Savings:</span>
-                      <span className="text-green-300 font-bold text-2xl">₹178,000</span>
+                      <span className="text-green-300 font-bold text-2xl">₹179,401</span>
                     </div>
                   </div>
                 </div>
@@ -416,10 +416,10 @@ export default function PricingPage() {
               
               <div className="text-center">
                 <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 backdrop-blur-xl border border-indigo-500/30 rounded-3xl p-12">
-                  <div className="text-6xl font-black text-white mb-4">₹178,000</div>
+                  <div className="text-6xl font-black text-white mb-4">₹179,401</div>
                   <div className="text-2xl text-indigo-300 font-bold mb-6">Annual Savings</div>
                   <p className="text-gray-300 text-lg mb-8">
-                    That's 89x return on investment! Plus unlimited designs and instant downloads.
+                    That's 300x return on investment! Plus unlimited designs and instant downloads.
                   </p>
                   <Link 
                     href="/"
@@ -516,7 +516,7 @@ export default function PricingPage() {
           
           <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
-              Ready to Save ₹178,000+ Per Year?
+              Ready to Save ₹179,000+ Per Year?
             </h2>
             <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
               Join 50,000+ businesses who are already saving thousands on design costs. 
@@ -561,7 +561,7 @@ export default function PricingPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 50,000+ Businesses • Save ₹178,000+ Annually • 7-Day Free Trial
+              ⚡ Join 50,000+ Businesses • Save ₹179,000+ Annually • 7-Day Free Trial
             </p>
           </div>
         </div>
