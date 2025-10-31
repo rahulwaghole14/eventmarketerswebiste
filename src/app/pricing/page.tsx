@@ -88,7 +88,7 @@ export default function PricingPage() {
     {
       name: "Pro",
       price: "₹599",
-      period: "/year",
+      period: "/quarterly",
       originalPrice: "₹5,988",
       savings: "Save ₹5,389",
       description: "Most popular for growing businesses",
