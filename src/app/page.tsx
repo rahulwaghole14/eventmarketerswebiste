@@ -70,7 +70,12 @@ export default function HomePage() {
               {/* App Store Download Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center" id="start">
                 {/* Google Play Store Button */}
-                <button className="btn-secondary text-sm px-8 py-4 rounded-xl font-semibold group flex items-center justify-center space-x-3 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden">
+                <Link 
+                  href="https://play.google.com/store/apps/details?id=com.marketbrand"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary text-sm px-8 py-4 rounded-xl font-semibold group flex items-center justify-center space-x-3 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                >
                   {/* Google Logo SVG */}
                   <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
                     <path d="M3.609 1.814L13.792 12L3.609 22.186C3.386 22.409 3.386 22.773 3.609 22.996C3.832 23.219 4.196 23.219 4.419 22.996L14.602 12.814C14.825 12.591 14.825 12.227 14.602 12.004L4.419 1.814C4.196 1.591 3.832 1.591 3.609 1.814Z" fill="#4285F4"/>
@@ -83,7 +88,7 @@ export default function HomePage() {
                     <span className="font-bold">Google Play</span>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </button>
+                </Link>
                 
                 {/* Apple App Store Button */}
                 <button className="btn-secondary text-sm px-8 py-4 rounded-xl font-semibold group flex items-center justify-center space-x-3 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden">
@@ -451,7 +456,12 @@ export default function HomePage() {
             {/* App Store Download Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               {/* Google Play Store Button */}
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-3">
+              <Link 
+                href="https://play.google.com/store/apps/details?id=com.marketbrand"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-2 border-white text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-3"
+              >
                 {/* Google Logo SVG */}
                 <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
                   <path d="M3.609 1.814L13.792 12L3.609 22.186C3.386 22.409 3.386 22.773 3.609 22.996C3.832 23.219 4.196 23.219 4.419 22.996L14.602 12.814C14.825 12.591 14.825 12.227 14.602 12.004L4.419 1.814C4.196 1.591 3.832 1.591 3.609 1.814Z" fill="currentColor"/>
@@ -463,7 +473,7 @@ export default function HomePage() {
                   <span className="text-xs opacity-75">GET IT ON</span>
                   <span className="font-bold">Google Play</span>
                 </div>
-              </button>
+              </Link>
               
               {/* Apple App Store Button */}
               <button className="border-2 border-white text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-3">

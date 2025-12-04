@@ -104,7 +104,9 @@ export default function DownloadPage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   {/* Google Play Store Button */}
                   <Link 
-                    href="#"
+                    href="https://play.google.com/store/apps/details?id=com.marketbrand"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-600 rounded-2xl text-white font-semibold hover:scale-105 transition-all duration-300 group"
                   >
                     <svg className="w-8 h-8 mr-4" viewBox="0 0 24 24" fill="currentColor">
