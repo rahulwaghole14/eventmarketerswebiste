@@ -1,11 +1,23 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FaRocket, FaPalette, FaMobileAlt, FaComments, FaEnvelope, FaPhone, FaBolt, FaCreditCard } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Help Center | Support & Documentation | MarketBrand.ai",
   description: "Get help with MarketBrand.ai. Find answers to common questions, tutorials, and support resources. Learn how to create professional marketing materials in minutes.",
   keywords: "help center, support, documentation, tutorials, FAQ, customer support, MarketBrand help",
   alternates: { canonical: "/help" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Help Center | Support & Documentation",
     description: "Get help with MarketBrand.ai. Find answers to common questions, tutorials, and support resources.",
@@ -32,30 +44,20 @@ export default function HelpPage() {
     "url": "https://www.marketbrand.ai/help",
     "mainEntity": {
       "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How do I create marketing materials?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Download our app, choose a template, add your business details, and download your professional marketing materials in under 1 minute."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What file formats are supported?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We support PNG, JPG, PDF for images and MP4, MOV, GIF for videos. All files are high quality and ready for print or digital use."
-          }
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
         }
-      ]
+      }))
     }
   };
 
   const helpCategories = [
     {
-      icon: "🚀",
+      icon: "rocket",
       title: "Getting Started",
       description: "Learn the basics of using MarketBrand.ai",
       articles: 5,
@@ -63,7 +65,7 @@ export default function HelpPage() {
       topics: ["Account Setup", "First Template", "App Navigation", "Basic Customization"]
     },
     {
-      icon: "🎨",
+      icon: "palette",
       title: "Design & Templates",
       description: "Everything about templates and customization",
       articles: 8,
@@ -71,7 +73,7 @@ export default function HelpPage() {
       topics: ["Template Selection", "Color Customization", "Text Editing", "Brand Guidelines"]
     },
     {
-      icon: "📱",
+      icon: "mobile",
       title: "Mobile App",
       description: "Using the MarketBrand mobile app",
       articles: 6,
@@ -79,7 +81,7 @@ export default function HelpPage() {
       topics: ["App Installation", "Offline Mode", "Sync Settings", "Mobile Features"]
     },
     {
-      icon: "💳",
+      icon: "creditcard",
       title: "Billing & Plans",
       description: "Account management and subscription",
       articles: 4,
@@ -117,21 +119,21 @@ export default function HelpPage() {
 
   const contactOptions = [
     {
-      icon: "💬",
+      icon: "comments",
       title: "Live Chat",
       description: "Get instant help from our support team",
       action: "Start Chat",
       available: "24/7"
     },
     {
-      icon: "📧",
+      icon: "envelope",
       title: "Email Support",
       description: "Send us your questions and we'll respond quickly",
       action: "Send Email",
       available: "< 2 hours"
     },
     {
-      icon: "📞",
+      icon: "phone",
       title: "Phone Support",
       description: "Speak directly with our support team",
       action: "Call Now",
@@ -212,13 +214,13 @@ export default function HelpPage() {
                   href="/contact"
                   className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
-                  💬 Contact Support
+                  <span className="flex items-center gap-2"><FaComments className="inline" /> Contact Support</span>
                 </Link>
                 <Link 
-                  href="/"
+                  href="/download"
                   className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition-all duration-300"
                 >
-                  🚀 Start Free Trial
+                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial</span>
                 </Link>
               </div>
             </div>
@@ -247,7 +249,10 @@ export default function HelpPage() {
                   <div className="relative z-10">
                     <div className="flex items-center space-x-4 mb-6">
                       <div className={`w-16 h-16 bg-gradient-to-r ${category.gradient} rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        {category.icon}
+                        {category.icon === "rocket" && <FaRocket className="text-white text-2xl" />}
+                        {category.icon === "palette" && <FaPalette className="text-white text-2xl" />}
+                        {category.icon === "mobile" && <FaMobileAlt className="text-white text-2xl" />}
+                        {category.icon === "creditcard" && <FaCreditCard className="text-white text-2xl" />}
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
@@ -324,8 +329,10 @@ export default function HelpPage() {
             <div className="grid md:grid-cols-3 gap-8">
               {contactOptions.map((option, index) => (
                 <div key={index} className="text-center space-y-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl">
-                  <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto text-3xl shadow-2xl">
-                    {option.icon}
+                  <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
+                    {option.icon === "comments" && <FaComments className="text-white text-3xl" />}
+                    {option.icon === "envelope" && <FaEnvelope className="text-white text-3xl" />}
+                    {option.icon === "phone" && <FaPhone className="text-white text-3xl" />}
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-white mb-2">{option.title}</h3>
@@ -385,7 +392,7 @@ export default function HelpPage() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 🚀 Start Free Trial Now

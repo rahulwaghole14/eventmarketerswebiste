@@ -6,6 +6,17 @@ export const metadata: Metadata = {
   description: "Check MarketBrand's system status and service availability. Real-time monitoring of our platform, API, and mobile app services.",
   keywords: "system status, service status, uptime, monitoring, service availability, API status, platform status",
   alternates: { canonical: "/status" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "System Status | Service Status | MarketBrand.ai",
     description: "Check MarketBrand's system status and service availability. Real-time monitoring of our platform, API, and mobile app services.",

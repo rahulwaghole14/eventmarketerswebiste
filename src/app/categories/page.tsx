@@ -1,11 +1,23 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FaRocket, FaPalette, FaBolt, FaDumbbell, FaTrophy, FaBullseye } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Business Categories | Professional Marketing Templates for Every Industry | MarketBrand.ai",
   description: "Explore marketing templates for all business categories: restaurants, events, fitness, healthcare, beauty, automotive, retail, and more. Professional designs for every industry.",
   keywords: "business categories, marketing templates, industry-specific designs, professional templates, business marketing materials",
   alternates: { canonical: "/categories" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Business Categories | Professional Marketing Templates for Every Industry",
     description: "Explore marketing templates for all business categories: restaurants, events, fitness, healthcare, beauty, automotive, retail, and more.",
@@ -77,7 +89,7 @@ export default function CategoriesPage() {
     {
       slug: "events-wedding-vendors",
       title: "Events & Wedding Vendors",
-      icon: "🎉",
+      icon: "trophy",
       description: "Professional wedding planner promotional videos, event vendor marketing posters, and wedding business promotional materials for Wedding Planners, Decorators, photographers, caterers, venues and more",
       gradient: "from-pink-500 to-purple-500",
       templateCount: "1,200+",
@@ -86,7 +98,7 @@ export default function CategoriesPage() {
     {
       slug: "fitness-gyms-yoga",
       title: "Fitness Studios, Gyms & Yoga",
-      icon: "💪",
+      icon: "dumbbell",
       description: "Professional fitness promotional videos, gym marketing posters, and wellness business promotional materials for fitness studios, gyms, yoga centers, personal trainers, and health clubs.",
       gradient: "from-green-500 to-teal-500",
       templateCount: "800+",
@@ -167,7 +179,7 @@ export default function CategoriesPage() {
                   <span className="text-green-300 text-sm font-semibold">✓ 6 Business Categories</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">🎨 5,200+ Templates</span>
+                  <span className="text-blue-300 text-sm font-semibold flex items-center gap-1"><FaPalette className="inline" /> 5,200+ Templates</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
                   <span className="text-purple-300 text-sm font-semibold">👥 26,200+ Users</span>
@@ -206,21 +218,21 @@ export default function CategoriesPage() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
-                  href="/"
+                  href="/download"
                   className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
-                  🚀 Start Free Trial
+                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial</span>
                 </Link>
                 <Link 
                   href="/pricing"
                   className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition-all duration-300"
                 >
-                  💰 View Pricing
+                  View Pricing
                 </Link>
               </div>
 
-              <p className="text-gray-400 text-sm mt-6">
-                ⚡ No Credit Card Required • 7-Day Free Trial • Cancel Anytime
+              <p className="text-gray-400 text-sm mt-6 flex items-center gap-2">
+                <FaBolt className="inline" /> No Credit Card Required • 7-Day Free Trial • Cancel Anytime
               </p>
             </div>
           </div>
@@ -255,7 +267,8 @@ export default function CategoriesPage() {
                   <div className="relative z-10">
                     <div className="flex items-center space-x-4 mb-6">
                       <div className={`w-16 h-16 bg-gradient-to-r ${category.gradient} rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        {category.icon}
+                        {category.icon === "trophy" && <FaTrophy className="text-white text-2xl" />}
+                        {category.icon === "dumbbell" && <FaDumbbell className="text-white text-2xl" />}
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
@@ -344,7 +357,7 @@ export default function CategoriesPage() {
                   Choose from posters, videos, and promotional materials.
                 </p>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-4 py-2">
-                  <span className="text-purple-300 font-semibold">🎨 5,200+ Templates Available</span>
+                  <span className="text-purple-300 font-semibold flex items-center gap-1"><FaPalette className="inline" /> 5,200+ Templates Available</span>
                 </div>
               </div>
 
@@ -365,7 +378,7 @@ export default function CategoriesPage() {
                   professional marketing materials in under 1 minute.
                 </p>
                 <div className="bg-gradient-to-r from-pink-500/20 to-orange-500/20 border border-pink-500/30 rounded-lg px-4 py-2">
-                  <span className="text-pink-300 font-semibold">⚡ 1-Minute Creation</span>
+                  <span className="text-pink-300 font-semibold flex items-center gap-1"><FaBolt className="inline" /> 1-Minute Creation</span>
                 </div>
               </div>
             </div>
@@ -373,7 +386,7 @@ export default function CategoriesPage() {
             {/* CTA Button */}
             <div className="text-center mt-16">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 Start Creating Now - Free Trial
@@ -423,21 +436,21 @@ export default function CategoriesPage() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                🚀 Start Free Trial Now
+                <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial Now</span>
               </Link>
               <Link 
                 href="/pricing"
                 className="inline-flex items-center px-12 py-6 border-2 border-white/30 rounded-2xl text-white font-bold text-2xl hover:bg-white/10 transition-all duration-300"
               >
-                💰 View Pricing Plans
+                View Pricing Plans
               </Link>
             </div>
             
-            <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 26,200+ Businesses • 5,200+ Templates • 6 Categories
+            <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
+              <FaBolt className="inline" /> Join 26,200+ Businesses • 5,200+ Templates • 6 Categories
             </p>
           </div>
         </div>

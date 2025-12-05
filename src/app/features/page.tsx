@@ -2,12 +2,25 @@ import Section from "@/components/Section";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
+import { FaPalette, FaBolt, FaMobileAlt, FaFilm, FaBriefcase, FaDumbbell, FaGlobe, FaUtensils, FaHeart } from "react-icons/fa";
+import { BsStarFill } from "react-icons/bs";
 
 export const metadata: Metadata = {
   title: "Marketing Design Features | Professional Templates & Customization Tools | MarketBrand.ai",
   description: "Discover powerful marketing design features: 1000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes with MarketBrand.ai",
   keywords: "marketing design features, professional templates, design customization tools, mobile marketing app, business design software, marketing automation, design templates, business marketing tools",
   alternates: { canonical: "/features" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Marketing Design Features | Professional Templates & Customization Tools",
     description: "Discover powerful marketing design features: 1000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
@@ -56,7 +69,7 @@ export default function FeaturesPage() {
 
   const features = [
     {
-      icon: "🎨",
+      icon: "palette",
       title: "1000+ Professional Templates",
       description: "Beautifully designed templates for every business category - restaurants, events, schools, weddings, fitness, healthcare, and more.",
       details: ["Industry-specific designs", "Seasonal collections", "Trending styles", "Regular updates", "HD quality", "Print-ready"],
@@ -65,7 +78,7 @@ export default function FeaturesPage() {
       gradient: "from-pink-500 to-purple-500"
     },
     {
-      icon: "⚡",
+      icon: "bolt",
       title: "Lightning Fast Creation",
       description: "Create and download your marketing materials in under 1 minute with our intuitive mobile interface and smart automation.",
       details: ["One-tap customization", "Instant preview", "Quick download", "No design skills needed", "Smart suggestions", "Auto-formatting"],
@@ -74,7 +87,7 @@ export default function FeaturesPage() {
       gradient: "from-yellow-500 to-orange-500"
     },
     {
-      icon: "📱",
+      icon: "mobile",
       title: "Mobile-First Design",
       description: "Designed specifically for mobile devices, allowing you to create professional materials on the go with touch-optimized interface.",
       details: ["Touch-optimized interface", "Offline capability", "Cloud sync", "Cross-platform", "Responsive design", "Gesture controls"],
@@ -83,7 +96,7 @@ export default function FeaturesPage() {
       gradient: "from-blue-500 to-cyan-500"
     },
     {
-      icon: "🌍",
+      icon: "globe",
       title: "Multi-Language Support",
       description: "Create content in multiple languages including English, Hindi, Marathi, Tamil, Telugu, and more regional languages with cultural designs.",
       details: ["15+ languages", "Regional fonts", "Cultural designs", "Local templates", "RTL support", "Auto-translation"],
@@ -92,7 +105,7 @@ export default function FeaturesPage() {
       gradient: "from-green-500 to-emerald-500"
     },
     {
-      icon: "🎬",
+      icon: "film",
       title: "Posters & Videos",
       description: "Create both static posters and dynamic videos for maximum marketing impact across all platforms with professional quality.",
       details: ["Static posters", "Animated videos", "Social media formats", "Print-ready files", "4K quality", "Multiple formats"],
@@ -101,7 +114,7 @@ export default function FeaturesPage() {
       gradient: "from-purple-500 to-indigo-500"
     },
     {
-      icon: "💼",
+      icon: "briefcase",
       title: "Business Integration",
       description: "Seamlessly integrate your business information, logo, and branding into every design automatically with smart templates.",
       details: ["Auto-branding", "Logo placement", "Contact integration", "Consistent styling", "Brand guidelines", "Template library"],
@@ -117,7 +130,7 @@ export default function FeaturesPage() {
       author: "Priya Sharma",
       role: "Restaurant Owner",
       business: "Spice Garden",
-      avatar: "🍽️",
+      avatar: "restaurant",
       feature: "Professional Templates"
     },
     {
@@ -125,7 +138,7 @@ export default function FeaturesPage() {
       author: "Rajesh Kumar",
       role: "Gym Owner",
       business: "FitLife Gym",
-      avatar: "💪",
+      avatar: "fitness",
       feature: "Lightning Fast Creation"
     },
     {
@@ -133,7 +146,7 @@ export default function FeaturesPage() {
       author: "Anjali Patel",
       role: "Wedding Planner",
       business: "Dream Weddings",
-      avatar: "💒",
+      avatar: "wedding",
       feature: "Multi-Language Support"
     }
   ];
@@ -181,10 +194,10 @@ export default function FeaturesPage() {
                   <span className="text-green-300 text-sm font-semibold">✓ Trusted by 50,000+ Businesses</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">⭐ 4.9/5 Rating</span>
+                  <span className="text-blue-300 text-sm font-semibold flex items-center gap-1"><BsStarFill className="inline" /> 4.9/5 Rating</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold">🚀 1-Minute Creation</span>
+                  <span className="text-purple-300 text-sm font-semibold flex items-center gap-1"><FaRocket className="inline" /> 1-Minute Creation</span>
                 </div>
               </div>
 
@@ -220,21 +233,21 @@ export default function FeaturesPage() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
-                  href="/"
+                  href="/download"
                   className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
-                  🚀 Start Free Trial - 7 Days
+                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial - 7 Days</span>
                 </Link>
                 <Link 
                   href="/#pricing"
                   className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition-all duration-300"
                 >
-                  💰 View Pricing Plans
+                  View Pricing Plans
                 </Link>
               </div>
 
-              <p className="text-gray-400 text-sm mt-6">
-                ⚡ No Credit Card Required • 7-Day Free Trial • Cancel Anytime
+              <p className="text-gray-400 text-sm mt-6 flex items-center gap-2">
+                <FaBolt className="inline" /> No Credit Card Required • 7-Day Free Trial • Cancel Anytime
               </p>
             </div>
           </div>
@@ -261,7 +274,12 @@ export default function FeaturesPage() {
                   <div className="relative z-10">
                     <div className="flex items-center space-x-4 mb-6">
                       <div className={`w-16 h-16 bg-gradient-to-r ${feature.gradient} rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        {feature.icon}
+                        {feature.icon === "palette" && <FaPalette className="text-white text-2xl" />}
+                        {feature.icon === "bolt" && <FaBolt className="text-white text-2xl" />}
+                        {feature.icon === "mobile" && <FaMobileAlt className="text-white text-2xl" />}
+                        {feature.icon === "globe" && <FaGlobe className="text-white text-2xl" />}
+                        {feature.icon === "film" && <FaFilm className="text-white text-2xl" />}
+                        {feature.icon === "briefcase" && <FaBriefcase className="text-white text-2xl" />}
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
@@ -315,7 +333,9 @@ export default function FeaturesPage() {
                 <div key={index} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all duration-300 hover:shadow-2xl">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-xl">
-                      {testimonial.avatar}
+                      {testimonial.avatar === "restaurant" && <FaUtensils className="text-white" />}
+                      {testimonial.avatar === "fitness" && <FaDumbbell className="text-white" />}
+                      {testimonial.avatar === "wedding" && <FaHeart className="text-white" />}
                     </div>
                     <div>
                       <div className="font-bold text-white">{testimonial.author}</div>
@@ -334,7 +354,7 @@ export default function FeaturesPage() {
                     </div>
                     <div className="flex space-x-1">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400">⭐</span>
+                        <BsStarFill key={i} className="text-yellow-400" />
                       ))}
                     </div>
                   </div>
@@ -416,7 +436,7 @@ export default function FeaturesPage() {
                   Add your text, logo, and brand colors with our intuitive editor. Auto-branding ensures consistent styling.
                 </p>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-4 py-2">
-                  <span className="text-purple-300 font-semibold">⚡ 1-Minute Customization</span>
+                  <span className="text-purple-300 font-semibold flex items-center gap-1"><FaBolt className="inline" /> 1-Minute Customization</span>
                 </div>
               </div>
 
@@ -436,7 +456,7 @@ export default function FeaturesPage() {
                   Get high-quality files instantly in multiple formats and share across all your marketing channels.
                 </p>
                 <div className="bg-gradient-to-r from-pink-500/20 to-orange-500/20 border border-pink-500/30 rounded-lg px-4 py-2">
-                  <span className="text-pink-300 font-semibold">📱 All Formats Supported</span>
+                  <span className="text-pink-300 font-semibold flex items-center gap-1"><FaMobileAlt className="inline" /> All Formats Supported</span>
                 </div>
               </div>
             </div>
@@ -444,7 +464,7 @@ export default function FeaturesPage() {
             {/* CTA Button */}
             <div className="text-center mt-16">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 Start Creating Now - Free Trial
@@ -494,7 +514,7 @@ export default function FeaturesPage() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 🚀 Start Free Trial Now
@@ -508,7 +528,7 @@ export default function FeaturesPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 50,000+ Businesses • 1,000+ Templates • 1-Minute Creation
+              <span className="flex items-center gap-2"><FaBolt className="inline" /> Join 50,000+ Businesses • 1,000+ Templates • 1-Minute Creation</span>
             </p>
           </div>
         </div>

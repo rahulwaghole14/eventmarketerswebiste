@@ -6,6 +6,17 @@ export const metadata: Metadata = {
   description: "Join MarketBrand's partner ecosystem. Become a reseller, integration partner, or technology partner. Grow your business with our partnership program.",
   keywords: "partners, partnership program, reseller, integration partner, technology partner, business partnership, channel partner",
   alternates: { canonical: "/partners" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Partners | Partnership Program | MarketBrand.ai",
     description: "Join MarketBrand's partner ecosystem. Become a reseller, integration partner, or technology partner. Grow your business with our partnership program.",

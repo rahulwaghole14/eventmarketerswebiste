@@ -1,11 +1,23 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FaRocket, FaLightbulb, FaHome, FaTrophy, FaBolt, FaComments, FaBriefcase, FaUserTie, FaUser, FaStar, FaUsers, FaSeedling, FaGraduationCap, FaHospital, FaEnvelope } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Careers | Join Our Team | MarketBrand.ai",
   description: "Join the MarketBrand team and help businesses create professional marketing materials. Explore open positions, company culture, and career opportunities in tech and marketing.",
   keywords: "careers, jobs, employment, tech jobs, marketing jobs, startup jobs, remote work, company culture, join our team",
   alternates: { canonical: "/careers" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Careers | Join Our Team | MarketBrand.ai",
     description: "Join the MarketBrand team and help businesses create professional marketing materials. Explore open positions, company culture, and career opportunities.",
@@ -63,22 +75,22 @@ export default function CareersPage() {
 
   const companyValues = [
     {
-      icon: "🚀",
+      icon: "rocket",
       title: "Innovation First",
       description: "We're always pushing boundaries and exploring new ways to help businesses succeed"
     },
     {
-      icon: "👥",
+      icon: "users",
       title: "Team Collaboration",
       description: "Great things happen when talented people work together towards a common goal"
     },
     {
-      icon: "🌱",
+      icon: "seedling",
       title: "Growth Mindset",
       description: "We believe in continuous learning and personal development for everyone"
     },
     {
-      icon: "💡",
+      icon: "lightbulb",
       title: "Customer Obsession",
       description: "Every decision we make is centered around creating value for our customers"
     }
@@ -86,32 +98,32 @@ export default function CareersPage() {
 
   const benefits = [
     {
-      icon: "🏠",
+      icon: "home",
       title: "Remote First",
       description: "Work from anywhere in India with flexible hours"
     },
     {
-      icon: "💰",
+      icon: "money",
       title: "Competitive Salary",
       description: "Industry-leading compensation with equity options"
     },
     {
-      icon: "🎓",
+      icon: "graduation",
       title: "Learning Budget",
       description: "₹50,000 annual budget for courses, conferences, and books"
     },
     {
-      icon: "🏥",
+      icon: "hospital",
       title: "Health Insurance",
       description: "Comprehensive health coverage for you and your family"
     },
     {
-      icon: "🎉",
+      icon: "trophy",
       title: "Team Events",
       description: "Regular team building activities and company retreats"
     },
     {
-      icon: "⚡",
+      icon: "bolt",
       title: "Fast Growth",
       description: "Opportunity to grow quickly in a fast-paced startup environment"
     }
@@ -220,21 +232,21 @@ export default function CareersPage() {
     {
       name: "Sarah Chen",
       role: "Senior Frontend Developer",
-      avatar: "👩‍💻",
+      avatar: "developer",
       quote: "Working at MarketBrand has been incredible. The team is supportive, the work is challenging, and I love seeing the impact our product has on small businesses every day.",
       tenure: "2 years"
     },
     {
       name: "Rajesh Kumar",
       role: "Product Manager",
-      avatar: "👨‍💼",
+      avatar: "manager",
       quote: "The culture here is amazing. We're encouraged to take ownership, think big, and make a real difference. It's the best place I've worked in my career.",
       tenure: "1.5 years"
     },
     {
       name: "Priya Sharma",
       role: "UX Designer",
-      avatar: "👩‍🎨",
+      avatar: "designer",
       quote: "The remote-first culture and flexible hours allow me to do my best work while maintaining a great work-life balance. The team truly cares about each other.",
       tenure: "1 year"
     }
@@ -274,13 +286,13 @@ export default function CareersPage() {
               {/* Trust Badges */}
               <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
                 <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-4 py-2">
-                  <span className="text-green-300 text-sm font-semibold">🏠 Remote First</span>
+                  <span className="text-green-300 text-sm font-semibold flex items-center gap-1"><FaHome className="inline" /> Remote First</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">💰 Competitive Salary</span>
+                  <span className="text-blue-300 text-sm font-semibold">Competitive Salary</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold">🚀 Fast Growth</span>
+                  <span className="text-purple-300 text-sm font-semibold flex items-center gap-1"><FaRocket className="inline" /> Fast Growth</span>
                 </div>
               </div>
 
@@ -329,8 +341,11 @@ export default function CareersPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {companyValues.map((value, index) => (
                 <div key={index} className="text-center space-y-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl">
-                  <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto text-3xl shadow-2xl">
-                    {value.icon}
+                  <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
+                    {value.icon === "rocket" && <FaRocket className="text-white text-3xl" />}
+                    {value.icon === "users" && <FaUsers className="text-white text-3xl" />}
+                    {value.icon === "seedling" && <FaSeedling className="text-white text-3xl" />}
+                    {value.icon === "lightbulb" && <FaLightbulb className="text-white text-3xl" />}
                   </div>
                   <h3 className="text-xl font-bold text-white">{value.title}</h3>
                   <p className="text-gray-300 leading-relaxed">
@@ -356,8 +371,13 @@ export default function CareersPage() {
               {benefits.map((benefit, index) => (
                 <div key={index} className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-xl">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-2xl flex-shrink-0">
-                      {benefit.icon}
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                      {benefit.icon === "home" && <FaHome className="text-white text-2xl" />}
+                      {benefit.icon === "money" && <FaBriefcase className="text-white text-2xl" />}
+                      {benefit.icon === "graduation" && <FaGraduationCap className="text-white text-2xl" />}
+                      {benefit.icon === "hospital" && <FaHospital className="text-white text-2xl" />}
+                      {benefit.icon === "trophy" && <FaTrophy className="text-white text-2xl" />}
+                      {benefit.icon === "bolt" && <FaBolt className="text-white text-2xl" />}
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white mb-2">{benefit.title}</h3>
@@ -459,8 +479,10 @@ export default function CareersPage() {
               {teamTestimonials.map((testimonial, index) => (
                 <div key={index} className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-xl">
                   <div className="flex items-center space-x-4 mb-6">
-                    <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center text-2xl">
-                      {testimonial.avatar}
+                    <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center">
+                      {testimonial.avatar === "developer" && <FaUser className="text-white text-2xl" />}
+                      {testimonial.avatar === "manager" && <FaUserTie className="text-white text-2xl" />}
+                      {testimonial.avatar === "designer" && <FaUser className="text-white text-2xl" />}
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-white">{testimonial.name}</h3>
@@ -520,8 +542,8 @@ export default function CareersPage() {
                 className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
               >
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto text-2xl">
-                    💬
+                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto">
+                    <FaComments className="text-white text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">Contact Us</h3>
                   <p className="text-gray-300">Have questions about our culture or open positions? Get in touch with us</p>
@@ -574,18 +596,18 @@ export default function CareersPage() {
                 href="mailto:careers@marketbrand.ai"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                📧 Send Us Your Resume
+                <span className="flex items-center gap-2"><FaEnvelope className="inline" /> Send Us Your Resume</span>
               </Link>
               <Link 
                 href="/contact"
                 className="inline-flex items-center px-12 py-6 border-2 border-white/30 rounded-2xl text-white font-bold text-2xl hover:bg-white/10 transition-all duration-300"
               >
-                💬 Have Questions?
+                <span className="flex items-center gap-2"><FaComments className="inline" /> Have Questions?</span>
               </Link>
             </div>
             
-            <p className="text-gray-400 text-lg mt-8">
-              🚀 Join 25+ Talented People • 💼 6 Open Positions • 🌟 Make an Impact
+            <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
+              <FaRocket className="inline" /> Join 25+ Talented People • <FaBriefcase className="inline" /> 6 Open Positions • <FaStar className="inline" /> Make an Impact
             </p>
           </div>
         </div>

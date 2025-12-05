@@ -413,7 +413,7 @@ export default function RetailGroceryFashionPage() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 🚀 Start Free Trial Now

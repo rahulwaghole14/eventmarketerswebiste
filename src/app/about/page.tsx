@@ -1,11 +1,23 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FaRocket, FaPalette, FaBolt, FaComments } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "About Us | MarketBrand.ai - Empowering Businesses with Professional Marketing",
   description: "Learn about MarketBrand.ai's mission to make professional marketing simple and affordable for every business. Join 50,000+ businesses already using our platform.",
   keywords: "about MarketBrand, company mission, business marketing, professional design, team, vision",
   alternates: { canonical: "/about" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "About Us | MarketBrand.ai - Empowering Businesses with Professional Marketing",
     description: "Learn about MarketBrand.ai's mission to make professional marketing simple and affordable for every business.",
@@ -115,7 +127,7 @@ export default function AboutPage() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
-                  href="/"
+                  href="/download"
                   className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
                   🚀 Start Free Trial
@@ -238,7 +250,7 @@ export default function AboutPage() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 🚀 Start Free Trial Now

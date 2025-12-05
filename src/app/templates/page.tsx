@@ -1,11 +1,23 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FaRocket, FaPalette, FaBolt, FaMobileAlt, FaBriefcase, FaTrophy, FaBullseye, FaSync } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Template Gallery | 1000+ Professional Marketing Templates | MarketBrand.ai",
   description: "Browse our collection of 1000+ professional marketing templates. Posters, videos, flyers for restaurants, events, fitness, healthcare, beauty, automotive businesses. Download instantly.",
   keywords: "marketing templates, professional templates, business templates, poster templates, video templates, design templates, marketing materials",
   alternates: { canonical: "/templates" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Template Gallery | 1000+ Professional Marketing Templates",
     description: "Browse our collection of 1000+ professional marketing templates. Posters, videos, flyers for restaurants, events, fitness, healthcare, beauty, automotive businesses.",
@@ -59,7 +71,7 @@ export default function TemplatesPage() {
     {
       id: "business",
       title: "Business Templates",
-      icon: "💼",
+      icon: "briefcase",
       description: "Professional templates for all business types",
       count: "500+",
       gradient: "from-blue-500 to-indigo-500",
@@ -68,7 +80,7 @@ export default function TemplatesPage() {
     {
       id: "festival",
       title: "Festival Templates",
-      icon: "🎉",
+      icon: "trophy",
       description: "Seasonal and festival marketing materials",
       count: "300+",
       gradient: "from-purple-500 to-pink-500",
@@ -77,7 +89,7 @@ export default function TemplatesPage() {
     {
       id: "general",
       title: "General Templates",
-      icon: "🎨",
+      icon: "palette",
       description: "Versatile templates for any occasion",
       count: "200+",
       gradient: "from-green-500 to-teal-500",
@@ -87,22 +99,22 @@ export default function TemplatesPage() {
 
   const features = [
     {
-      icon: "⚡",
+      icon: "bolt",
       title: "Instant Download",
       description: "Download templates in seconds with your business details already applied"
     },
     {
-      icon: "🎨",
+      icon: "palette",
       title: "Professional Design",
       description: "All templates designed by professional graphic designers"
     },
     {
-      icon: "📱",
+      icon: "mobile",
       title: "Mobile Optimized",
       description: "Templates work perfectly on all devices and social media platforms"
     },
     {
-      icon: "🔄",
+      icon: "sync",
       title: "Easy Customization",
       description: "Change colors, text, and branding in under 1 minute"
     }
@@ -145,10 +157,10 @@ export default function TemplatesPage() {
                   <span className="text-green-300 text-sm font-semibold">✓ 1,000+ Templates</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">🎨 Professional Design</span>
+                  <span className="text-blue-300 text-sm font-semibold flex items-center gap-1"><FaPalette className="inline" /> Professional Design</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold">⚡ 1-Minute Download</span>
+                  <span className="text-purple-300 text-sm font-semibold flex items-center gap-1"><FaBolt className="inline" /> 1-Minute Download</span>
                 </div>
               </div>
 
@@ -184,21 +196,21 @@ export default function TemplatesPage() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
-                  href="/"
+                  href="/download"
                   className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
-                  🚀 Start Free Trial
+                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial</span>
                 </Link>
                 <Link 
                   href="/categories"
                   className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition-all duration-300"
                 >
-                  🎯 Browse Categories
+                  <span className="flex items-center gap-2"><FaBullseye className="inline" /> Browse Categories</span>
                 </Link>
               </div>
 
-              <p className="text-gray-400 text-sm mt-6">
-                ⚡ No Credit Card Required • 7-Day Free Trial • Cancel Anytime
+              <p className="text-gray-400 text-sm mt-6 flex items-center gap-2">
+                <FaBolt className="inline" /> No Credit Card Required • 7-Day Free Trial • Cancel Anytime
               </p>
             </div>
           </div>
@@ -219,14 +231,20 @@ export default function TemplatesPage() {
             
             <div className="grid md:grid-cols-3 gap-8">
               {templateCategories.map((category, index) => (
-                <div key={category.id} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
+                <Link 
+                  key={category.id} 
+                  href={`/templates/${category.id}`}
+                  className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 block"
+                >
                   {/* Gradient Overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl`}></div>
                   
                   <div className="relative z-10">
                     <div className="flex items-center space-x-4 mb-6">
                       <div className={`w-16 h-16 bg-gradient-to-r ${category.gradient} rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        {category.icon}
+                        {category.icon === "briefcase" && <FaBriefcase className="text-white text-2xl" />}
+                        {category.icon === "trophy" && <FaTrophy className="text-white text-2xl" />}
+                        {category.icon === "palette" && <FaPalette className="text-white text-2xl" />}
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-white group-hover:gradient-text transition-all duration-300">
@@ -251,14 +269,11 @@ export default function TemplatesPage() {
                       </div>
                     </div>
                     
-                    <Link 
-                      href={`/categories`}
-                      className={`w-full block text-center px-8 py-4 bg-gradient-to-r ${category.gradient} rounded-2xl text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300`}
-                    >
+                    <div className={`w-full text-center px-8 py-4 bg-gradient-to-r ${category.gradient} rounded-2xl text-white font-bold text-lg group-hover:shadow-2xl group-hover:scale-105 transition-all duration-300`}>
                       Browse {category.title}
-                    </Link>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -280,8 +295,11 @@ export default function TemplatesPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {features.map((feature, index) => (
                 <div key={index} className="text-center space-y-6">
-                  <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto text-3xl shadow-2xl">
-                    {feature.icon}
+                  <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
+                    {feature.icon === "bolt" && <FaBolt className="text-white text-3xl" />}
+                    {feature.icon === "palette" && <FaPalette className="text-white text-3xl" />}
+                    {feature.icon === "mobile" && <FaMobileAlt className="text-white text-3xl" />}
+                    {feature.icon === "sync" && <FaSync className="text-white text-3xl" />}
                   </div>
                   <h3 className="text-xl font-bold text-white">{feature.title}</h3>
                   <p className="text-gray-300 leading-relaxed">
@@ -311,7 +329,7 @@ export default function TemplatesPage() {
                 <div key={item} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all duration-300 hover:shadow-2xl">
                   <div className="aspect-[4/5] bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl mb-4 flex items-center justify-center">
                     <div className="text-center">
-                      <div className="text-4xl mb-2">🎨</div>
+                      <FaPalette className="text-4xl mb-2 mx-auto" />
                       <div className="text-gray-400 text-sm">Template Preview</div>
                     </div>
                   </div>
@@ -377,21 +395,21 @@ export default function TemplatesPage() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                🚀 Start Free Trial Now
+                <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial Now</span>
               </Link>
               <Link 
                 href="/pricing"
                 className="inline-flex items-center px-12 py-6 border-2 border-white/30 rounded-2xl text-white font-bold text-2xl hover:bg-white/10 transition-all duration-300"
               >
-                💰 View Pricing Plans
+                View Pricing Plans
               </Link>
             </div>
             
-            <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 50,000+ Businesses • 1,000+ Templates • 1-Minute Creation
+            <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
+              <FaBolt className="inline" /> Join 50,000+ Businesses • 1,000+ Templates • 1-Minute Creation
             </p>
           </div>
         </div>

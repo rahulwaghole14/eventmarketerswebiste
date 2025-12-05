@@ -11,7 +11,7 @@ export default function PricingTable() {
           <li>⚠️ Watermark included</li>
           <li>✅ 5 designs/month</li>
         </ul>
-        <div className="mt-6"><CTAButton href="/#start" label="Start Free" /></div>
+        <div className="mt-6"><CTAButton href="/download" label="Start Free" /></div>
       </div>
       <div className="border border-[var(--mb-accent)] rounded-2xl p-6 shadow-[0_0_0_2px_var(--mb-accent)] relative">
         <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
@@ -29,7 +29,7 @@ export default function PricingTable() {
           <li>✅ Priority support</li>
           <li>✅ Commercial license</li>
         </ul>
-        <div className="mt-6"><CTAButton href="/#start" label="Start Pro Trial" /></div>
+        <div className="mt-6"><CTAButton href="/download" label="Start Pro Trial" /></div>
       </div>
       <div className="border border-white/10 rounded-2xl p-6">
         <div className="text-xl font-semibold">Enterprise</div>

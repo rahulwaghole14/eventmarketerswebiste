@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import React from "react";
+import { FaRocket, FaPalette, FaBolt, FaHeart, FaDumbbell, FaSprayCan, FaShoppingBag, FaHospital, FaCar, FaBullseye, FaCamera, FaUtensils, FaBuilding } from "react-icons/fa";
+import { BsStarFill } from "react-icons/bs";
 
 const MAP: Record<string, { title: string; intro: string; useCases: string[]; cta: string; }> = {
   // Events & Wedding Vendors
@@ -264,16 +267,19 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const item = MAP[slug];
   if (!item) return notFound();
   
-  const categoryIcons: Record<string, string> = {
-    "wedding-planners": "💒", "decorators": "🎨", "photographers": "📸", "caterers": "🍰", "venues": "🏛️",
-    "fitness-studios": "💪", "gyms": "🏋️", "yoga-centers": "🧘", "personal-trainers": "🏃", "health-clubs": "🏊",
-    "retail-stores": "🛒", "grocery-shops": "🥬", "fashion-boutiques": "👗", "supermarkets": "🏬", "shopping-centers": "🏢",
-    "healthcare-clinics": "⚕️", "diagnostic-centers": "🔬", "hospitals": "🏥", "dental-clinics": "🦷", "medical-practices": "👨‍⚕️",
-    "beauty-salons": "💇", "spas": "💆", "aesthetic-clinics": "✨", "nail-studios": "💅", "wellness-centers": "🧖",
-    "automotive-workshops": "🔧", "car-detailing-services": "🚗", "tire-shops": "🛞", "vehicle-repair-centers": "🔨", "auto-care-centers": "🚙"
+  const getCategoryIcon = (slug: string) => {
+    const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+      "wedding-planners": FaHeart, "decorators": FaPalette, "photographers": FaCamera, "caterers": FaUtensils, "venues": FaBuilding,
+      "fitness-studios": FaDumbbell, "gyms": FaDumbbell, "yoga-centers": FaDumbbell, "personal-trainers": FaDumbbell, "health-clubs": FaDumbbell,
+      "retail-stores": FaShoppingBag, "grocery-shops": FaShoppingBag, "fashion-boutiques": FaShoppingBag, "supermarkets": FaShoppingBag, "shopping-centers": FaShoppingBag,
+      "healthcare-clinics": FaHospital, "diagnostic-centers": FaHospital, "hospitals": FaHospital, "dental-clinics": FaHospital, "medical-practices": FaHospital,
+      "beauty-salons": FaSprayCan, "spas": FaSprayCan, "aesthetic-clinics": FaSprayCan, "nail-studios": FaSprayCan, "wellness-centers": FaSprayCan,
+      "automotive-workshops": FaCar, "car-detailing-services": FaCar, "tire-shops": FaCar, "vehicle-repair-centers": FaCar, "auto-care-centers": FaCar
+    };
+    return iconMap[slug] || FaBullseye;
   };
 
-  const icon = categoryIcons[slug] || "🎯";
+  const IconComponent = getCategoryIcon(slug);
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -348,15 +354,15 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                   <span className="text-green-300 text-sm font-semibold">✓ 1000+ Professional Templates</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">⭐ 4.9/5 Rating</span>
+                  <span className="text-blue-300 text-sm font-semibold flex items-center gap-1"><BsStarFill className="inline" /> 4.9/5 Rating</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold">🚀 Instant Download</span>
+                  <span className="text-purple-300 text-sm font-semibold flex items-center gap-1"><FaRocket className="inline" /> Instant Download</span>
                 </div>
               </div>
 
-              <div className="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-8 text-5xl shadow-2xl animate-pulse">
-                {icon}
+              <div className="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl animate-pulse">
+                <IconComponent className="text-white text-5xl" />
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-tight">
@@ -375,18 +381,18 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
-                  🚀 Download App - Free Trial
+                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Download App - Free Trial</span>
                 </Link>
                 <Link 
                   href="/pricing"
                   className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-lg hover:bg-white/10 transition-all duration-300"
                 >
-                  💰 View Pricing
+                  View Pricing
                 </Link>
               </div>
 
-              <p className="text-gray-400 text-sm mt-6">
-                ⚡ No Credit Card Required • 7-Day Free Trial • Cancel Anytime
+              <p className="text-gray-400 text-sm mt-6 flex items-center gap-2">
+                <FaBolt className="inline" /> No Credit Card Required • 7-Day Free Trial • Cancel Anytime
               </p>
             </div>
           </div>
@@ -409,8 +415,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 <div key={index} className="card-premium group overflow-hidden">
                   {/* Image Placeholder */}
                   <div className="relative h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-xl mb-6 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center text-6xl">
-                      {icon}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <IconComponent className="text-white text-6xl" />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
@@ -430,7 +436,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
 
                   {/* Download Button */}
                   <Link 
-                    href="/"
+                    href="/download"
                     className="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl text-white font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
                   >
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -458,8 +464,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             
             <div className="grid md:grid-cols-3 gap-8">
               <div className="card-premium text-center space-y-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto text-3xl">
-                  ⚡
+                <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto">
+                  <FaBolt className="text-white text-3xl" />
                 </div>
                 <h3 className="text-2xl font-bold text-white">Instant Download</h3>
                 <p className="text-gray-300 leading-relaxed">
@@ -468,8 +474,8 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
               </div>
 
               <div className="card-premium text-center space-y-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto text-3xl">
-                  🎨
+                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto">
+                  <FaPalette className="text-white text-3xl" />
                 </div>
                 <h3 className="text-2xl font-bold text-white">Easy Customization</h3>
                 <p className="text-gray-300 leading-relaxed">
@@ -508,21 +514,21 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                🚀 Start Free Trial Now
+                <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial Now</span>
               </Link>
               <Link 
                 href="/pricing"
                 className="inline-flex items-center px-12 py-6 border-2 border-white/30 rounded-2xl text-white font-bold text-2xl hover:bg-white/10 transition-all duration-300"
               >
-                💰 View Pricing Plans
+                View Pricing Plans
               </Link>
             </div>
             
-            <p className="text-gray-400 text-lg mt-8">
-              ⚡ 7-Day Free Trial • No Credit Card Required • 1000+ Templates
+            <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
+              <FaBolt className="inline" /> 7-Day Free Trial • No Credit Card Required • 1000+ Templates
             </p>
           </div>
         </div>

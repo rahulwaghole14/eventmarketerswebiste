@@ -1,11 +1,24 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FaMobileAlt, FaBolt, FaComments, FaPalette } from "react-icons/fa";
+import { MdPhoneAndroid } from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "Download MarketBrand App | Free Download for iOS & Android | MarketBrand.ai",
   description: "Download MarketBrand app for iOS and Android. Create professional marketing materials in minutes. Free download with 7-day trial. No credit card required.",
   keywords: "download MarketBrand app, mobile app download, iOS app, Android app, marketing app, design app, free download",
   alternates: { canonical: "/download" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Download MarketBrand App | Free Download for iOS & Android",
     description: "Download MarketBrand app for iOS and Android. Create professional marketing materials in minutes. Free download with 7-day trial.",
@@ -84,10 +97,10 @@ export default function DownloadPage() {
                     <span className="text-green-300 text-sm font-semibold">✓ Free Download</span>
                   </div>
                   <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                    <span className="text-blue-300 text-sm font-semibold">📱 iOS & Android</span>
+                    <span className="text-blue-300 text-sm font-semibold flex items-center gap-1"><FaMobileAlt className="inline" /> iOS & Android</span>
                   </div>
                   <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                    <span className="text-purple-300 text-sm font-semibold">⚡ 1-Min Creation</span>
+                    <span className="text-purple-300 text-sm font-semibold flex items-center gap-1"><FaBolt className="inline" /> 1-Min Creation</span>
                   </div>
                 </div>
 
@@ -108,6 +121,7 @@ export default function DownloadPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-600 rounded-2xl text-white font-semibold hover:scale-105 transition-all duration-300 group"
+                    aria-label="Download from Google Play Store"
                   >
                     <svg className="w-8 h-8 mr-4" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M3.609 1.814L13.792 12L3.609 22.186C3.386 22.409 3.386 22.773 3.609 22.996C3.832 23.219 4.196 23.219 4.419 22.996L14.602 12.814C14.825 12.591 14.825 12.227 14.602 12.004L4.419 1.814C4.196 1.591 3.832 1.591 3.609 1.814Z"/>
@@ -120,7 +134,7 @@ export default function DownloadPage() {
                   
                   {/* Apple App Store Button */}
                   <Link 
-                    href="#"
+                    href="/app-store-coming-soon"
                     className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-800 to-gray-900 border border-gray-600 rounded-2xl text-white font-semibold hover:scale-105 transition-all duration-300 group"
                   >
                     <svg className="w-8 h-8 mr-4" viewBox="0 0 24 24" fill="currentColor">
@@ -162,7 +176,7 @@ export default function DownloadPage() {
                 <div className="bg-white p-8 rounded-3xl shadow-2xl mb-8 mx-auto w-fit">
                   <div className="w-48 h-48 bg-gray-200 rounded-2xl flex items-center justify-center">
                     <div className="text-center">
-                      <div className="text-4xl mb-2">📱</div>
+                      <FaMobileAlt className="text-4xl mb-2 mx-auto" />
                       <div className="text-gray-600 text-sm">QR Code</div>
                       <div className="text-gray-500 text-xs">Scan to Download</div>
                     </div>
@@ -179,11 +193,11 @@ export default function DownloadPage() {
                       </div>
                       <div className="grid grid-cols-2 gap-2">
                         <div className="bg-white/10 rounded-lg p-3 text-center">
-                          <div className="text-2xl mb-1">🎨</div>
+                          <FaPalette className="text-2xl mb-1 mx-auto" />
                           <div className="text-white text-xs">Templates</div>
                         </div>
                         <div className="bg-white/10 rounded-lg p-3 text-center">
-                          <div className="text-2xl mb-1">📱</div>
+                          <FaMobileAlt className="text-2xl mb-1 mx-auto" />
                           <div className="text-white text-xs">Create</div>
                         </div>
                       </div>
@@ -211,8 +225,8 @@ export default function DownloadPage() {
                 className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
               >
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto text-2xl">
-                    ⚡
+                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto">
+                    <FaBolt className="text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">App Features</h3>
                   <p className="text-gray-300">Discover all the powerful features available in the MarketBrand app</p>
@@ -224,8 +238,8 @@ export default function DownloadPage() {
                 className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
               >
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto text-2xl">
-                    💬
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto">
+                    <FaComments className="text-2xl" />
                   </div>
                   <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">Get Help</h3>
                   <p className="text-gray-300">Need help getting started? Check out our comprehensive help center</p>
@@ -298,12 +312,12 @@ export default function DownloadPage() {
                 href="/contact"
                 className="inline-flex items-center px-12 py-6 border-2 border-white/30 rounded-2xl text-white font-bold text-2xl hover:bg-white/10 transition-all duration-300"
               >
-                💬 Contact Support
+                <span className="flex items-center gap-2"><FaComments className="inline" /> Contact Support</span>
               </Link>
             </div>
             
-            <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 50,000+ Businesses • 1,000+ Templates • 1-Minute Creation
+            <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
+              <FaBolt className="inline" /> Join 50,000+ Businesses • 1,000+ Templates • 1-Minute Creation
             </p>
           </div>
         </div>

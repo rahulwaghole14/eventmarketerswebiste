@@ -6,6 +6,17 @@ export const metadata: Metadata = {
   description: "Read MarketBrand's terms of service and legal conditions. Understand your rights and responsibilities when using our platform and services.",
   keywords: "terms of service, legal terms, user agreement, terms and conditions, legal compliance, user rights",
   alternates: { canonical: "/terms" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Terms of Service | Legal Terms | MarketBrand.ai",
     description: "Read MarketBrand's terms of service and legal conditions. Understand your rights and responsibilities when using our platform and services.",

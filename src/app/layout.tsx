@@ -2,12 +2,26 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
+import SkipToContent from "@/components/SkipToContent";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.marketbrand.ai"),
   title: "MarketBrand.ai — Ready-Made Marketing Materials for Your Business",
   description: "Download professional marketing materials instantly! Ready-made posters, videos & flyers for restaurants, schools, events. No design skills needed - just download and use!",
+  keywords: "marketing materials, business templates, promotional posters, marketing videos, business design, professional templates, marketing tools",
   alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "MarketBrand.ai — Ready-Made Marketing Materials for Your Business",
     description: "Download professional marketing materials instantly! Ready-made posters, videos & flyers for restaurants, schools, events. No design skills needed.",
@@ -16,6 +30,12 @@ export const metadata: Metadata = {
     images: [{ url: "/og.jpg", width: 1200, height: 630 }],
     locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MarketBrand.ai — Ready-Made Marketing Materials for Your Business",
+    description: "Download professional marketing materials instantly! Ready-made posters, videos & flyers for restaurants, schools, events.",
+    images: ["/og.jpg"],
   },
 };
 
@@ -30,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "url": "https://www.marketbrand.ai",
     "logo": "https://www.marketbrand.ai/logo.png",
     "image": "https://www.marketbrand.ai/og.jpg",
-    "telephone": "+91-9876543210",
+    "telephone": "+91-8551941415",
     "email": "support@marketbrand.ai",
     "address": {
       "@type": "PostalAddress",
@@ -105,9 +125,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        <SkipToContent />
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main id="main-content" className="min-h-screen">{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   );

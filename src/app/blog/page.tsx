@@ -1,11 +1,24 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FaRocket, FaPalette, FaBolt, FaMobileAlt, FaComments, FaLightbulb, FaChartLine, FaChartBar, FaBook, FaNewspaper } from "react-icons/fa";
+import { BsStarFill } from "react-icons/bs";
 
 export const metadata: Metadata = {
   title: "Blog | Marketing Tips & Business Insights | MarketBrand.ai",
   description: "Discover marketing tips, business insights, and design tutorials to grow your business. Learn from industry experts and stay updated with the latest marketing trends.",
   keywords: "marketing blog, business tips, marketing insights, design tutorials, business growth, marketing strategies, small business marketing",
   alternates: { canonical: "/blog" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Blog | Marketing Tips & Business Insights | MarketBrand.ai",
     description: "Discover marketing tips, business insights, and design tutorials to grow your business. Learn from industry experts and stay updated with the latest marketing trends.",
@@ -53,12 +66,12 @@ export default function BlogPage() {
   };
 
   const blogCategories = [
-    { name: "Marketing Tips", icon: "💡", count: 24 },
-    { name: "Design Tutorials", icon: "🎨", count: 18 },
-    { name: "Business Growth", icon: "📈", count: 16 },
-    { name: "Industry News", icon: "📰", count: 12 },
-    { name: "Case Studies", icon: "📊", count: 8 },
-    { name: "App Updates", icon: "🚀", count: 6 }
+    { name: "Marketing Tips", icon: "lightbulb", count: 24 },
+    { name: "Design Tutorials", icon: "palette", count: 18 },
+    { name: "Business Growth", icon: "chartline", count: 16 },
+    { name: "Industry News", icon: "newspaper", count: 12 },
+    { name: "Case Studies", icon: "chartbar", count: 8 },
+    { name: "App Updates", icon: "rocket", count: 6 }
   ];
 
   const featuredPosts = [
@@ -200,7 +213,7 @@ export default function BlogPage() {
                   <span className="text-blue-300 text-sm font-semibold">👥 Expert Authors</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold">📈 Updated Weekly</span>
+                  <span className="text-purple-300 text-sm font-semibold flex items-center gap-1"><FaChartLine className="inline" /> Updated Weekly</span>
                 </div>
               </div>
 
@@ -273,7 +286,7 @@ export default function BlogPage() {
                   {post.featured && (
                     <div className="absolute top-4 left-4 z-10">
                       <span className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                        ⭐ Featured
+                        <span className="flex items-center gap-1"><BsStarFill className="inline" /> Featured</span>
                       </span>
                     </div>
                   )}
@@ -412,8 +425,8 @@ export default function BlogPage() {
                 className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
               >
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto text-2xl">
-                    ⚡
+                  <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto">
+                    <FaBolt className="text-2xl text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">App Features</h3>
                   <p className="text-gray-300">Discover all the powerful features that make MarketBrand the best choice for your business</p>
@@ -425,8 +438,8 @@ export default function BlogPage() {
                 className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
               >
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto text-2xl">
-                    📱
+                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto">
+                    <FaMobileAlt className="text-2xl text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">Download App</h3>
                   <p className="text-gray-300">Get started with MarketBrand today and begin creating professional marketing materials</p>
@@ -438,8 +451,8 @@ export default function BlogPage() {
                 className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
               >
                 <div className="text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto text-2xl">
-                    💬
+                  <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto">
+                    <FaComments className="text-2xl text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">Get Help</h3>
                   <p className="text-gray-300">Need assistance? Our comprehensive help center has answers to all your questions</p>
@@ -492,18 +505,18 @@ export default function BlogPage() {
                 href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                📱 Download App Now
+                <span className="flex items-center gap-2"><FaMobileAlt className="inline" /> Download App Now</span>
               </Link>
               <Link 
                 href="/pricing"
                 className="inline-flex items-center px-12 py-6 border-2 border-white/30 rounded-2xl text-white font-bold text-2xl hover:bg-white/10 transition-all duration-300"
               >
-                💰 View Pricing
+                View Pricing
               </Link>
             </div>
             
-            <p className="text-gray-400 text-lg mt-8">
-              📚 84+ Articles • 💡 Expert Tips • 🚀 Start Creating Today
+            <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
+              <FaBook className="inline" /> 84+ Articles • <FaLightbulb className="inline" /> Expert Tips • <FaRocket className="inline" /> Start Creating Today
             </p>
           </div>
         </div>

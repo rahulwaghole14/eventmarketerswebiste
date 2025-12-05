@@ -1,9 +1,38 @@
 import Link from "next/link";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import type { Metadata } from "next";
+import { FaRocket, FaMobileAlt, FaPalette, FaBolt } from "react-icons/fa";
+import { HiSparkles } from "react-icons/hi";
 import Section from "@/components/Section";
 import CTAButton from "@/components/CTAButton";
-import CategoryGrid from "@/components/CategoryGrid";
-import Testimonial from "@/components/Testimonial";
-import Seo from "@/components/Seo";
+import DownloadButton from "@/components/DownloadButton";
+import HomePageClient from "./HomePageClient";
+
+// Lazy load heavy components
+const CategoryGrid = dynamic(() => import("@/components/CategoryGrid"), {
+  loading: () => <div className="h-64 animate-pulse bg-gray-800/50 rounded-2xl" />,
+});
+const Testimonial = dynamic(() => import("@/components/Testimonial"), {
+  loading: () => <div className="h-64 animate-pulse bg-gray-800/50 rounded-2xl" />,
+});
+
+export const metadata: Metadata = {
+  title: "MarketBrand.ai — Ready-Made Marketing Materials for Your Business",
+  description: "Download professional marketing materials instantly! Ready-made posters, videos & flyers for restaurants, schools, events. No design skills needed - just download and use!",
+  keywords: "marketing materials, business templates, promotional posters, marketing videos, business design, professional templates, marketing tools",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
 
 export default function HomePage() {
   const orgLd = {
@@ -16,7 +45,11 @@ export default function HomePage() {
 
   return (
     <>
-      <Seo jsonLd={orgLd} />
+      <HomePageClient />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
+      />
       
       {/* Ultra-Modern Hero Section */}
       <div className="relative min-h-screen overflow-hidden">
@@ -70,10 +103,10 @@ export default function HomePage() {
               {/* App Store Download Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center" id="start">
                 {/* Google Play Store Button */}
-                <Link 
+                <DownloadButton
                   href="https://play.google.com/store/apps/details?id=com.marketbrand"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  source="hero_google_play"
+                  ariaLabel="Download from Google Play Store"
                   className="btn-secondary text-sm px-8 py-4 rounded-xl font-semibold group flex items-center justify-center space-x-3 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden"
                 >
                   {/* Google Logo SVG */}
@@ -84,24 +117,27 @@ export default function HomePage() {
                     <path d="M20.391 12.814L10.208 22.996C9.985 23.219 9.621 23.219 9.398 22.996C9.175 22.773 9.175 22.409 9.398 22.186L19.581 12L9.398 1.814C9.175 1.591 9.175 1.227 9.398 1.004C9.621 0.781 9.985 0.781 10.208 1.004L20.391 11.186C20.614 11.409 20.614 11.773 20.391 11.996Z" fill="#EA4335"/>
                   </svg>
                   <div className="flex flex-col items-start relative z-10">
-                    <span className="text-xs opacity-75">🚀 FREE DOWNLOAD</span>
+                    <span className="text-xs opacity-75 flex items-center gap-1"><FaRocket className="inline" /> FREE DOWNLOAD</span>
                     <span className="font-bold">Google Play</span>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </Link>
+                </DownloadButton>
                 
                 {/* Apple App Store Button */}
-                <button className="btn-secondary text-sm px-8 py-4 rounded-xl font-semibold group flex items-center justify-center space-x-3 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden">
+                <Link 
+                  href="/app-store-coming-soon"
+                  className="btn-secondary text-sm px-8 py-4 rounded-xl font-semibold group flex items-center justify-center space-x-3 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                >
                   {/* Apple Logo SVG */}
                   <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
                   </svg>
                   <div className="flex flex-col items-start relative z-10">
-                    <span className="text-xs opacity-75">📱 FREE DOWNLOAD</span>
+                    <span className="text-xs opacity-75 flex items-center gap-1"><FaMobileAlt className="inline" /> FREE DOWNLOAD</span>
                     <span className="font-bold">App Store</span>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </button>
+                </Link>
               </div>
               
               {/* Trust Indicators */}
@@ -143,68 +179,17 @@ export default function HomePage() {
               </div>
             </div>
             
-            {/* Right Content - Premium App Showcase */}
+            {/* Right Content - Hero Image */}
             <div className="relative">
-              {/* Main Phone Mockup */}
-              <div className="relative mx-auto w-72 h-[600px] glass rounded-[2.5rem] p-2 shadow-2xl animate-float">
-                <div className="w-full h-full bg-gray-900 rounded-[2.5rem] overflow-hidden relative">
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 to-purple-500/10 z-10"></div>
-                  
-                  {/* Status Bar */}
-                  <div className="relative z-20 flex justify-between items-center px-6 py-4 text-white text-sm font-medium">
-                    <span className="font-mono">08:14</span>
-                    <div className="flex space-x-1">
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
-                    </div>
-                  </div>
-                  
-                  {/* Market Brand Logo Header */}
-                  <div className="relative z-20 px-6 py-4 border-b border-white/10">
-                    <div className="flex items-center justify-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
-                        <span className="text-white font-bold text-lg">MB</span>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-white font-bold text-lg">MarketBrand</div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* App Content */}
-                  <div className="relative z-20 px-6 py-4 space-y-4">
-                    <div className="text-center">
-                      <h3 className="text-xl font-bold text-white mb-2">Ready-Made Marketing Materials</h3>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="glass p-3 rounded-xl hover:glass-hover transition-all duration-300 group cursor-pointer">
-                        <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">📢</div>
-                        <div className="text-white font-bold text-sm">Sale Posters</div>
-                      </div>
-                      <div className="glass p-3 rounded-xl hover:glass-hover transition-all duration-300 group cursor-pointer">
-                        <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">🎬</div>
-                        <div className="text-white font-bold text-sm">Promo Videos</div>
-                      </div>
-                      <div className="glass p-3 rounded-xl hover:glass-hover transition-all duration-300 group cursor-pointer">
-                        <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">📋</div>
-                        <div className="text-white font-bold text-sm">Business Design</div>
-                      </div>
-                      <div className="glass p-3 rounded-xl hover:glass-hover transition-all duration-300 group cursor-pointer">
-                        <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">📱</div>
-                        <div className="text-white font-bold text-sm">Instant Share</div>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-4">
-                      <div className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl py-3 text-center cursor-pointer hover:shadow-lg transition-all duration-300">
-                        <span className="text-white font-bold text-base">Download & Use</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="relative mx-auto w-full max-w-[280px] md:max-w-xs lg:max-w-sm animate-float">
+                <Image
+                  src="/hero-image.png"
+                  alt="MarketBrand Hero"
+                  width={400}
+                  height={320}
+                  className="w-full h-auto object-contain rounded-2xl shadow-2xl"
+                  priority
+                />
               </div>
               
               {/* Floating Elements */}
@@ -218,25 +203,25 @@ export default function HomePage() {
                     <div className="text-white font-bold text-sm">Templates</div>
                   </div>
                   <div className="p-4 space-y-3">
-                    <div className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer">
+                    <Link href="/templates/business" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer">
                       <span className="text-white font-bold text-sm">Business</span>
-                    </div>
-                    <div className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer" style={{animationDelay: '0.5s'}}>
+                    </Link>
+                    <Link href="/templates/festival" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer" style={{animationDelay: '0.5s'}}>
                       <span className="text-white font-bold text-sm">Festival</span>
-                    </div>
-                    <div className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer" style={{animationDelay: '1s'}}>
+                    </Link>
+                    <Link href="/templates/general" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer" style={{animationDelay: '1s'}}>
                       <span className="text-white font-bold text-sm">General</span>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>
 
               {/* Floating Icons */}
               <div className="absolute top-10 -left-10 w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center animate-bounce shadow-lg">
-                <span className="text-white text-sm">✨</span>
+                <HiSparkles className="text-white text-sm" />
               </div>
               <div className="absolute bottom-20 -right-16 w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center animate-bounce shadow-lg" style={{animationDelay: '1s'}}>
-                <span className="text-white text-sm">🎨</span>
+                <FaPalette className="text-white text-sm" />
               </div>
             </div>
           </div>
@@ -257,15 +242,15 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="card-premium group text-center space-y-6">
               <div className="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                <span className="text-white text-4xl">⚡</span>
+                <FaBolt className="text-white text-4xl" />
               </div>
-              <h3 className="text-3xl font-bold text-white">⚡ Instant Download</h3>
+              <h3 className="text-3xl font-bold text-white flex items-center justify-center gap-2"><FaBolt className="text-indigo-400" /> Instant Download</h3>
               <p className="text-gray-300 text-lg leading-relaxed">
                 Get professional marketing materials in under 2 minutes. 
                 Skip the design process entirely - download, customize, and share immediately.
               </p>
               <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg px-4 py-2">
-                <Link href="/features" className="text-green-300 font-semibold hover:text-white transition-colors">⚡ 2-Minute Download Time Guaranteed</Link>
+                <Link href="/features" className="text-green-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1"><FaBolt className="inline" /> 2-Minute Download Time Guaranteed</Link>
               </div>
               <div className="flex justify-center">
                 <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
@@ -274,15 +259,15 @@ export default function HomePage() {
             
             <div className="card-premium group text-center space-y-6">
               <div className="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                <span className="text-white text-4xl">🎨</span>
+                <FaPalette className="text-white text-4xl" />
               </div>
-              <h3 className="text-3xl font-bold text-white">🎨 Expert-Designed Templates</h3>
+              <h3 className="text-3xl font-bold text-white flex items-center justify-center gap-2"><FaPalette className="text-purple-400" /> Expert-Designed Templates</h3>
               <p className="text-gray-300 text-lg leading-relaxed">
                 Marketing materials crafted by professional designers. 
                 Perfect for restaurants, retail stores, events, salons, gyms, and 20+ business types.
               </p>
               <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-4 py-2">
-                <Link href="/templates" className="text-purple-300 font-semibold hover:text-white transition-colors">🎨 1000+ Professional Templates Available</Link>
+                <Link href="/templates" className="text-purple-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1"><FaPalette className="inline" /> 1000+ Professional Templates Available</Link>
               </div>
               <div className="flex justify-center">
                 <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
@@ -291,15 +276,15 @@ export default function HomePage() {
             
             <div className="card-premium group text-center space-y-6">
               <div className="w-24 h-24 bg-gradient-to-r from-pink-500 to-orange-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                <span className="text-white text-4xl">📱</span>
+                <FaMobileAlt className="text-white text-4xl" />
               </div>
-              <h3 className="text-3xl font-bold text-white">📱 Smart Mobile App</h3>
+              <h3 className="text-3xl font-bold text-white flex items-center justify-center gap-2"><FaMobileAlt className="text-pink-400" /> Smart Mobile App</h3>
               <p className="text-gray-300 text-lg leading-relaxed">
                 Access thousands of templates on-the-go. 
                 Simply add your business details and get customized marketing materials in seconds.
               </p>
               <div className="bg-gradient-to-r from-pink-500/20 to-orange-500/20 border border-pink-500/30 rounded-lg px-4 py-2">
-                <span className="text-pink-300 font-semibold">📱 No Design Skills Required - Try Free for 7 Days</span>
+                <span className="text-pink-300 font-semibold flex items-center justify-center gap-1"><FaMobileAlt className="inline" /> No Design Skills Required - Try Free for 7 Days</span>
               </div>
               <div className="flex justify-center">
                 <div className="w-16 h-1 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full"></div>
@@ -338,7 +323,7 @@ export default function HomePage() {
                 Installation takes less than 2 minutes.
               </p>
               <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg px-4 py-2">
-                <Link href="/download" className="text-indigo-300 font-semibold hover:text-white transition-colors">📱 Free Download • No Credit Card Required</Link>
+                <Link href="/download" className="text-indigo-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1"><FaMobileAlt className="inline" /> Free Download • No Credit Card Required</Link>
               </div>
             </div>
 
@@ -360,7 +345,7 @@ export default function HomePage() {
                 festivals, or general marketing materials.
               </p>
               <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-4 py-2">
-                <Link href="/templates" className="text-purple-300 font-semibold hover:text-white transition-colors">🎨 1000+ Templates • All Business Types</Link>
+                <Link href="/templates" className="text-purple-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1"><FaPalette className="inline" /> 1000+ Templates • All Business Types</Link>
               </div>
             </div>
 
@@ -382,7 +367,7 @@ export default function HomePage() {
                 professional marketing materials in under 1 minutes.
               </p>
               <div className="bg-gradient-to-r from-pink-500/20 to-orange-500/20 border border-pink-500/30 rounded-lg px-4 py-2">
-                <span className="text-pink-300 font-semibold">⚡ Customize & Instant Download</span>
+                <span className="text-pink-300 font-semibold flex items-center justify-center gap-1"><FaBolt className="inline" /> Customize & Instant Download</span>
               </div>
             </div>
           </div>
@@ -476,7 +461,10 @@ export default function HomePage() {
               </Link>
               
               {/* Apple App Store Button */}
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-3">
+              <Link 
+                href="/app-store-coming-soon"
+                className="border-2 border-white text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-3"
+              >
                 {/* Apple Logo SVG */}
                 <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
@@ -485,7 +473,7 @@ export default function HomePage() {
                   <span className="text-xs opacity-75">Download on the</span>
                   <span className="font-bold">App Store</span>
                 </div>
-              </button>
+              </Link>
             </div>
           </div>
           

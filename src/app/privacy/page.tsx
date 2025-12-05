@@ -6,6 +6,17 @@ export const metadata: Metadata = {
   description: "Learn how MarketBrand protects your privacy and handles your data. Our comprehensive privacy policy explains our data collection, usage, and protection practices.",
   keywords: "privacy policy, data protection, GDPR, data privacy, user privacy, data security, personal information",
   alternates: { canonical: "/privacy" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Privacy Policy | Data Protection | MarketBrand.ai",
     description: "Learn how MarketBrand protects your privacy and handles your data. Our comprehensive privacy policy explains our data collection, usage, and protection practices.",

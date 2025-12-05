@@ -2,12 +2,25 @@ import Section from "@/components/Section";
 import PricingTable from "@/components/PricingTable";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FaRocket, FaBolt, FaComments, FaBriefcase, FaBullseye } from "react-icons/fa";
+import { BsStarFill } from "react-icons/bs";
 
 export const metadata: Metadata = {
   title: "Pricing Plans | Professional Marketing Templates & Design Tools | MarketBrand.ai",
   description: "Affordable pricing plans for professional marketing materials. Start free with 7-day trial. Choose from Free, Pro, and Enterprise plans. No hidden fees, cancel anytime.",
   keywords: "marketing design pricing, business template plans, professional design tools pricing, marketing app subscription, design software plans, marketing templates cost, business design pricing",
   alternates: { canonical: "/pricing" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Pricing Plans | Professional Marketing Templates & Design Tools",
     description: "Affordable pricing plans for professional marketing materials. Start free with 7-day trial. Choose from Free, Pro, and Enterprise plans. No hidden fees, cancel anytime.",
@@ -143,7 +156,7 @@ export default function PricingPage() {
       author: "Rajesh Kumar",
       role: "Marketing Agency Owner",
       business: "Digital Solutions",
-      avatar: "💼",
+      avatar: "briefcase",
       plan: "Business Plan"
     },
     {
@@ -220,7 +233,7 @@ export default function PricingPage() {
                   <span className="text-green-300 text-sm font-semibold">✓ 7-Day Free Trial</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">💰 Save ₹180,000+ vs Designer</span>
+                  <span className="text-blue-300 text-sm font-semibold">Save ₹180,000+ vs Designer</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
                   <span className="text-purple-300 text-sm font-semibold">🔄 Cancel Anytime</span>
@@ -259,21 +272,21 @@ export default function PricingPage() {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
-                  href="/"
+                  href="/download"
                   className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
                 >
-                  🚀 Start 7-Day Free Trial
+                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Start 7-Day Free Trial</span>
                 </Link>
                 <Link 
                   href="/#pricing"
                   className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition-all duration-300"
                 >
-                  💰 Compare Plans
+                  Compare Plans
                 </Link>
               </div>
 
-              <p className="text-gray-400 text-sm mt-6">
-                ⚡ No Credit Card Required • 7-Day Free Trial • 30-Day Money Back Guarantee
+              <p className="text-gray-400 text-sm mt-6 flex items-center gap-2">
+                <FaBolt className="inline" /> No Credit Card Required • 7-Day Free Trial • 30-Day Money Back Guarantee
               </p>
             </div>
           </div>
@@ -298,7 +311,7 @@ export default function PricingPage() {
                   {plan.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
                       <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-2xl">
-                        🎯 Most Popular
+                        <span className="flex items-center gap-1"><FaBullseye className="inline" /> Most Popular</span>
                       </div>
                     </div>
                   )}
@@ -450,7 +463,7 @@ export default function PricingPage() {
                 <div key={index} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all duration-300 hover:shadow-2xl">
                   <div className="flex items-center space-x-4 mb-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center text-xl">
-                      {testimonial.avatar}
+                      {testimonial.avatar === "briefcase" && <FaBriefcase className="text-white" />}
                     </div>
                     <div>
                       <div className="font-bold text-white">{testimonial.author}</div>
@@ -469,7 +482,7 @@ export default function PricingPage() {
                     </div>
                     <div className="flex space-x-1">
                       {[...Array(5)].map((_, i) => (
-                        <span key={i} className="text-yellow-400">⭐</span>
+                        <BsStarFill key={i} className="text-yellow-400" />
                       ))}
                     </div>
                   </div>
@@ -547,21 +560,21 @@ export default function PricingPage() {
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link 
-                href="/"
+                href="/download"
                 className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                🚀 Start Free Trial Now
+                <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial Now</span>
               </Link>
               <Link 
                 href="/contact"
                 className="inline-flex items-center px-12 py-6 border-2 border-white/30 rounded-2xl text-white font-bold text-2xl hover:bg-white/10 transition-all duration-300"
               >
-                💬 Contact Sales
+                <span className="flex items-center gap-2"><FaComments className="inline" /> Contact Sales</span>
               </Link>
             </div>
             
-            <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 50,000+ Businesses • Save ₹179,000+ Annually • 7-Day Free Trial
+            <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
+              <FaBolt className="inline" /> Join 50,000+ Businesses • Save ₹179,000+ Annually • 7-Day Free Trial
             </p>
           </div>
         </div>

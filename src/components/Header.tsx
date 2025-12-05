@@ -189,15 +189,15 @@ export default function Header() {
         
         {/* Desktop CTAs */}
         <div className="hidden md:flex gap-3">
-          <CTAButton href="/download" label="Download App" variant="outline" />
-          <CTAButton href="/#start" label="Start Free" />
+          <CTAButton href="/download" label="Download App" variant="primary" />
         </div>
 
         {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 text-white hover:text-gray-300 transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMenuOpen ? (
@@ -248,9 +248,8 @@ export default function Header() {
             >
               Contact
             </Link>
-            <div className="pt-4 space-y-3">
-              <CTAButton href="/download" label="Download App" variant="outline" />
-              <CTAButton href="/#start" label="Start Free" />
+            <div className="pt-4">
+              <CTAButton href="/download" label="Download App" variant="primary" />
             </div>
           </nav>
         </div>
