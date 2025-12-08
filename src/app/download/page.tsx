@@ -104,7 +104,7 @@ export default function DownloadPage() {
                   </div>
                 </div>
 
-                <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-tight">
+                <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
                   Download MarketBrand App
                 </h1>
                 

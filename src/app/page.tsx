@@ -82,7 +82,7 @@ export default function HomePage() {
                 
                 {/* Main Headline */}
                 <div className="space-y-6">
-                  <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-[1.1] tracking-tight">
+                  <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-[1.3] tracking-tight pt-1 pb-1">
                     <span className="text-white">Get Ready-Made</span><br/>
                     <span className="gradient-text animate-gradient">Marketing Materials</span><br/>
                     <span className="text-white">for Your Business</span>
@@ -421,7 +421,7 @@ export default function HomePage() {
         </div>
         
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 leading-tight">
+          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 leading-[1.3] pt-1 pb-1">
             Ready to Boost Your Business?
           </h2>
           <p className="text-xl text-white/90 mb-10 font-light max-w-3xl mx-auto">

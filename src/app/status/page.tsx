@@ -142,7 +142,7 @@ export default function StatusPage() {
         </div>
         
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
-          <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-tight">
+          <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
             System Status
           </h1>
           <p className="text-xl text-gray-300 font-light leading-relaxed max-w-4xl mx-auto mb-8">

@@ -96,7 +96,7 @@ export default function HealthcareClinicsPage() {
                 🏥
               </div>
               
-              <h1 className="text-6xl lg:text-7xl font-black gradient-text mb-6 leading-tight">
+              <h1 className="text-6xl lg:text-7xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
                 Healthcare Marketing Materials
               </h1>
               

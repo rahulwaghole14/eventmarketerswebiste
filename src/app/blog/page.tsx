@@ -217,7 +217,7 @@ export default function BlogPage() {
                 </div>
               </div>
 
-              <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-tight">
+              <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
                 Marketing Tips & Business Insights
               </h1>
               
@@ -307,7 +307,7 @@ export default function BlogPage() {
                       <span className="text-gray-400 text-sm">{post.readTime}</span>
                     </div>
                     
-                    <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300 leading-tight">
+                    <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300 leading-[1.3] pt-1 pb-1">
                       {post.title}
                     </h3>
                     
@@ -369,7 +369,7 @@ export default function BlogPage() {
                       <span className="text-gray-400 text-xs">{post.readTime}</span>
                     </div>
                     
-                    <h3 className="text-lg font-bold text-white group-hover:gradient-text transition-all duration-300 leading-tight">
+                    <h3 className="text-lg font-bold text-white group-hover:gradient-text transition-all duration-300 leading-[1.3] pt-1 pb-1">
                       {post.title}
                     </h3>
                     

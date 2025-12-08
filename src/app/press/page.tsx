@@ -177,7 +177,7 @@ export default function PressPage() {
                 </div>
               </div>
 
-              <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-tight">
+              <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
                 Press & Media Center
               </h1>
               
@@ -221,7 +221,7 @@ export default function PressPage() {
                     </time>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-white mb-4 leading-tight">
+                  <h3 className="text-2xl font-bold text-white mb-4 leading-[1.3] pt-1 pb-1">
                     {release.title}
                   </h3>
                   
