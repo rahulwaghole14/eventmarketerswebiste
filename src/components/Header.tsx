@@ -8,7 +8,9 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const submenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +21,9 @@ export default function Header() {
       window.removeEventListener('scroll', handleScroll);
       if (dropdownTimeoutRef.current) {
         clearTimeout(dropdownTimeoutRef.current);
+      }
+      if (submenuTimeoutRef.current) {
+        clearTimeout(submenuTimeoutRef.current);
       }
     };
   }, []);
@@ -39,66 +44,47 @@ export default function Header() {
 
   const businessCategories = [
     {
-      title: "Events & Wedding Vendors",
+      title: "Events & Wedding",
+      slug: "events-wedding",
+      isMainCategory: true,
       items: [
-        { name: "Wedding Planners", slug: "wedding-planners" },
-        { name: "Decorators", slug: "decorators" },
-        { name: "Photographers", slug: "photographers" },
-        { name: "Caterers", slug: "caterers" },
-        { name: "Venues", slug: "venues" }
+        { name: "Event Planner", slug: "event-planner" },
+        { name: "Banquet Hall", slug: "banquet-hall" },
+        { name: "Catering", slug: "catering" },
+        { name: "Photographer", slug: "photographer" },
+        { name: "Light Supplier", slug: "light-supplier" }
       ]
     },
     {
-      title: "Fitness Studios, Gyms & Yoga",
+      title: "Medical & Diagnostics",
+      slug: "medical-diagnostics",
+      isMainCategory: true,
       items: [
-        { name: "Fitness Studios", slug: "fitness-studios" },
-        { name: "Gyms", slug: "gyms" },
-        { name: "Yoga Centers", slug: "yoga-centers" },
-        { name: "Personal Trainers", slug: "personal-trainers" },
-        { name: "Health Clubs", slug: "health-clubs" }
-      ]
-    },
-    {
-      title: "Retail & Grocery/Fashion Boutiques",
-      items: [
-        { name: "Retail Stores", slug: "retail-stores" },
-        { name: "Grocery Shops", slug: "grocery-shops" },
-        { name: "Fashion Boutiques", slug: "fashion-boutiques" },
-        { name: "Supermarkets", slug: "supermarkets" },
-        { name: "Shopping Centers", slug: "shopping-centers" }
-      ]
-    },
-    {
-      title: "Healthcare Clinics & Diagnostics",
-      items: [
-        { name: "Healthcare Clinics", slug: "healthcare-clinics" },
-        { name: "Diagnostic Centers", slug: "diagnostic-centers" },
-        { name: "Hospitals", slug: "hospitals" },
-        { name: "Dental Clinics", slug: "dental-clinics" },
-        { name: "Medical Practices", slug: "medical-practices" }
-      ]
-    },
-    {
-      title: "Beauty Salons, Spas & Aesthetic Clinics",
-      items: [
-        { name: "Beauty Salons", slug: "beauty-salons" },
-        { name: "Spas", slug: "spas" },
-        { name: "Aesthetic Clinics", slug: "aesthetic-clinics" },
-        { name: "Nail Studios", slug: "nail-studios" },
-        { name: "Wellness Centers", slug: "wellness-centers" }
-      ]
-    },
-    {
-      title: "Automotive Services",
-      items: [
-        { name: "Automotive Workshops", slug: "automotive-workshops" },
-        { name: "Car Detailing Services", slug: "car-detailing-services" },
-        { name: "Tire Shops", slug: "tire-shops" },
-        { name: "Vehicle Repair Centers", slug: "vehicle-repair-centers" },
-        { name: "Auto Care Centers", slug: "auto-care-centers" }
+        { name: "Dental Clinic", slug: "dental-clinic" },
+        { name: "Eye Hospital", slug: "eye-hospital" },
+        { name: "Ayurveda Clinic", slug: "ayurveda-clinic" },
+        { name: "Skin & Aesthetic Clinic", slug: "skin-aesthetic-clinic" },
+        { name: "Homeopathy Clinic", slug: "homeopathy-clinic" },
+        { name: "Pathology Lab", slug: "pathology-lab" },
+        { name: "Allopathy Clinic", slug: "allopathy-clinic" },
+        { name: "Physiotherapy Clinic", slug: "physiotherapy-clinic" }
       ]
     }
   ];
+
+  const handleCategoryEnter = (categoryTitle: string) => {
+    if (submenuTimeoutRef.current) {
+      clearTimeout(submenuTimeoutRef.current);
+      submenuTimeoutRef.current = null;
+    }
+    setHoveredCategory(categoryTitle);
+  };
+
+  const handleCategoryLeave = () => {
+    submenuTimeoutRef.current = setTimeout(() => {
+      setHoveredCategory(null);
+    }, 200);
+  };
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -131,24 +117,32 @@ export default function Header() {
                 onMouseLeave={handleDropdownLeave}
               >
                 <div className="w-full max-w-7xl bg-gray-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8">
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {businessCategories.map((category, index) => (
-                      <div key={index} className="space-y-4">
-                        <h3 className="text-sm font-bold text-white border-b border-indigo-500/50 pb-2">
+                      <div 
+                        key={index} 
+                        className="space-y-4 relative"
+                        onMouseEnter={() => handleCategoryEnter(category.title)}
+                        onMouseLeave={handleCategoryLeave}
+                      >
+                        <div className="text-base font-bold text-white border-b-2 border-indigo-500/50 pb-2">
                           {category.title}
-                        </h3>
-                        <ul className="space-y-2">
-                          {category.items.map((item, itemIndex) => (
-                            <li key={itemIndex}>
-                              <Link 
-                                href={`/category/${item.slug}`}
-                                className="text-xs text-gray-300 hover:text-white block py-1 hover:translate-x-1 transition-all duration-200"
-                              >
-                                {item.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+                        </div>
+                        {category.items && category.items.length > 0 && (
+                          <ul className="space-y-2 mt-2">
+                            {category.items.map((item, itemIndex) => (
+                              <li key={itemIndex}>
+                                <Link 
+                                  href={`/category/${item.slug}`}
+                                  className="text-sm text-gray-300 hover:text-white flex items-center gap-2 py-2 px-3 hover:translate-x-2 hover:bg-white/5 rounded transition-all duration-200"
+                                >
+                                  <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                                  {item.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -169,12 +163,16 @@ export default function Header() {
             )}
           </div>
           
+          <Link href="/templates/greetings" className="text-gray-300 hover:text-white transition-all duration-300 relative group">
+            Greetings
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+          </Link>
           <Link href="/pricing" className="text-gray-300 hover:text-white transition-all duration-300 relative group">
             Pricing
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
           </Link>
-          <Link href="/blog" className="text-gray-300 hover:text-white transition-all duration-300 relative group">
-            Blog
+          <Link href="/features" className="text-gray-300 hover:text-white transition-all duration-300 relative group">
+            Features
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
           </Link>
           <Link href="/about" className="text-gray-300 hover:text-white transition-all duration-300 relative group">
@@ -221,6 +219,13 @@ export default function Header() {
               Business Category
             </Link>
             <Link 
+              href="/templates/greetings" 
+              className="block text-gray-300 hover:text-white transition-colors py-2" 
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Greetings
+            </Link>
+            <Link 
               href="/pricing" 
               className="block text-gray-300 hover:text-white transition-colors py-2" 
               onClick={() => setIsMenuOpen(false)}
@@ -228,11 +233,11 @@ export default function Header() {
               Pricing
             </Link>
             <Link 
-              href="/blog" 
+              href="/features" 
               className="block text-gray-300 hover:text-white transition-colors py-2" 
               onClick={() => setIsMenuOpen(false)}
             >
-              Blog
+              Features
             </Link>
             <Link 
               href="/about" 

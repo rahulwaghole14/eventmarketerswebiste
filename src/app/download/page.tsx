@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { FaMobileAlt, FaBolt, FaComments, FaPalette } from "react-icons/fa";
 import { MdPhoneAndroid } from "react-icons/md";
@@ -68,7 +69,7 @@ export default function DownloadPage() {
       <div className="min-h-screen bg-gray-900">
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-800/50 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-4 py-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
@@ -87,7 +88,7 @@ export default function DownloadPage() {
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               {/* Left Content */}
               <div className="space-y-8">
@@ -174,18 +175,22 @@ export default function DownloadPage() {
               <div className="relative">
                 {/* QR Code */}
                 <div className="bg-white p-8 rounded-3xl shadow-2xl mb-8 mx-auto w-fit">
-                  <div className="w-48 h-48 bg-gray-200 rounded-2xl flex items-center justify-center">
-                    <div className="text-center">
-                      <FaMobileAlt className="text-4xl mb-2 mx-auto" />
-                      <div className="text-gray-600 text-sm">QR Code</div>
-                      <div className="text-gray-500 text-xs">Scan to Download</div>
+                  <div className="flex flex-col items-center">
+                    <div className="w-48 h-48 relative mb-4">
+                      <Image
+                        src="/App-QR.png"
+                        alt="QR Code to download MarketBrand app"
+                        fill
+                        className="object-contain rounded-2xl"
+                      />
                     </div>
+                    <div className="text-gray-700 text-sm font-semibold">Scan to Download</div>
                   </div>
                 </div>
                 
                 {/* Mobile Preview */}
-                <div className="relative mx-auto w-64 h-96 bg-gray-800 rounded-3xl p-2 shadow-2xl">
-                  <div className="w-full h-full bg-gradient-to-b from-indigo-500/10 to-purple-500/10 rounded-2xl overflow-hidden">
+                <div className="relative mx-auto w-64 h-auto bg-gray-800 rounded-3xl p-2 shadow-2xl">
+                  <div className="w-full bg-gradient-to-b from-indigo-500/10 to-purple-500/10 rounded-2xl overflow-hidden">
                     <div className="p-4 space-y-4">
                       <div className="text-center">
                         <div className="text-white font-bold text-lg">MarketBrand</div>
@@ -211,7 +216,7 @@ export default function DownloadPage() {
 
         {/* Related Pages */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Learn More</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -270,7 +275,7 @@ export default function DownloadPage() {
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+          <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
               Ready to Start Creating?
             </h2>

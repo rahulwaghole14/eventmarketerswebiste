@@ -267,6 +267,9 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  overflow: visible;
+  line-height: 1.4;
+  padding-bottom: 0.25rem;
 }
 
 .gradient-text-secondary {
@@ -332,6 +335,11 @@ a {
   100% { transform: translateX(100%); }
 }
 
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @keyframes rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -345,6 +353,30 @@ a {
   to { 
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes badgeFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% { 
+    transform: translateY(-8px) rotate(-2deg);
+  }
+  50% { 
+    transform: translateY(-12px) rotate(0deg);
+  }
+  75% { 
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes badgeGlow {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(251, 146, 60, 0.4), 0 0 30px rgba(239, 68, 68, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 25px rgba(251, 146, 60, 0.7), 0 0 50px rgba(239, 68, 68, 0.5);
   }
 }
 
@@ -388,6 +420,24 @@ a {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
   animation: shimmer 2s infinite;
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+  display: flex;
+  width: fit-content;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+.animate-badge-float {
+  animation: badgeFloat 4s ease-in-out infinite, badgeGlow 3s ease-in-out infinite;
+}
+
+.animate-badge-float:hover {
+  animation: badgeFloat 2s ease-in-out infinite, badgeGlow 1.5s ease-in-out infinite;
 }
 
 /* Premium Buttons */
@@ -448,7 +498,7 @@ a {
   backdrop-filter: blur(20px);
   border: 1px solid var(--mb-border);
   border-radius: 16px;
-  padding: 24px;
+  padding: 16px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -484,7 +534,7 @@ a {
   }
   
   .card-premium {
-    padding: 16px;
+    padding: 12px;
   }
   
   .btn-primary,
