@@ -70,87 +70,46 @@ export default function RetailGroceryFashionPage() {
         </div>
 
         {/* Enhanced Hero Section */}
-        <div className="relative py-24 bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 overflow-hidden">
+        <div className="relative py-16 bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 overflow-hidden">
           {/* Animated Background Elements */}
           <div className="absolute inset-0">
             <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl animate-float"></div>
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
-            <div className="text-center">
-              {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
-                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">✓ Trusted by 4,200+ Retail Stores</span>
-                </div>
-                <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-full px-4 py-2">
-                  <span className="text-indigo-300 text-sm font-semibold">⭐ 4.7/5 Rating</span>
-                </div>
-                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold">🚀 1-Minute Download</span>
-                </div>
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              {/* Main Content */}
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-6xl lg:text-7xl font-black gradient-text mb-4 leading-[1.3]">
+                  Retail Marketing Materials
+                </h1>
+                
+                <p className="text-lg text-gray-300 font-light max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+                  Professional retail promotional videos, store marketing posters & business materials for 
+                  <span className="text-white font-semibold"> Retail Stores, Grocery Shops, Fashion Boutiques, Supermarkets, Shopping Centers</span> and more.
+                </p>
               </div>
 
-              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl flex items-center justify-center mx-auto mb-8 text-5xl shadow-2xl animate-pulse">
-                🛍️
-              </div>
-              
-              <h1 className="text-6xl lg:text-7xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
-                Retail Marketing Materials
-              </h1>
-              
-              <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-8 leading-relaxed">
-                Professional retail promotional videos, store marketing posters & business materials for 
-                <span className="text-white font-semibold"> Retail Stores, Grocery Shops, Fashion Boutiques, Supermarkets, Shopping Centers</span> and more.
-              </p>
-
-              {/* Statistics */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">4,200+</div>
-                  <div className="text-gray-400 text-sm">Retail Stores</div>
+              {/* Trust Badges - Right Side Vertical */}
+              <div className="flex flex-row lg:flex-col gap-2 justify-center lg:justify-start lg:sticky lg:top-24">
+                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-lg px-3 py-2 backdrop-blur-sm hover:scale-105 transition-all duration-300">
+                  <span className="text-blue-300 text-xs font-semibold whitespace-nowrap">✓ Trusted by 4,200+ Retail Stores</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">42,000+</div>
-                  <div className="text-gray-400 text-sm">Downloads</div>
+                <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg px-3 py-2 backdrop-blur-sm hover:scale-105 transition-all duration-300">
+                  <span className="text-indigo-300 text-xs font-semibold whitespace-nowrap">⭐ 4.7/5 Rating</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">900+</div>
-                  <div className="text-gray-400 text-sm">Retail Templates</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">4.7/5</div>
-                  <div className="text-gray-400 text-sm">Customer Rating</div>
+                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-3 py-2 backdrop-blur-sm hover:scale-105 transition-all duration-300">
+                  <span className="text-purple-300 text-xs font-semibold whitespace-nowrap">🚀 1-Minute Download</span>
                 </div>
               </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/"
-                  className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                >
-                  🚀 Download App Now - Free Trial
-                </Link>
-                <Link 
-                  href="/#pricing"
-                  className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition-all duration-300"
-                >
-                  💰 View Pricing Plans
-                </Link>
-              </div>
-
-              <p className="text-gray-400 text-sm mt-6">
-                ⚡ No Credit Card Required • 7-Day Free Trial • Cancel Anytime
-              </p>
             </div>
           </div>
         </div>
 
         {/* Success Stories Section */}
         <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Success Stories from Retail Professionals
@@ -250,7 +209,7 @@ export default function RetailGroceryFashionPage() {
 
         {/* Template Gallery Section */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Retail Marketing Template Gallery
@@ -314,7 +273,7 @@ export default function RetailGroceryFashionPage() {
 
         {/* FAQ Section */}
         <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="mx-auto max-w-5xl px-4">
+          <div className="mx-auto max-w-5xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Frequently Asked Questions
@@ -380,7 +339,7 @@ export default function RetailGroceryFashionPage() {
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+          <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
               Ready to Transform Your Retail Business?
             </h2>

@@ -57,7 +57,7 @@ export default function PressPage() {
   const pressReleases = [
     {
       id: 1,
-      title: "MarketBrand Reaches 50,000+ Business Milestone",
+      title: "MarketBrand Reaches 10,000+ Business Milestone",
       date: "2024-01-15",
       summary: "MarketBrand celebrates serving over 50,000 businesses with professional marketing materials, marking a significant milestone in the company's growth.",
       category: "Company News"
@@ -125,7 +125,7 @@ export default function PressPage() {
   ];
 
   const companyStats = [
-    { label: "Businesses Served", value: "50,000+" },
+    { label: "Businesses Served", value: "10,000+" },
     { label: "Templates Available", value: "1,000+" },
     { label: "Countries", value: "15+" },
     { label: "Team Members", value: "25+" },
@@ -143,7 +143,7 @@ export default function PressPage() {
       <div className="min-h-screen bg-gray-900">
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-800/50 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-4 py-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
@@ -162,7 +162,7 @@ export default function PressPage() {
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center space-y-8">
               {/* Trust Badges */}
               <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
@@ -201,7 +201,7 @@ export default function PressPage() {
 
         {/* Press Releases */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Latest News</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -246,7 +246,7 @@ export default function PressPage() {
 
         {/* Media Kit */}
         <div className="py-24 bg-gray-800/30">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Media Kit</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -288,7 +288,7 @@ export default function PressPage() {
 
         {/* Press Contact */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Press Contact</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -334,7 +334,7 @@ export default function PressPage() {
 
         {/* Related Pages */}
         <div className="py-24 bg-gray-800/30">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Learn More</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -393,7 +393,7 @@ export default function PressPage() {
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+          <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
               Need More Information?
             </h2>

@@ -1,0 +1,273 @@
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { FaChevronDown, FaQuestionCircle } from "react-icons/fa";
+
+export default function FAQsPage() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      category: "General",
+      questions: [
+        {
+          question: "What is MarketBrand.ai?",
+          answer: "MarketBrand.ai is a professional marketing design platform that helps businesses create stunning marketing materials in minutes. We offer 1000+ professional templates, instant customization, and easy download options for posters, videos, and promotional materials tailored to your business needs."
+        },
+        {
+          question: "How do I get started?",
+          answer: "Getting started is easy! Simply download our mobile app or visit our website, choose a template from our extensive library, customize it with your business details, and download your professional marketing material in under 1 minute. No design skills required!"
+        },
+        {
+          question: "Do I need design experience to use MarketBrand.ai?",
+          answer: "No design experience is needed! Our platform is designed to be user-friendly and intuitive. Simply select a template, add your business information, customize colors and text, and download. Our templates are pre-designed by professional designers, so you get professional results without any design knowledge."
+        },
+        {
+          question: "What types of marketing materials can I create?",
+          answer: "You can create a wide variety of marketing materials including posters, social media posts, videos, greeting cards, festival posters, business announcements, product launches, event invitations, and more. We have templates for all major business categories and occasions."
+        }
+      ]
+    },
+    {
+      category: "Pricing & Plans",
+      questions: [
+        {
+          question: "What are the pricing plans?",
+          answer: "We offer three main plans: Free Plan (5 designs per month with watermarks), Pro Plan (₹599/year with unlimited designs and no watermarks), and Business Plan (₹2099/year with advanced features, team collaboration, and API access). All plans include a 7-day free trial."
+        },
+        {
+          question: "Is there a free trial?",
+          answer: "Yes! We offer a 7-day free trial with full access to all Pro features. No credit card required. You can experience the full power of MarketBrand.ai before making any commitment."
+        },
+        {
+          question: "Can I change my plan anytime?",
+          answer: "Yes! You can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate any billing differences. No questions asked."
+        },
+        {
+          question: "What payment methods do you accept?",
+          answer: "We accept all major credit cards, UPI, net banking, and digital wallets. All payments are processed securely through Razorpay with 256-bit SSL encryption."
+        },
+        {
+          question: "Do you offer refunds?",
+          answer: "We offer a 30-day money-back guarantee. If you're not satisfied with our service, contact us for a full refund. No questions asked."
+        }
+      ]
+    },
+    {
+      category: "Templates & Customization",
+      questions: [
+        {
+          question: "How many templates are available?",
+          answer: "We have over 1,000+ professional templates covering various business categories including restaurants, events, weddings, healthcare, education, retail, and more. Our template library is constantly growing with new designs added regularly."
+        },
+        {
+          question: "Can I customize templates?",
+          answer: "Absolutely! All templates are fully customizable. You can change text, colors, fonts, add your logo, business details, contact information, and even upload your own images. Customize everything to match your brand identity."
+        },
+        {
+          question: "Can I use my own images?",
+          answer: "Yes! You can upload your own photos from your phone gallery and set them in our readymade frame layouts. Add your business logo, name, mobile number, email, website, and address to create personalized marketing materials."
+        },
+        {
+          question: "What languages are supported?",
+          answer: "Our templates and platform support multiple languages including Hindi, English, Gujarati, Marathi, Tamil, and more. Poster text is available in Indian languages, making it easy to create content for your local audience."
+        },
+        {
+          question: "Are templates updated regularly?",
+          answer: "Yes! We regularly add new templates, seasonal collections, trending styles, and update existing designs to keep up with current design trends and business needs."
+        }
+      ]
+    },
+    {
+      category: "Download & Usage",
+      questions: [
+        {
+          question: "What file formats can I download?",
+          answer: "You can download your marketing materials in high-quality formats suitable for both digital and print use. All downloads are HD quality and print-ready."
+        },
+        {
+          question: "Can I use templates for commercial purposes?",
+          answer: "Yes! With Pro and Business plans, you get full commercial rights to use all templates for your business marketing. No attribution required, no usage limits. Use them for your business promotions, social media, print materials, and more."
+        },
+        {
+          question: "How long does it take to create a design?",
+          answer: "Creating a professional marketing material takes less than 1 minute! Simply select a template, customize it with your details, and download. Our intuitive interface makes the process lightning-fast."
+        },
+        {
+          question: "Can I share my designs on social media?",
+          answer: "Yes! You can easily share your designs on social media platforms like WhatsApp, Facebook, Instagram, Twitter, Pinterest, Snapchat, YouTube, and Insta Reels with just one click directly from our app."
+        }
+      ]
+    },
+    {
+      category: "Technical Support",
+      questions: [
+        {
+          question: "What devices are supported?",
+          answer: "MarketBrand.ai is available on iOS, Android, and Web browsers. Our mobile-first design ensures you can create professional materials on the go with touch-optimized interface."
+        },
+        {
+          question: "Do I need an internet connection?",
+          answer: "While an internet connection is required to download templates and sync your work, our app offers offline capability for viewing and editing previously downloaded templates."
+        },
+        {
+          question: "How do I contact support?",
+          answer: "You can contact our support team through email at support@marketbrand.ai, call us at +91 8551941415, or use the contact form on our website. We typically respond within 24 hours and offer 24/7 phone support."
+        },
+        {
+          question: "Is my data secure?",
+          answer: "Yes, your data is completely secure. We use industry-standard encryption, secure cloud storage, and follow strict privacy policies. Your business information and designs are protected and never shared with third parties."
+        }
+      ]
+    },
+    {
+      category: "Account & Billing",
+      questions: [
+        {
+          question: "How do I delete my account?",
+          answer: "You can delete your account anytime by visiting the account settings in the app or website, or by contacting our support team. All your data will be permanently deleted within 30 days of account deletion request."
+        },
+        {
+          question: "What happens if I cancel my subscription?",
+          answer: "If you cancel your subscription, you'll continue to have access to all features until the end of your current billing period. After that, your account will revert to the Free plan with limited features."
+        },
+        {
+          question: "Can I use MarketBrand.ai for multiple businesses?",
+          answer: "Yes! You can create marketing materials for multiple businesses. Each design can be customized with different business details, logos, and contact information."
+        }
+      ]
+    }
+  ];
+
+  return (
+    <>
+      <div className="min-h-screen bg-gray-900">
+        {/* Breadcrumb Navigation */}
+        <div className="bg-gray-800/50 border-b border-white/10">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
+            <nav className="flex items-center space-x-2 text-sm">
+              <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                Home
+              </Link>
+              <span className="text-gray-500">/</span>
+              <span className="text-white font-semibold">FAQs</span>
+            </nav>
+          </div>
+        </div>
+
+        {/* Enhanced Hero Section */}
+        <div className="relative py-12 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
+            <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
+          </div>
+          
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+            <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-6 lg:gap-8">
+              {/* Heading */}
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-4xl lg:text-5xl font-black gradient-text leading-[1.3] pt-1 pb-1">
+                  Frequently Asked Questions
+                </h1>
+              </div>
+
+              {/* Icon Badge */}
+              <div className="flex flex-wrap justify-center lg:justify-end items-center gap-2">
+                <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
+                  <span className="text-indigo-300 text-xs font-semibold whitespace-nowrap flex items-center gap-1">
+                    <FaQuestionCircle className="text-xs" /> Got Questions?
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-gray-300 text-base mt-6 text-center lg:text-left max-w-3xl">
+              Find answers to common questions about MarketBrand.ai. Can't find what you're looking for? Contact our support team.
+            </p>
+          </div>
+        </div>
+
+        {/* FAQs Content */}
+        <div className="py-12 sm:py-16 md:py-20">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8 lg:px-12">
+            {faqs.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="mb-12 last:mb-0">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 pb-2 border-b border-white/10">
+                  {category.category}
+                </h2>
+                <div className="space-y-4">
+                  {category.questions.map((faq, faqIndex) => {
+                    const index = categoryIndex * 100 + faqIndex;
+                    const isOpen = openIndex === index;
+                    
+                    return (
+                      <div
+                        key={faqIndex}
+                        className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300"
+                      >
+                        <button
+                          onClick={() => toggleFAQ(index)}
+                          className="w-full px-4 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-indigo-500/20 rounded-xl sm:rounded-2xl"
+                        >
+                          <span className="text-base sm:text-lg font-semibold text-white pr-4">
+                            {faq.question}
+                          </span>
+                          <FaChevronDown
+                            className={`text-gray-400 flex-shrink-0 transition-transform duration-300 ${
+                              isOpen ? "transform rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                        {isOpen && (
+                          <div className="px-4 sm:px-6 pb-4 sm:pb-5">
+                            <div className="pt-2 border-t border-white/10">
+                              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                                {faq.answer}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="py-12 sm:py-16 bg-gradient-to-b from-gray-800 to-gray-900">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 md:px-8 lg:px-12 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Still Have Questions?
+            </h2>
+            <p className="text-gray-300 text-base sm:text-lg mb-8">
+              Can't find the answer you're looking for? Our support team is here to help.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              >
+                Contact Support
+              </Link>
+              <Link
+                href="/download"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/20 rounded-xl text-white font-bold text-lg hover:bg-white/10 transition-all duration-300"
+              >
+                Download App
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+

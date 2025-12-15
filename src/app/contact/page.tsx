@@ -12,21 +12,37 @@ export default function ContactPage() {
     subject: "",
     message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     trackFormSubmit("contact_form");
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Format the message for WhatsApp
+    const whatsappMessage = `Hello! I'm reaching out from MarketBrand.ai contact form.
+
+*Name:* ${formData.name}
+*Email:* ${formData.email}
+*Phone:* ${formData.phone || 'Not provided'}
+*Subject:* ${formData.subject}
+*Message:*
+${formData.message}`;
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // WhatsApp number (remove + and spaces)
+    const whatsappNumber = contactNumber.replace(/[\s+]/g, '');
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
     
     // Reset form
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     setSubmitStatus("success");
-    setIsSubmitting(false);
     
     // Reset status after 3 seconds
     setTimeout(() => setSubmitStatus("idle"), 3000);
@@ -72,7 +88,7 @@ export default function ContactPage() {
       <div className="min-h-screen bg-gray-900">
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-800/50 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-4 py-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
@@ -84,17 +100,17 @@ export default function ContactPage() {
         </div>
 
         {/* Enhanced Hero Section */}
-        <div className="relative py-20 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
+        <div className="relative py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
-            <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black gradient-text mb-4 sm:mb-6 px-4">
               We'd Love to Hear From You
             </h1>
-            <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed px-4">
               Have a question, suggestion, or need help? Our team is here to assist you. 
               Reach out to us through any of the channels below.
             </p>
@@ -102,65 +118,64 @@ export default function ContactPage() {
         </div>
 
         {/* Main Content */}
-        <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="grid lg:grid-cols-3 gap-8">
+        <div className="py-12 sm:py-16 md:py-20 lg:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+            <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
               {/* Contact Information Cards */}
               <div className="lg:col-span-1 space-y-6">
-                {/* Phone Card - Prominent */}
-                <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      <FaPhone className="text-white text-3xl" />
+                {/* Location Card - Moved to Top */}
+                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                  <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0 text-xl sm:text-3xl">
+                      📍
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Call Us</h3>
-                      <p className="text-gray-300 text-sm">Available 24/7</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-white">Visit Us</h3>
+                      <p className="text-gray-300 text-xs sm:text-sm">Our Office</p>
+                    </div>
+                  </div>
+                  <p className="text-base sm:text-lg font-semibold text-white mt-4 leading-relaxed">
+                    Jay Ganesh Vision, A wing, Office. No. 328C 3rd Floor, Akurdi, Pimpri-Chinchwad, Maharashtra 411035
+                  </p>
+                </div>
+
+                {/* Phone Card - Prominent */}
+                <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                  <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+                      <FaPhone className="text-white text-xl sm:text-3xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-white">Call Us</h3>
+                      <p className="text-gray-300 text-xs sm:text-sm">Available 24/7</p>
                     </div>
                   </div>
                   <a 
                     href={`tel:${contactNumber}`}
-                    className="text-2xl font-bold text-white hover:text-green-400 transition-colors block mt-4"
+                    className="text-lg sm:text-xl md:text-2xl font-bold text-white hover:text-green-400 transition-colors block mt-4 break-all"
                   >
                     {formattedNumber}
                   </a>
-                  <p className="text-gray-400 text-sm mt-2">Click to call directly</p>
+                  <p className="text-gray-400 text-xs sm:text-sm mt-2">Click to call directly</p>
                 </div>
 
                 {/* Email Card */}
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      <FaEnvelope className="text-white text-3xl" />
+                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                  <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+                      <FaEnvelope className="text-white text-xl sm:text-3xl" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">Email Us</h3>
-                      <p className="text-gray-300 text-sm">Response within 24 hours</p>
+                      <h3 className="text-lg sm:text-xl font-bold text-white">Email Us</h3>
+                      <p className="text-gray-300 text-xs sm:text-sm">Response within 24 hours</p>
                     </div>
                   </div>
                   <a 
                     href="mailto:support@marketbrand.ai"
-                    className="text-lg font-semibold text-white hover:text-blue-400 transition-colors block mt-4 break-all"
+                    className="text-base sm:text-lg font-semibold text-white hover:text-blue-400 transition-colors block mt-4 break-all"
                   >
                     support@marketbrand.ai
                   </a>
-                </div>
-
-                {/* Location Card */}
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-3xl shadow-lg">
-                      📍
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white">Visit Us</h3>
-                      <p className="text-gray-300 text-sm">Our Office</p>
-                    </div>
-                  </div>
-                  <p className="text-lg font-semibold text-white mt-4">
-                    Pune, Maharashtra<br />
-                    India
-                  </p>
                 </div>
 
                 {/* Quick Links */}
@@ -281,20 +296,9 @@ export default function ContactPage() {
                     
                     <button 
                       type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl px-8 py-4 font-bold text-lg hover:shadow-2xl hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                      className="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl px-8 py-4 font-bold text-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
                     >
-                      {isSubmitting ? (
-                        <span className="flex items-center justify-center">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Sending...
-                        </span>
-                      ) : (
-                        "Send Message"
-                      )}
+                      Send Message
                     </button>
                     
                     {submitStatus === "success" && (

@@ -36,6 +36,33 @@ export const metadata: Metadata = {
 };
 
 export default function HelpPage() {
+  const faqs = [
+    {
+      question: "How quickly can I create marketing materials?",
+      answer: "You can create and download professional marketing materials in under 1 minute. Simply choose a template, add your business details, and download instantly."
+    },
+    {
+      question: "What file formats do you support?",
+      answer: "We support PNG, JPG, PDF for images and MP4, MOV, GIF for videos. All files are high quality (up to 4K for videos, 300 DPI for print) and ready for immediate use."
+    },
+    {
+      question: "Do I need design skills to use MarketBrand?",
+      answer: "No design skills required! Our templates are professionally designed and ready to use. You just need to add your business information and customize colors if needed."
+    },
+    {
+      question: "Can I use templates for commercial purposes?",
+      answer: "Yes! With Pro and Business plans, you get full commercial rights to use all templates for your business marketing. No attribution required, no usage limits."
+    },
+    {
+      question: "Is there a free trial?",
+      answer: "Yes! You get a 7-day free trial with full access to all Pro features. No credit card required. Experience the full power before you pay."
+    },
+    {
+      question: "How do I cancel my subscription?",
+      answer: "You can cancel your subscription anytime from your account settings. You'll continue to have access until the end of your billing period."
+    }
+  ];
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -90,33 +117,6 @@ export default function HelpPage() {
     }
   ];
 
-  const faqs = [
-    {
-      question: "How quickly can I create marketing materials?",
-      answer: "You can create and download professional marketing materials in under 1 minute. Simply choose a template, add your business details, and download instantly."
-    },
-    {
-      question: "What file formats do you support?",
-      answer: "We support PNG, JPG, PDF for images and MP4, MOV, GIF for videos. All files are high quality (up to 4K for videos, 300 DPI for print) and ready for immediate use."
-    },
-    {
-      question: "Do I need design skills to use MarketBrand?",
-      answer: "No design skills required! Our templates are professionally designed and ready to use. You just need to add your business information and customize colors if needed."
-    },
-    {
-      question: "Can I use templates for commercial purposes?",
-      answer: "Yes! With Pro and Business plans, you get full commercial rights to use all templates for your business marketing. No attribution required, no usage limits."
-    },
-    {
-      question: "Is there a free trial?",
-      answer: "Yes! You get a 7-day free trial with full access to all Pro features. No credit card required. Experience the full power before you pay."
-    },
-    {
-      question: "How do I cancel my subscription?",
-      answer: "You can cancel your subscription anytime from your account settings. You'll continue to have access until the end of your billing period."
-    }
-  ];
-
   const contactOptions = [
     {
       icon: "comments",
@@ -151,7 +151,7 @@ export default function HelpPage() {
       <div className="min-h-screen bg-gray-900">
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-800/50 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-4 py-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
@@ -170,7 +170,7 @@ export default function HelpPage() {
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center">
               {/* Trust Badges */}
               <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
@@ -229,7 +229,7 @@ export default function HelpPage() {
 
         {/* Help Categories */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Browse Help Topics
@@ -289,7 +289,7 @@ export default function HelpPage() {
 
         {/* FAQ Section */}
         <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="mx-auto max-w-5xl px-4">
+          <div className="mx-auto max-w-5xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Frequently Asked Questions
@@ -316,7 +316,7 @@ export default function HelpPage() {
 
         {/* Contact Support */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Still Need Help?
@@ -359,12 +359,12 @@ export default function HelpPage() {
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+          <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
               Ready to Get Started?
             </h2>
             <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
-              Join 50,000+ businesses who are already creating professional marketing materials with MarketBrand.ai. 
+              Join 10,000+ businesses who are already creating professional marketing materials with MarketBrand.ai. 
               Start your free trial today!
             </p>
             
@@ -406,7 +406,7 @@ export default function HelpPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 50,000+ Businesses • 1,000+ Templates • 24/7 Support
+              ⚡ Join 10,000+ Businesses • 1,000+ Templates • 24/7 Support
             </p>
           </div>
         </div>

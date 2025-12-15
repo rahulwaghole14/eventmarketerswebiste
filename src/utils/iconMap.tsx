@@ -2,7 +2,7 @@ import {
   FaRocket, FaMobileAlt, FaPalette, FaBolt, FaStar, FaHome, 
   FaEnvelope, FaPhone, FaCheckCircle, FaTimesCircle, FaChartLine,
   FaLock, FaShieldAlt, FaBriefcase, FaGift, FaChartBar, FaHeart,
-  FaLightbulb, FaTrophy, FaFire, FaSparkles, FaDumbbell, FaCamera,
+  FaLightbulb, FaTrophy, FaFire, FaDumbbell, FaCamera,
   FaUtensils, FaMusic, FaFilm, FaGamepad, FaBuilding, FaStore,
   FaHospital, FaDumbbell as FaFitness, FaHeart as FaBeauty, FaCar,
   FaCalendarAlt, FaUsers, FaComments, FaDownload, FaPlay,
@@ -49,11 +49,6 @@ export const iconMap: Record<string, React.ComponentType<{ className?: string }>
   '💒': FaHeart,
   '👨‍💼': FaUserTie,
   '👩‍🎨': FaUser,
-  '💪': FaDumbbell,
-  '📱': HiDeviceMobile,
-  '⚡': HiLightningBolt,
-  '🎨': MdDesignServices,
-  '📱': MdPhoneAndroid,
 };
 
 // Helper function to get icon component

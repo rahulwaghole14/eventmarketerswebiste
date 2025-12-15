@@ -15,6 +15,16 @@ const nextConfig = {
       ...config.resolve.alias,
       '@': require('path').resolve(__dirname, 'src'),
     };
+    
+    // Fix for react-icons vendor chunk issue in Next.js 15
+    // Disable code splitting for server-side to prevent vendor chunk errors
+    if (isServer) {
+      config.optimization = {
+        ...config.optimization,
+        splitChunks: false,
+      };
+    }
+    
     return config;
   },
 }

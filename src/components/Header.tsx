@@ -8,8 +8,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isGreetingsDropdownOpen, setIsGreetingsDropdownOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const greetingsDropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const submenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
@@ -25,6 +27,9 @@ export default function Header() {
       if (submenuTimeoutRef.current) {
         clearTimeout(submenuTimeoutRef.current);
       }
+      if (greetingsDropdownTimeoutRef.current) {
+        clearTimeout(greetingsDropdownTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -39,6 +44,20 @@ export default function Header() {
   const handleDropdownLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
+    }, 300); // 300ms delay before closing
+  };
+
+  const handleGreetingsDropdownEnter = () => {
+    if (greetingsDropdownTimeoutRef.current) {
+      clearTimeout(greetingsDropdownTimeoutRef.current);
+      greetingsDropdownTimeoutRef.current = null;
+    }
+    setIsGreetingsDropdownOpen(true);
+  };
+
+  const handleGreetingsDropdownLeave = () => {
+    greetingsDropdownTimeoutRef.current = setTimeout(() => {
+      setIsGreetingsDropdownOpen(false);
     }, 300); // 300ms delay before closing
   };
 
@@ -68,6 +87,105 @@ export default function Header() {
         { name: "Pathology Lab", slug: "pathology-lab" },
         { name: "Allopathy Clinic", slug: "allopathy-clinic" },
         { name: "Physiotherapy Clinic", slug: "physiotherapy-clinic" }
+      ]
+    }
+  ];
+
+  const greetingsCategories = [
+    {
+      title: "Daily Greetings",
+      slug: "greeting",
+      items: [
+        { name: "Good Morning", slug: "greeting" },
+        { name: "Good Night", slug: "greeting" },
+        { name: "Have a Great Day", slug: "greeting" },
+        { name: "Happy Sunday", slug: "greeting" }
+      ]
+    },
+    {
+      title: "Quotes & Thoughts",
+      slug: "greeting",
+      items: [
+        { name: "Inspirational Quotes", slug: "greeting" },
+        { name: "Positive Thoughts", slug: "greeting" },
+        { name: "Success Quotes", slug: "greeting" },
+        { name: "Life Lessons", slug: "greeting" },
+        { name: "English Quotes", slug: "greeting" },
+        { name: "Hindi Quotes", slug: "greeting" },
+        { name: "Sports Quotes", slug: "greeting" },
+        { name: "Today's Thought", slug: "greeting" },
+        { name: "Motivational Quote", slug: "greeting" }
+      ]
+    },
+    {
+      title: "Business Mindset",
+      slug: "greeting",
+      items: [
+        { name: "Success Mindset", slug: "greeting" },
+        { name: "Social Media Growth", slug: "greeting" },
+        { name: "Money and Finance", slug: "greeting" },
+        { name: "Business Legend Quote", slug: "greeting" },
+        { name: "Business Marketing Tips", slug: "greeting" },
+        { name: "Business Ethics", slug: "greeting" },
+        { name: "Business Quote", slug: "greeting" }
+      ]
+    },
+    {
+      title: "Environment & Public Awareness",
+      slug: "greeting",
+      items: [
+        { name: "Save Water", slug: "greeting" },
+        { name: "Pollution Awareness", slug: "greeting" },
+        { name: "Nature & Mountains", slug: "greeting" },
+        { name: "Farmers & Agriculture Posters", slug: "greeting" },
+        { name: "Environment Protection", slug: "greeting" },
+        { name: "Road & Traffic Safety", slug: "greeting" },
+        { name: "Political Awareness Posters", slug: "greeting" },
+        { name: "Season Greetings", slug: "greeting" }
+      ]
+    },
+    {
+      title: "Business Essentials",
+      slug: "greeting",
+      items: [
+        { name: "Hiring / Vacancy Posters", slug: "greeting" },
+        { name: "New Product Launch", slug: "greeting" },
+        { name: "Thank You Posters (General / Payment / Support)", slug: "greeting" }
+      ]
+    },
+    {
+      title: "Spiritual & Devotional",
+      slug: "greeting",
+      items: [
+        { name: "Bhagavad Gita Quotes", slug: "greeting" },
+        { name: "Ram Mandir Posters", slug: "greeting" },
+        { name: "Spiritual Leaders (Vivekananda, Guru Ji, Saints, Sadguru)", slug: "greeting" },
+        { name: "Spiritual Quotes", slug: "greeting" }
+      ]
+    },
+    {
+      title: "Students and Parents Zone",
+      slug: "greeting",
+      items: [
+        { name: "Learning Facts", slug: "greeting" },
+        { name: "Exam Wishes (10th/12th)", slug: "greeting" },
+        { name: "Parenting Tips", slug: "greeting" }
+      ]
+    },
+    {
+      title: "Indian Pride",
+      slug: "greeting",
+      items: [
+        { name: "Inspirational Personalities (APJ, Gandhi)", slug: "greeting" },
+        { name: "Rivers of India", slug: "greeting" }
+      ]
+    },
+    {
+      title: "Health & Wellness",
+      slug: "greeting",
+      items: [
+        { name: "Diet Tips", slug: "greeting" },
+        { name: "Wellness Awareness", slug: "greeting" }
       ]
     }
   ];
@@ -112,11 +230,11 @@ export default function Header() {
             {/* Mega Dropdown Menu */}
             {isDropdownOpen && (
               <div 
-                className="fixed left-0 right-0 top-20 flex justify-center px-4 z-50 animate-fade-in"
+                className="fixed left-0 right-0 top-20 flex justify-center px-4 z-[100] animate-fade-in"
                 onMouseEnter={handleDropdownEnter}
                 onMouseLeave={handleDropdownLeave}
               >
-                <div className="w-full max-w-7xl bg-gray-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8">
+                <div className="w-full max-w-7xl bg-gray-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8 mt-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {businessCategories.map((category, index) => (
                       <div 
@@ -163,10 +281,87 @@ export default function Header() {
             )}
           </div>
           
-          <Link href="/templates/greetings" className="text-gray-300 hover:text-white transition-all duration-300 relative group">
-            Greetings
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
-          </Link>
+          {/* Greetings Category with Dropdown */}
+          <div 
+            className="relative"
+            onMouseEnter={handleGreetingsDropdownEnter}
+            onMouseLeave={handleGreetingsDropdownLeave}
+          >
+            <Link href="/templates/greetings" className="text-gray-300 hover:text-white transition-all duration-300 relative group flex items-center gap-1">
+              Greetings
+              <svg className={`w-4 h-4 transition-transform duration-300 ${isGreetingsDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+            </Link>
+            
+            {/* Greetings Mega Dropdown Menu */}
+            {isGreetingsDropdownOpen && (
+              <div 
+                className="fixed left-0 right-0 top-20 flex justify-center px-4 z-[100] animate-fade-in"
+                onMouseEnter={handleGreetingsDropdownEnter}
+                onMouseLeave={handleGreetingsDropdownLeave}
+              >
+                <div className="w-full max-w-7xl bg-gray-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8 mt-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    {greetingsCategories.map((category, index) => (
+                      <div 
+                        key={index} 
+                        className="space-y-4 relative"
+                      >
+                        <div className="text-sm font-bold text-white border-b-2 border-green-500/50 pb-2 whitespace-nowrap">
+                          {category.title}
+                        </div>
+                        {category.items && category.items.length > 0 && (
+                          <ul className="space-y-2 mt-2">
+                            {category.items.map((item, itemIndex) => {
+                              // Convert category title and item name to folder-friendly format for URL
+                              const nameToFolder = (name: string) => {
+                                return name
+                                  .replace(/\s+/g, "-")           // Replace spaces with hyphens
+                                  .replace(/[&\/\(\)]/g, "-")    // Replace &, /, (, ) with hyphens
+                                  .replace(/,/g, "")              // Remove commas
+                                  .replace(/-+/g, "-")            // Replace multiple hyphens with single hyphen
+                                  .replace(/^-|-$/g, "")         // Remove leading/trailing hyphens
+                                  .toLowerCase();
+                              };
+                              const categoryFolder = nameToFolder(category.title);
+                              const templateFolder = nameToFolder(item.name);
+                              const templateUrl = `/templates/greetings/${categoryFolder}/${templateFolder}`;
+                              
+                              return (
+                                <li key={itemIndex}>
+                                  <Link 
+                                    href={templateUrl}
+                                    className="text-xs text-gray-300 hover:text-white flex items-center gap-2 py-2 px-3 hover:translate-x-2 hover:bg-white/5 rounded transition-all duration-200 whitespace-nowrap"
+                                  >
+                                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full flex-shrink-0"></span>
+                                    <span className="truncate">{item.name}</span>
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  {/* View All Link */}
+                  <div className="mt-6 pt-6 border-t border-white/20 text-center">
+                    <Link 
+                      href="/templates/greetings"
+                      className="inline-flex items-center text-sm font-semibold text-green-400 hover:text-white transition-colors"
+                    >
+                      View All Greeting Templates
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
           <Link href="/pricing" className="text-gray-300 hover:text-white transition-all duration-300 relative group">
             Pricing
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>

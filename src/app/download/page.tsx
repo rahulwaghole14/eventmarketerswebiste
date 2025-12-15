@@ -166,7 +166,7 @@ export default function DownloadPage() {
                     <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                     </svg>
-                    <span>50,000+ Downloads</span>
+                    <span>10,000+ Downloads</span>
                   </div>
                 </div>
               </div>
@@ -280,7 +280,7 @@ export default function DownloadPage() {
               Ready to Start Creating?
             </h2>
             <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
-              Join 50,000+ businesses who are already creating professional marketing materials with MarketBrand. 
+              Join 10,000+ businesses who are already creating professional marketing materials with MarketBrand. 
               Download now and start your free trial!
             </p>
             
@@ -302,7 +302,7 @@ export default function DownloadPage() {
                 <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                 </svg>
-                <span className="text-white font-semibold">50,000+ Downloads</span>
+                <span className="text-white font-semibold">10,000+ Downloads</span>
               </div>
             </div>
             
@@ -322,7 +322,7 @@ export default function DownloadPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
-              <FaBolt className="inline" /> Join 50,000+ Businesses • 1,000+ Templates • 1-Minute Creation
+              <FaBolt className="inline" /> Join 10,000+ Businesses • 1,000+ Templates • 1-Minute Creation
             </p>
           </div>
         </div>

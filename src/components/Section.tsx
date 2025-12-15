@@ -12,7 +12,7 @@ export default function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`mx-auto max-w-7xl px-4 py-20 ${className}`}>
+    <section id={id} className={`mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-20 md:py-24 ${className}`}>
       {(title || subtitle) && (
         <div className="text-center mb-16">
           {title && (

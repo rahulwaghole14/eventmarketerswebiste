@@ -262,7 +262,7 @@ export default function CareersPage() {
       <div className="min-h-screen bg-gray-900">
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-800/50 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-4 py-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
@@ -301,7 +301,7 @@ export default function CareersPage() {
               </h1>
               
               <p className="text-xl text-gray-300 font-light leading-relaxed max-w-4xl mx-auto">
-                Help us empower 50,000+ businesses to create professional marketing materials. 
+                Help us empower 10,000+ businesses to create professional marketing materials. 
                 <span className="text-white font-semibold">Join a team that's passionate about innovation and customer success.</span>
               </p>
 
@@ -330,7 +330,7 @@ export default function CareersPage() {
 
         {/* Company Values */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Our Values</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -359,7 +359,7 @@ export default function CareersPage() {
 
         {/* Benefits Section */}
         <div className="py-24 bg-gray-800/30">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Why Join MarketBrand?</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -392,7 +392,7 @@ export default function CareersPage() {
 
         {/* Open Positions */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Open Positions</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -467,7 +467,7 @@ export default function CareersPage() {
 
         {/* Team Testimonials */}
         <div className="py-24 bg-gray-800/30">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Hear From Our Team</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -502,7 +502,7 @@ export default function CareersPage() {
 
         {/* Related Pages */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Learn More About Us</h2>
               <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -561,7 +561,7 @@ export default function CareersPage() {
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+          <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
               Ready to Join Our Team?
             </h2>

@@ -1,252 +1,324 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
-import { FaRocket, FaPalette, FaBolt, FaHeart, FaDumbbell, FaSprayCan, FaShoppingBag, FaHospital, FaCar, FaBullseye, FaCamera, FaUtensils, FaBuilding } from "react-icons/fa";
+import { FaRocket, FaPalette, FaBolt, FaHeart, FaSprayCan, FaHospital, FaCamera, FaUtensils, FaBuilding, FaCalendar } from "react-icons/fa";
 import { BsStarFill } from "react-icons/bs";
+import dynamic from "next/dynamic";
+import type { Metadata } from "next";
 
-const MAP: Record<string, { title: string; intro: string; useCases: string[]; cta: string; }> = {
-  // Events & Wedding Vendors
-  "wedding-planners": {
-    title: "Wedding Planner Marketing Templates | Promote Your Services",
-    intro: "Professional marketing materials for wedding planners. Create stunning portfolios, service packages, and promotional content to attract more clients.",
-    useCases: ["Service Package Posters", "Wedding Portfolio Designs", "Social Media Posts", "Client Testimonial Graphics"],
-    cta: "Create Wedding Planner Materials",
+const HorizontalImageCarousel = dynamic(() => import("@/components/HorizontalImageCarousel"), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="animate-pulse text-gray-400">Loading...</div></div>,
+});
+
+const TabbedImageCarousel = dynamic(() => import("@/components/TabbedImageCarousel"), {
+  loading: () => <div className="min-h-[400px] flex items-center justify-center"><div className="animate-pulse text-gray-400">Loading...</div></div>,
+});
+
+
+// Helper function to generate image paths
+const getImagePaths = (basePath: string, count: number = 5): string[] => {
+  return Array.from({ length: count }, (_, i) => `${basePath}/${i + 1}.png`);
+};
+
+// Comprehensive category data structure
+interface CategoryData {
+  title: string;
+  intro: string;
+  useCases: string[];
+  cta: string;
+  type: "regular" | "tabbed";
+  images?: string[];
+  tabs?: { name: string; images: string[] }[];
+  gradient: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+const CATEGORY_MAP: Record<string, CategoryData> = {
+  // Event & Wedding Categories
+  "banquet-hall": {
+    title: "Banquet Hall",
+    intro: "Professional banquet hall promotional videos, marketing posters & business materials. Download ready-made templates for banquet halls, wedding venues, event venues.",
+    useCases: ["Venue Showcase Designs", "Capacity & Amenities Posters", "Booking Offer Templates", "Virtual Tour Promotions"],
+    cta: "Create Banquet Hall Materials",
+    type: "regular",
+    images: getImagePaths("/Banquat Hall"),
+    gradient: "from-purple-500/20 via-pink-500/20 to-rose-500/20",
+    icon: FaBuilding,
   },
-  "decorators": {
-    title: "Decorator Marketing Templates | Showcase Your Work",
+  "event-planner": {
+    title: "Event Planner",
+    intro: "Professional event planner promotional videos, marketing posters & business materials. Download ready-made templates for Mandap, Sound, Generator, Decorator services.",
+    useCases: ["Mandap Templates", "Sound System Templates", "Generator Templates", "Decorator Templates"],
+    cta: "Create Event Planner Materials",
+    type: "tabbed",
+    tabs: [
+      { name: "Mandap", images: getImagePaths("/Event Planner/Mandap") },
+      { name: "Sound", images: getImagePaths("/Event Planner/Sound") },
+      { name: "Decorator", images: getImagePaths("/Event Planner/Decorator") },
+      { name: "Generator", images: getImagePaths("/Event Planner/Generator") },
+    ],
+    gradient: "from-blue-500/20 via-indigo-500/20 to-purple-500/20",
+    icon: FaCalendar,
+  },
+  "catering": {
+    title: "Catering",
+    intro: "Professional catering promotional videos, marketing posters & business materials. Download ready-made templates for wedding catering, event catering, and food service businesses.",
+    useCases: ["Menu Design Templates", "Package Offer Posters", "Event Catering Ads", "Special Dish Highlights"],
+    cta: "Create Catering Materials",
+    type: "regular",
+    images: getImagePaths("/Catering"),
+    gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
+    icon: FaUtensils,
+  },
+  "photographer": {
+    title: "Photographer",
+    intro: "Professional photographer promotional videos, marketing posters & business materials. Download ready-made templates for wedding photographers, event photographers, and portrait photographers.",
+    useCases: ["Portfolio Grid Templates", "Pricing Package Designs", "Session Offer Posters", "Instagram Story Templates"],
+    cta: "Create Photography Materials",
+    type: "regular",
+    images: getImagePaths("/Photography"),
+    gradient: "from-purple-500/20 via-pink-500/20 to-rose-500/20",
+    icon: FaCamera,
+  },
+  "light-supplier": {
+    title: "Light Supplier",
+    intro: "Professional light supplier promotional videos, marketing posters & business materials. Download ready-made templates for event lighting, wedding lighting, and lighting rental services.",
+    useCases: ["Lighting Service Promotions", "Package Offer Templates", "Event Lighting Showcase", "Rental Service Ads"],
+    cta: "Create Light Supplier Materials",
+    type: "regular",
+    images: getImagePaths("/Light Supplier"),
+    gradient: "from-yellow-500/20 via-orange-500/20 to-amber-500/20",
+    icon: FaBolt,
+  },
+  "decorator": {
+    title: "Decorator",
     intro: "Eye-catching marketing templates for decorators. Display your portfolio, promote seasonal packages, and attract more decoration projects.",
     useCases: ["Portfolio Showcase Designs", "Package Offer Posters", "Before/After Templates", "Festival Decoration Ads"],
     cta: "Design Decorator Promotions",
+    type: "regular",
+    images: getImagePaths("/Event Planner/Decorator"),
+    gradient: "from-pink-500/20 via-rose-500/20 to-red-500/20",
+    icon: FaPalette,
+  },
+  "sound": {
+    title: "Sound",
+    intro: "Professional sound system marketing materials. Promote audio equipment, sound services, and attract more events.",
+    useCases: ["Sound System Showcase", "Equipment Rental Templates", "Service Package Posters", "Event Sound Ads"],
+    cta: "Create Sound System Materials",
+    type: "regular",
+    images: getImagePaths("/Event Planner/Sound"),
+    gradient: "from-indigo-500/20 via-blue-500/20 to-cyan-500/20",
+    icon: FaBolt,
+  },
+  "generator": {
+    title: "Generator",
+    intro: "Professional generator rental marketing materials. Promote generator services, rental packages, and attract more events.",
+    useCases: ["Generator Showcase Templates", "Rental Package Posters", "Service Offer Designs", "Event Power Ads"],
+    cta: "Create Generator Materials",
+    type: "regular",
+    images: getImagePaths("/Event Planner/Generator"),
+    gradient: "from-gray-500/20 via-slate-500/20 to-zinc-500/20",
+    icon: FaBolt,
+  },
+  "mandap": {
+    title: "Mandap",
+    intro: "Professional mandap decoration marketing materials. Showcase mandap designs, promote packages, and attract more wedding events.",
+    useCases: ["Mandap Design Showcase", "Package Offer Templates", "Wedding Decoration Ads", "Portfolio Templates"],
+    cta: "Create Mandap Materials",
+    type: "regular",
+    images: getImagePaths("/Event Planner/Mandap"),
+    gradient: "from-rose-500/20 via-pink-500/20 to-purple-500/20",
+    icon: FaHeart,
+  },
+
+  // Medical & Diagnostics Categories
+  "dental-clinic": {
+    title: "Dental Clinic",
+    intro: "Professional dental clinic marketing materials. Promote treatments, offers, and dental care tips to attract more patients.",
+    useCases: ["Treatment Offer Posters", "Dental Care Tips Graphics", "Before/After Templates", "Appointment Reminder Designs"],
+    cta: "Create Dental Clinic Materials",
+    type: "regular",
+    images: getImagePaths("/Medical & Diagnostics/Dental Clinic"),
+    gradient: "from-blue-500/20 via-cyan-500/20 to-teal-500/20",
+    icon: FaHospital,
+  },
+  "eye-hospital": {
+    title: "Eye Hospital",
+    intro: "Professional eye hospital marketing materials. Promote eye care services, treatments, and attract more patients.",
+    useCases: ["Eye Care Service Posters", "Treatment Offer Templates", "Vision Care Tips", "Appointment Booking Ads"],
+    cta: "Create Eye Hospital Materials",
+    type: "regular",
+    images: getImagePaths("/Medical & Diagnostics/Eye Hospital"),
+    gradient: "from-cyan-500/20 via-blue-500/20 to-indigo-500/20",
+    icon: FaHospital,
+  },
+  "ayurveda-clinic": {
+    title: "Ayurveda Clinic",
+    intro: "Professional ayurveda clinic marketing materials. Promote ayurvedic treatments, wellness programs, and attract more patients.",
+    useCases: ["Treatment Offer Posters", "Wellness Program Templates", "Ayurvedic Tips Graphics", "Consultation Ads"],
+    cta: "Create Ayurveda Clinic Materials",
+    type: "regular",
+    images: getImagePaths("/Medical & Diagnostics/Ayurveda Clinic"),
+    gradient: "from-green-500/20 via-emerald-500/20 to-teal-500/20",
+    icon: FaHospital,
+  },
+  "homeopathy-clinic": {
+    title: "Homeopathy Clinic",
+    intro: "Professional homeopathy clinic marketing materials. Promote homeopathic treatments, consultations, and attract more patients.",
+    useCases: ["Treatment Offer Posters", "Consultation Templates", "Health Tips Graphics", "Service Showcase Ads"],
+    cta: "Create Homeopathy Clinic Materials",
+    type: "regular",
+    images: getImagePaths("/Medical & Diagnostics/Homeopathy Clinic"),
+    gradient: "from-teal-500/20 via-cyan-500/20 to-blue-500/20",
+    icon: FaHospital,
+  },
+  "physiotherapy-clinic": {
+    title: "Physiotherapy Clinic",
+    intro: "Professional physiotherapy clinic marketing materials. Promote physiotherapy services, rehabilitation programs, and attract more patients.",
+    useCases: ["Service Offer Posters", "Rehabilitation Templates", "Exercise Tips Graphics", "Treatment Showcase Ads"],
+    cta: "Create Physiotherapy Clinic Materials",
+    type: "regular",
+    images: getImagePaths("/Medical & Diagnostics/Physiotherapy Clinic"),
+    gradient: "from-indigo-500/20 via-purple-500/20 to-pink-500/20",
+    icon: FaHospital,
+  },
+  "skin-aesthetic-clinic": {
+    title: "Skin & Aesthetics Clinic",
+    intro: "Professional skin & aesthetics clinic marketing materials. Promote aesthetic treatments, skincare services, and attract more clients.",
+    useCases: ["Treatment Showcase Posters", "Before/After Templates", "Skincare Tips Graphics", "Service Package Ads"],
+    cta: "Create Skin & Aesthetics Clinic Materials",
+    type: "regular",
+    images: getImagePaths("/Medical & Diagnostics/Skin & Aesthetics Clinic"),
+    gradient: "from-pink-500/20 via-rose-500/20 to-red-500/20",
+    icon: FaSprayCan,
+  },
+  "pathology-lab": {
+    title: "Pathology Lab",
+    intro: "Professional pathology lab marketing materials. Promote lab tests, health checkup packages, and attract more patients.",
+    useCases: ["Test Package Posters", "Health Checkup Templates", "Lab Service Graphics", "Report Delivery Ads"],
+    cta: "Create Pathology Lab Materials",
+    type: "regular",
+    images: getImagePaths("/Medical & Diagnostics/Pathology Lab"),
+    gradient: "from-red-500/20 via-orange-500/20 to-amber-500/20",
+    icon: FaHospital,
+  },
+  "allopathy-clinic": {
+    title: "Allopathy Clinic",
+    intro: "Professional allopathy clinic marketing materials. Promote medical services, treatments, and attract more patients.",
+    useCases: ["Service Offer Posters", "Treatment Templates", "Health Awareness Graphics", "Doctor Profile Ads"],
+    cta: "Create Allopathy Clinic Materials",
+    type: "regular",
+    images: getImagePaths("/Medical & Diagnostics/Allopathy Clinic"),
+    gradient: "from-blue-500/20 via-indigo-500/20 to-purple-500/20",
+    icon: FaHospital,
+  },
+
+  // Legacy categories from original MAP (keeping for backward compatibility)
+  "wedding-planners": {
+    title: "Wedding Planner",
+    intro: "Professional marketing materials for wedding planners. Create stunning portfolios, service packages, and promotional content to attract more clients.",
+    useCases: ["Service Package Posters", "Wedding Portfolio Designs", "Social Media Posts", "Client Testimonial Graphics"],
+    cta: "Create Wedding Planner Materials",
+    type: "regular",
+    images: getImagePaths("/Banquat Hall"),
+    gradient: "from-indigo-500/20 via-purple-500/20 to-pink-500/20",
+    icon: FaHeart,
+  },
+  "decorators": {
+    title: "Decorator",
+    intro: "Eye-catching marketing templates for decorators. Display your portfolio, promote seasonal packages, and attract more decoration projects.",
+    useCases: ["Portfolio Showcase Designs", "Package Offer Posters", "Before/After Templates", "Festival Decoration Ads"],
+    cta: "Design Decorator Promotions",
+    type: "regular",
+    images: getImagePaths("/Event Planner/Decorator"),
+    gradient: "from-pink-500/20 via-rose-500/20 to-red-500/20",
+    icon: FaPalette,
   },
   "photographers": {
-    title: "Photography Marketing Templates | Grow Your Business",
+    title: "Photographer",
     intro: "Professional marketing materials for photographers. Create stunning portfolio displays, pricing packages, and social media content.",
     useCases: ["Portfolio Grid Templates", "Pricing Package Designs", "Session Offer Posters", "Instagram Story Templates"],
     cta: "Create Photography Materials",
+    type: "regular",
+    images: getImagePaths("/Photography"),
+    gradient: "from-purple-500/20 via-pink-500/20 to-rose-500/20",
+    icon: FaCamera,
   },
   "caterers": {
-    title: "Catering Service Marketing Templates | Menu & Promotions",
+    title: "Catering",
     intro: "Delicious marketing templates for catering services. Showcase your menu, promote packages, and attract more events.",
     useCases: ["Menu Design Templates", "Package Offer Posters", "Event Catering Ads", "Special Dish Highlights"],
     cta: "Design Catering Promotions",
+    type: "regular",
+    images: getImagePaths("/Catering"),
+    gradient: "from-orange-500/20 via-red-500/20 to-rose-500/20",
+    icon: FaUtensils,
   },
   "venues": {
-    title: "Event Venue Marketing Templates | Promote Your Space",
+    title: "Event Venue",
     intro: "Professional marketing materials for event venues. Showcase your space, promote packages, and book more events.",
     useCases: ["Venue Showcase Designs", "Capacity & Amenities Posters", "Booking Offer Templates", "Virtual Tour Promotions"],
     cta: "Create Venue Materials",
-  },
-
-  // Fitness Studios, Gyms & Yoga
-  "fitness-studios": {
-    title: "Fitness Studio Marketing Templates | Grow Your Membership",
-    intro: "Dynamic marketing materials for fitness studios. Promote classes, membership offers, and training programs.",
-    useCases: ["Class Schedule Posters", "Membership Offer Designs", "Trainer Introduction Cards", "Success Story Templates"],
-    cta: "Create Fitness Studio Ads",
-  },
-  "gyms": {
-    title: "Gym Marketing Templates | Build Your Member Base",
-    intro: "Powerful marketing templates for gyms. Promote memberships, personal training, and special offers.",
-    useCases: ["Membership Offer Posters", "PT Package Designs", "Before/After Templates", "Equipment Showcase Ads"],
-    cta: "Design Gym Promotions",
-  },
-  "yoga-centers": {
-    title: "Yoga Center Marketing Templates | Peaceful & Professional",
-    intro: "Serene marketing materials for yoga centers. Promote classes, workshops, and wellness programs.",
-    useCases: ["Class Schedule Designs", "Workshop Announcement Posters", "Instructor Profiles", "Wellness Program Ads"],
-    cta: "Create Yoga Center Materials",
-  },
-  "personal-trainers": {
-    title: "Personal Trainer Marketing Templates | Attract More Clients",
-    intro: "Professional marketing materials for personal trainers. Showcase results, promote packages, and grow your client base.",
-    useCases: ["Transformation Showcase Templates", "Package Pricing Designs", "Training Program Posters", "Success Story Graphics"],
-    cta: "Design Trainer Promotions",
-  },
-  "health-clubs": {
-    title: "Health Club Marketing Templates | Premium Wellness",
-    intro: "Elegant marketing materials for health clubs. Promote facilities, memberships, and wellness programs.",
-    useCases: ["Facility Showcase Designs", "Membership Benefits Posters", "Wellness Program Ads", "Special Event Templates"],
-    cta: "Create Health Club Materials",
-  },
-
-  // Retail & Grocery/Fashion Boutiques
-  "retail-stores": {
-    title: "Retail Store Marketing Templates | Boost Your Sales",
-    intro: "Attractive marketing materials for retail stores. Promote products, sales, and seasonal offers.",
-    useCases: ["Sale Announcement Posters", "New Arrival Templates", "Product Highlight Designs", "Discount Offer Graphics"],
-    cta: "Create Retail Promotions",
-  },
-  "grocery-shops": {
-    title: "Grocery Shop Marketing Templates | Fresh Deals Daily",
-    intro: "Fresh marketing materials for grocery shops. Advertise daily deals, fresh arrivals, and combo offers.",
-    useCases: ["Daily Deal Posters", "Fresh Produce Highlights", "Combo Offer Templates", "Home Delivery Ads"],
-    cta: "Design Grocery Promotions",
-  },
-  "fashion-boutiques": {
-    title: "Fashion Boutique Marketing Templates | Style & Elegance",
-    intro: "Trendy marketing materials for fashion boutiques. Showcase collections, promote sales, and attract fashion lovers.",
-    useCases: ["New Collection Launch Posters", "Sale & Discount Templates", "Styling Tips Graphics", "Seasonal Fashion Ads"],
-    cta: "Create Boutique Materials",
-  },
-  "supermarkets": {
-    title: "Supermarket Marketing Templates | Weekly Offers & More",
-    intro: "Professional marketing materials for supermarkets. Promote weekly offers, new products, and special deals.",
-    useCases: ["Weekly Offer Posters", "New Product Launch Templates", "Bulk Deal Designs", "Festival Special Ads"],
-    cta: "Design Supermarket Promotions",
-  },
-  "shopping-centers": {
-    title: "Shopping Center Marketing Templates | Events & Promotions",
-    intro: "Grand marketing materials for shopping centers. Promote events, tenant offers, and seasonal campaigns.",
-    useCases: ["Mall Event Posters", "Tenant Showcase Designs", "Seasonal Campaign Templates", "Food Court Promotions"],
-    cta: "Create Shopping Center Ads",
-  },
-
-  // Healthcare Clinics & Diagnostics
-  "healthcare-clinics": {
-    title: "Healthcare Clinic Marketing Templates | Professional & Trustworthy",
-    intro: "Professional marketing materials for healthcare clinics. Build trust, promote services, and educate patients.",
-    useCases: ["Service Offer Posters", "Health Awareness Templates", "Doctor Profile Designs", "Appointment Booking Ads"],
-    cta: "Create Healthcare Materials",
-  },
-  "diagnostic-centers": {
-    title: "Diagnostic Center Marketing Templates | Accurate & Reliable",
-    intro: "Reliable marketing materials for diagnostic centers. Promote tests, packages, and health checkups.",
-    useCases: ["Health Checkup Package Posters", "Test Offer Templates", "Free Camp Announcements", "Report Delivery Ads"],
-    cta: "Design Diagnostic Promotions",
-  },
-  "hospitals": {
-    title: "Hospital Marketing Templates | Comprehensive Care",
-    intro: "Professional marketing materials for hospitals. Promote departments, specialists, and healthcare services.",
-    useCases: ["Department Showcase Designs", "Doctor Introduction Posters", "Health Camp Templates", "Emergency Service Ads"],
-    cta: "Create Hospital Materials",
-  },
-  "dental-clinics": {
-    title: "Dental Clinic Marketing Templates | Healthy Smiles",
-    intro: "Bright marketing materials for dental clinics. Promote treatments, offers, and dental care tips.",
-    useCases: ["Treatment Offer Posters", "Dental Care Tips Graphics", "Before/After Templates", "Appointment Reminder Designs"],
-    cta: "Design Dental Promotions",
-  },
-  "medical-practices": {
-    title: "Medical Practice Marketing Templates | Patient Trust",
-    intro: "Professional marketing materials for medical practices. Build patient relationships and promote quality care.",
-    useCases: ["Practice Introduction Posters", "Service Highlight Templates", "Patient Testimonial Designs", "Health Education Graphics"],
-    cta: "Create Medical Practice Ads",
-  },
-
-  // Beauty Salons, Spas & Aesthetic Clinics
-  "beauty-salons": {
-    title: "Beauty Salon Marketing Templates | Glamorous Promotions",
-    intro: "Stunning marketing materials for beauty salons. Promote services, packages, and special offers.",
-    useCases: ["Service Menu Designs", "Package Offer Posters", "Before/After Templates", "Bridal Package Ads"],
-    cta: "Create Beauty Salon Materials",
-  },
-  "spas": {
-    title: "Spa Marketing Templates | Relaxation & Wellness",
-    intro: "Serene marketing materials for spas. Promote treatments, packages, and wellness experiences.",
-    useCases: ["Treatment Menu Posters", "Spa Package Templates", "Seasonal Offer Designs", "Membership Benefits Graphics"],
-    cta: "Design Spa Promotions",
-  },
-  "aesthetic-clinics": {
-    title: "Aesthetic Clinic Marketing Templates | Professional Beauty",
-    intro: "Professional marketing materials for aesthetic clinics. Promote treatments, technology, and results.",
-    useCases: ["Treatment Showcase Posters", "Technology Highlight Templates", "Result Gallery Designs", "Consultation Offer Ads"],
-    cta: "Create Aesthetic Clinic Materials",
-  },
-  "nail-studios": {
-    title: "Nail Studio Marketing Templates | Creative Nail Art",
-    intro: "Creative marketing materials for nail studios. Showcase designs, promote packages, and attract clients.",
-    useCases: ["Nail Art Gallery Posters", "Service Menu Templates", "Package Offer Designs", "Seasonal Design Highlights"],
-    cta: "Design Nail Studio Promotions",
-  },
-  "wellness-centers": {
-    title: "Wellness Center Marketing Templates | Holistic Health",
-    intro: "Holistic marketing materials for wellness centers. Promote programs, therapies, and wellness services.",
-    useCases: ["Wellness Program Posters", "Therapy Service Templates", "Workshop Announcements", "Membership Package Designs"],
-    cta: "Create Wellness Center Ads",
-  },
-
-  // Automotive Services
-  "automotive-workshops": {
-    title: "Automotive Workshop Marketing Templates | Expert Service",
-    intro: "Professional marketing materials for automotive workshops. Promote services, offers, and expertise.",
-    useCases: ["Service Offer Posters", "Maintenance Package Templates", "Seasonal Service Ads", "Expert Team Showcase"],
-    cta: "Create Workshop Promotions",
-  },
-  "car-detailing-services": {
-    title: "Car Detailing Marketing Templates | Premium Shine",
-    intro: "Premium marketing materials for car detailing services. Showcase results, promote packages, and attract car lovers.",
-    useCases: ["Before/After Showcase Posters", "Detailing Package Templates", "Service Menu Designs", "Special Offer Graphics"],
-    cta: "Design Detailing Promotions",
-  },
-  "tire-shops": {
-    title: "Tire Shop Marketing Templates | Safety & Quality",
-    intro: "Professional marketing materials for tire shops. Promote brands, offers, and installation services.",
-    useCases: ["Brand Showcase Posters", "Seasonal Offer Templates", "Service Package Designs", "Safety Tips Graphics"],
-    cta: "Create Tire Shop Materials",
-  },
-  "vehicle-repair-centers": {
-    title: "Vehicle Repair Center Marketing Templates | Trusted Service",
-    intro: "Reliable marketing materials for vehicle repair centers. Build trust, promote services, and offer guarantees.",
-    useCases: ["Service Guarantee Posters", "Repair Package Templates", "Quick Service Ads", "Customer Testimonial Designs"],
-    cta: "Design Repair Center Promotions",
-  },
-  "auto-care-centers": {
-    title: "Auto Care Center Marketing Templates | Complete Care",
-    intro: "Comprehensive marketing materials for auto care centers. Promote all services, packages, and care programs.",
-    useCases: ["Complete Care Package Posters", "Service Menu Templates", "Membership Program Designs", "Seasonal Checkup Ads"],
-    cta: "Create Auto Care Materials",
+    type: "regular",
+    images: getImagePaths("/Banquat Hall"),
+    gradient: "from-indigo-500/20 via-purple-500/20 to-pink-500/20",
+    icon: FaBuilding,
   },
 };
 
 export function generateStaticParams() {
-  return Object.keys(MAP).map(slug => ({ slug }));
+  return Object.keys(CATEGORY_MAP).map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const item = MAP[slug];
-  if (!item) return {};
-  
-  const categoryName = item.title.split('|')[0].trim();
+  const item = CATEGORY_MAP[slug];
+  if (!item) {
+    return {
+      title: "Category Not Found | MarketBrand.ai",
+    };
+  }
+
+  const categoryName = item.title;
   const keywords = [
     categoryName.toLowerCase(),
-    'marketing templates',
-    'promotional materials',
-    'business marketing',
-    'professional designs',
-    'marketing posters',
-    'promotional videos',
-    ...item.useCases.map(u => u.toLowerCase())
-  ].join(', ');
+    "marketing templates",
+    "promotional materials",
+    "business marketing",
+    "professional designs",
+    "marketing posters",
+    "promotional videos",
+    ...item.useCases.map((u) => u.toLowerCase()),
+  ].join(", ");
 
   return {
-    title: `${item.title} | MarketBrand.ai`,
+    title: `${item.title} Templates | Professional Promotional Videos & Posters | MarketBrand.ai`,
     description: item.intro,
     keywords: keywords,
-    alternates: { 
-      canonical: `https://www.marketbrand.ai/category/${slug}` 
+    alternates: {
+      canonical: `/category/${slug}`,
     },
     openGraph: {
-      title: item.title,
+      title: `${item.title} Templates | Professional Promotional Videos & Posters`,
       description: item.intro,
       url: `https://www.marketbrand.ai/category/${slug}`,
-      siteName: 'MarketBrand.ai',
+      siteName: "MarketBrand.ai",
       images: [
         {
-          url: '/og-image.svg',
+          url: "/og-image.svg",
           width: 1200,
           height: 630,
-          alt: categoryName
-        }
+          alt: categoryName,
+        },
       ],
-      locale: 'en_IN',
-      type: 'website',
+      locale: "en_IN",
+      type: "website",
     },
     twitter: {
-      card: 'summary_large_image',
-      title: item.title,
+      card: "summary_large_image",
+      title: `${item.title} Templates | Professional Promotional Videos & Posters`,
       description: item.intro,
-      images: ['/og-image.svg'],
+      images: ["/og-image.svg"],
     },
     robots: {
       index: true,
@@ -254,9 +326,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       googleBot: {
         index: true,
         follow: true,
-        'max-video-preview': -1,
-        'max-image-preview': 'large',
-        'max-snippet': -1,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
       },
     },
   };
@@ -264,67 +336,52 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = MAP[slug];
+  const item = CATEGORY_MAP[slug];
   if (!item) return notFound();
-  
-  const getCategoryIcon = (slug: string) => {
-    const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-      "wedding-planners": FaHeart, "decorators": FaPalette, "photographers": FaCamera, "caterers": FaUtensils, "venues": FaBuilding,
-      "fitness-studios": FaDumbbell, "gyms": FaDumbbell, "yoga-centers": FaDumbbell, "personal-trainers": FaDumbbell, "health-clubs": FaDumbbell,
-      "retail-stores": FaShoppingBag, "grocery-shops": FaShoppingBag, "fashion-boutiques": FaShoppingBag, "supermarkets": FaShoppingBag, "shopping-centers": FaShoppingBag,
-      "healthcare-clinics": FaHospital, "diagnostic-centers": FaHospital, "hospitals": FaHospital, "dental-clinics": FaHospital, "medical-practices": FaHospital,
-      "beauty-salons": FaSprayCan, "spas": FaSprayCan, "aesthetic-clinics": FaSprayCan, "nail-studios": FaSprayCan, "wellness-centers": FaSprayCan,
-      "automotive-workshops": FaCar, "car-detailing-services": FaCar, "tire-shops": FaCar, "vehicle-repair-centers": FaCar, "auto-care-centers": FaCar
-    };
-    return iconMap[slug] || FaBullseye;
-  };
 
-  const IconComponent = getCategoryIcon(slug);
+  // IconComponent available for future use if needed
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": item.title,
-    "description": item.intro,
-    "provider": {
+    name: `${item.title} Templates`,
+    description: item.intro,
+    provider: {
       "@type": "Organization",
-      "name": "MarketBrand.ai",
-      "url": "https://www.marketbrand.ai"
+      name: "MarketBrand.ai",
+      url: "https://www.marketbrand.ai",
     },
-    "serviceType": "Digital Marketing Services",
-    "areaServed": {
+    serviceType: "Digital Marketing Services",
+    areaServed: {
       "@type": "Country",
-      "name": "India"
+      name: "India",
     },
-    "offers": {
+    offers: {
       "@type": "Offer",
-      "price": "599",
-      "priceCurrency": "INR",
-      "description": "Annual subscription for unlimited marketing templates",
-      "url": "https://www.marketbrand.ai/pricing"
+      price: "599",
+      priceCurrency: "INR",
+      description: "Annual subscription for unlimited marketing templates",
+      url: "https://www.marketbrand.ai/pricing",
     },
-    "aggregateRating": {
+    aggregateRating: {
       "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "5000",
-      "bestRating": "5",
-      "worstRating": "1"
+      ratingValue: "4.9",
+      reviewCount: "5000",
+      bestRating: "5",
+      worstRating: "1",
     },
-    "image": "https://www.marketbrand.ai/og-image.svg",
-    "category": item.title.split('|')[0].trim()
+    image: "https://www.marketbrand.ai/og-image.svg",
+    category: item.title,
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <div className="min-h-screen bg-gray-900">
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-800/50 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-4 py-4">
-            <nav className="flex items-center space-x-2 text-sm">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 py-4">
+            <nav className="flex items-center space-x-2 text-xs sm:text-sm flex-wrap">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
               </Link>
@@ -333,136 +390,71 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
                 Categories
               </Link>
               <span className="text-gray-500">/</span>
-              <span className="text-white font-semibold">{item.title.split('|')[0].trim()}</span>
+              <span className="text-white font-semibold break-words">{item.title}</span>
             </nav>
           </div>
         </div>
 
         {/* Hero Section */}
-        <div className="relative py-24 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
+        <div className={`relative py-16 overflow-hidden bg-gradient-to-br ${item.gradient}`}>
           {/* Animated Background Elements */}
           <div className="absolute inset-0">
             <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
-          
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
-            <div className="text-center">
-              {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
-                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-4 py-2">
-                  <span className="text-green-300 text-sm font-semibold">✓ 1000+ Professional Templates</span>
-                </div>
-                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold flex items-center gap-1"><BsStarFill className="inline" /> 4.9/5 Rating</span>
-                </div>
-                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold flex items-center gap-1"><FaRocket className="inline" /> Instant Download</span>
-                </div>
+
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+            <div className="flex flex-col lg:flex-row items-start gap-6 sm:gap-8 lg:gap-12">
+              {/* Main Content */}
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black gradient-text mb-4 leading-[1.2] sm:leading-[1.3]">
+                  {item.title} Templates
+                </h1>
               </div>
 
-              <div className="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl animate-pulse">
-                <IconComponent className="text-white text-5xl" />
+              {/* Trust Badges - Right Side Horizontal */}
+              <div className="flex flex-row gap-1 sm:gap-1.5 justify-center lg:justify-end lg:items-center w-full lg:w-auto">
+                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-md px-2 sm:px-2.5 py-1.5 backdrop-blur-sm hover:scale-105 transition-all duration-300 flex items-center justify-center min-h-[28px] sm:min-h-[32px]">
+                  <span className="text-green-300 text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1">
+                    ✓ 1000+ Templates
+                  </span>
+                </div>
+                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-md px-2 sm:px-2.5 py-1.5 backdrop-blur-sm hover:scale-105 transition-all duration-300 flex items-center justify-center min-h-[28px] sm:min-h-[32px]">
+                  <span className="text-blue-300 text-xs sm:text-sm font-semibold flex items-center gap-1 whitespace-nowrap">
+                    <BsStarFill className="text-xs" /> 4.9/5
+                  </span>
+                </div>
+                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-md px-2 sm:px-2.5 py-1.5 backdrop-blur-sm hover:scale-105 transition-all duration-300 flex items-center justify-center min-h-[28px] sm:min-h-[32px]">
+                  <span className="text-purple-300 text-xs sm:text-sm font-semibold flex items-center gap-1 whitespace-nowrap">
+                    <FaRocket className="text-xs" /> Instant
+                  </span>
+                </div>
               </div>
-              
-              <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
-                {item.title.split('|')[0].trim()}
-              </h1>
-              
-              <p className="text-xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
-                {item.intro}
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="https://play.google.com/store/apps/details?id=com.marketbrand"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                >
-                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Download App - Free Trial</span>
-                </Link>
-                <Link 
-                  href="/pricing"
-                  className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-lg hover:bg-white/10 transition-all duration-300"
-                >
-                  View Pricing
-                </Link>
-              </div>
-
-              <p className="text-gray-400 text-sm mt-6 flex items-center gap-2">
-                <FaBolt className="inline" /> No Credit Card Required • 7-Day Free Trial • Cancel Anytime
-              </p>
             </div>
-          </div>
-        </div>
 
-        {/* Template Cards Gallery */}
-        <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
-                Marketing Template Gallery
-              </h2>
-              <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
-                Professional templates designed specifically for your business
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {item.useCases.map((useCase, index) => (
-                <div key={index} className="card-premium group overflow-hidden">
-                  {/* Image Placeholder */}
-                  <div className="relative h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-xl mb-6 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <IconComponent className="text-white text-6xl" />
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg px-3 py-1 inline-block">
-                        <span className="text-green-300 text-xs font-semibold">✓ Professional Design</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:gradient-text transition-all duration-300">
-                    {useCase}
-                  </h3>
-                  <p className="text-gray-300 text-sm mb-6 leading-relaxed">
-                    High-quality, customizable templates perfect for promoting your business and attracting more customers.
-                  </p>
-
-                  {/* Download Button */}
-                  <Link 
-                    href="/download"
-                    className="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl text-white font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
-                  >
-                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
-                    Download Template
-                  </Link>
-                </div>
-              ))}
+            {/* Image Carousel - Different types based on category */}
+            <div className="relative mt-0">
+              {item.type === "tabbed" && item.tabs && (
+                <TabbedImageCarousel tabs={item.tabs} interval={2000} />
+              )}
+              {item.type === "regular" && item.images && (
+                <HorizontalImageCarousel images={item.images} interval={2000} />
+              )}
             </div>
           </div>
         </div>
 
         {/* Benefits Section */}
-        <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
-                Why Choose Our Templates?
-              </h2>
-              <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
+        <div className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-800 to-gray-900">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black gradient-text mb-4">Why Choose Our Templates?</h2>
+              <p className="text-lg sm:text-xl text-gray-300 font-light max-w-3xl mx-auto px-4">
                 Everything you need to create professional marketing materials
               </p>
             </div>
-            
-            <div className="grid md:grid-cols-3 gap-8">
+
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
               <div className="card-premium text-center space-y-6">
                 <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto">
                   <FaBolt className="text-white text-3xl" />
@@ -497,37 +489,36 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
         </div>
 
         {/* Final CTA Section */}
-        <div className="py-24 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 relative overflow-hidden">
+        <div className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 relative overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
-          
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
-            <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
-              {item.cta}
-            </h2>
-            <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
-              Join 50,000+ businesses already creating professional marketing materials. 
-              Download our app and start now!
+
+          <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 md:px-8 lg:px-12 text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black gradient-text mb-4 sm:mb-6">{item.cta}</h2>
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4">
+              Join 10,000+ businesses already creating professional marketing materials. Download our app and start now!
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link 
+
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-stretch sm:items-center">
+              <Link
                 href="/download"
-                className="inline-flex items-center px-12 py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center justify-center px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl sm:rounded-2xl text-white font-bold text-lg sm:text-xl md:text-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial Now</span>
+                <span className="flex items-center gap-2">
+                  <FaRocket className="inline" /> Start Free Trial Now
+                </span>
               </Link>
-              <Link 
+              <Link
                 href="/pricing"
-                className="inline-flex items-center px-12 py-6 border-2 border-white/30 rounded-2xl text-white font-bold text-2xl hover:bg-white/10 transition-all duration-300"
+                className="inline-flex items-center justify-center px-6 sm:px-8 md:px-12 py-4 sm:py-5 md:py-6 border-2 border-white/30 rounded-xl sm:rounded-2xl text-white font-bold text-lg sm:text-xl md:text-2xl hover:bg-white/10 transition-all duration-300"
               >
                 View Pricing Plans
               </Link>
             </div>
-            
-            <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
+
+            <p className="text-gray-400 text-sm sm:text-base md:text-lg mt-6 sm:mt-8 flex flex-wrap items-center gap-2 justify-center px-4">
               <FaBolt className="inline" /> 7-Day Free Trial • No Credit Card Required • 1000+ Templates
             </p>
           </div>

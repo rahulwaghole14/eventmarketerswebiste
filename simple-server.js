@@ -3,13 +3,28 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = 3000;
+const OUT_DIR = path.join(__dirname, 'out');
 
 const server = http.createServer((req, res) => {
-  let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
+  // Clean the URL path
+  let urlPath = req.url.split('?')[0]; // Remove query string
   
-  // If file doesn't exist, serve index.html
+  // Default to index.html for root
+  if (urlPath === '/') {
+    urlPath = '/index.html';
+  }
+  
+  // Build file path
+  let filePath = path.join(OUT_DIR, urlPath);
+  
+  // If file doesn't exist and it's a route (no extension), try adding .html
+  if (!fs.existsSync(filePath) && !path.extname(urlPath)) {
+    filePath = path.join(OUT_DIR, urlPath + '.html');
+  }
+  
+  // If still doesn't exist, serve index.html
   if (!fs.existsSync(filePath)) {
-    filePath = path.join(__dirname, 'index.html');
+    filePath = path.join(OUT_DIR, 'index.html');
   }
   
   const extname = String(path.extname(filePath)).toLowerCase();
@@ -50,10 +65,11 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 MarketBrand.ai Server is running!`);
+  console.log(`🚀 Static Export Server is running!`);
   console.log(`📍 Local: http://localhost:${PORT}`);
-  console.log(`🌐 Network: http://192.168.0.100:${PORT}`);
-  console.log(`✨ Your beautiful website is ready!`);
+  console.log(`🌐 Network: http://0.0.0.0:${PORT}`);
+  console.log(`📁 Serving from: ${OUT_DIR}`);
+  console.log(`✨ Your static website is ready!`);
 });
 
 

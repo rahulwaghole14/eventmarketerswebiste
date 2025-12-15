@@ -206,7 +206,7 @@ export default function PricingPage() {
       <div className="min-h-screen bg-gray-900">
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-800/50 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-4 py-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
@@ -218,121 +218,83 @@ export default function PricingPage() {
         </div>
 
         {/* Enhanced Hero Section */}
-        <div className="relative py-24 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
+        <div className="relative py-12 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
           {/* Animated Background Elements */}
           <div className="absolute inset-0">
             <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
-            <div className="text-center">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+            <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-6 lg:gap-8">
+              {/* Heading */}
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-4xl lg:text-5xl font-black gradient-text leading-[1.3] pt-1 pb-1">
+                  Simple, <span className="text-white">Transparent Pricing</span>
+                </h1>
+              </div>
+
               {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
-                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-4 py-2">
-                  <span className="text-green-300 text-sm font-semibold">✓ 7-Day Free Trial</span>
+              <div className="flex flex-wrap justify-center lg:justify-end items-center gap-2">
+                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
+                  <span className="text-green-300 text-xs font-semibold whitespace-nowrap">✓ 7-Day Free Trial</span>
                 </div>
-                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">Save ₹180,000+ vs Designer</span>
+                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
+                  <span className="text-blue-300 text-xs font-semibold whitespace-nowrap">Save ₹180K+ vs Designer</span>
                 </div>
-                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold">🔄 Cancel Anytime</span>
-                </div>
-              </div>
-
-              <h1 className="text-6xl lg:text-7xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
-                Simple, <span className="text-white">Transparent Pricing</span>
-              </h1>
-              
-              <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-8 leading-relaxed">
-                Choose the perfect plan for your business. No hidden fees, no surprises. 
-                <span className="text-white font-semibold">Start free and upgrade anytime.</span>
-              </p>
-
-              {/* Statistics */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">₹599</div>
-                  <div className="text-gray-400 text-sm">Pro Plan/Year</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">₹180K+</div>
-                  <div className="text-gray-400 text-sm">Annual Savings</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">7-Day</div>
-                  <div className="text-gray-400 text-sm">Free Trial</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">50K+</div>
-                  <div className="text-gray-400 text-sm">Happy Customers</div>
+                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
+                  <span className="text-purple-300 text-xs font-semibold whitespace-nowrap">🔄 Cancel Anytime</span>
                 </div>
               </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/download"
-                  className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                >
-                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Start 7-Day Free Trial</span>
-                </Link>
-                <Link 
-                  href="/#pricing"
-                  className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition-all duration-300"
-                >
-                  Compare Plans
-                </Link>
-              </div>
-
-              <p className="text-gray-400 text-sm mt-6 flex items-center gap-2">
-                <FaBolt className="inline" /> No Credit Card Required • 7-Day Free Trial • 30-Day Money Back Guarantee
-              </p>
             </div>
+
+            <p className="text-gray-300 text-base mt-6 text-center lg:text-left max-w-3xl">
+              Professional marketing templates designed specifically for your industry. Each category includes templates, videos, and promotional materials tailored to your business needs.
+            </p>
           </div>
         </div>
 
         {/* Interactive Pricing Cards */}
-        <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
+        <div className="py-12 sm:py-16 md:py-20 lg:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black gradient-text mb-4 px-4">
                 Choose Your Perfect Plan
               </h2>
-              <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto px-4">
                 All plans include access to our full template library. Start free, upgrade anytime.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4">
               {plans.map((plan, index) => (
-                <div key={index} className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 ${plan.popular ? 'ring-2 ring-indigo-500/50' : ''}`}>
+                <div key={index} className={`group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2 ${plan.popular ? 'ring-2 ring-indigo-500/50' : ''}`}>
                   {/* Popular Badge */}
                   {plan.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                      <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-full text-sm font-bold shadow-2xl">
+                    <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2 z-20">
+                      <div className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-bold shadow-2xl">
                         <span className="flex items-center gap-1"><FaBullseye className="inline" /> Most Popular</span>
                       </div>
                     </div>
                   )}
                   
                   {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${plan.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${plan.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl sm:rounded-3xl`}></div>
                   
                   <div className="relative z-10">
-                    <div className="text-center mb-8">
-                      <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                      <p className="text-gray-400 text-sm mb-6">{plan.description}</p>
+                    <div className="text-center mb-6 sm:mb-8">
+                      <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                      <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6">{plan.description}</p>
                       
                       <div className="mb-4">
                         <div className="flex items-center justify-center space-x-2">
-                          <span className="text-5xl font-black text-white">{plan.price}</span>
-                          <span className="text-gray-400">{plan.period}</span>
+                          <span className="text-3xl sm:text-4xl md:text-5xl font-black text-white">{plan.price}</span>
+                          <span className="text-gray-400 text-sm sm:text-base">{plan.period}</span>
                         </div>
                         {plan.originalPrice && (
-                          <div className="flex items-center justify-center space-x-2 mt-2">
-                            <span className="text-lg text-gray-500 line-through">{plan.originalPrice}/year</span>
-                            <span className="text-green-400 text-sm font-semibold">{plan.savings}</span>
+                          <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 mt-2">
+                            <span className="text-sm sm:text-base md:text-lg text-gray-500 line-through">{plan.originalPrice}/year</span>
+                            <span className="text-green-400 text-xs sm:text-sm font-semibold">{plan.savings}</span>
                           </div>
                         )}
                       </div>
@@ -370,7 +332,7 @@ export default function PricingPage() {
 
         {/* ROI Calculator Section */}
         <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Calculate Your Savings
@@ -448,7 +410,7 @@ export default function PricingPage() {
 
         {/* Customer Testimonials by Plan */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 What Our Customers Say About Our Plans
@@ -494,7 +456,7 @@ export default function PricingPage() {
 
         {/* FAQ Section */}
         <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="mx-auto max-w-5xl px-4">
+          <div className="mx-auto max-w-5xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Frequently Asked Questions
@@ -527,12 +489,12 @@ export default function PricingPage() {
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+          <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
               Ready to Save ₹179,000+ Per Year?
             </h2>
             <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
-              Join 50,000+ businesses who are already saving thousands on design costs. 
+              Join 10,000+ businesses who are already saving thousands on design costs. 
               Start your free trial today and experience the difference!
             </p>
             
@@ -574,7 +536,7 @@ export default function PricingPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
-              <FaBolt className="inline" /> Join 50,000+ Businesses • Save ₹179,000+ Annually • 7-Day Free Trial
+              <FaBolt className="inline" /> Join 10,000+ Businesses • Save ₹179,000+ Annually • 7-Day Free Trial
             </p>
           </div>
         </div>

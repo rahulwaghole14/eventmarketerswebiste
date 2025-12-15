@@ -51,74 +51,114 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }}
       />
       
+      {/* Today's Pick Floating Badge - Fixed over entire page */}
+      <Link 
+        href="/todays-pick"
+        className="fixed bottom-6 right-6 z-50 w-16 h-16 sm:w-20 sm:h-20 md:w-20 md:h-20 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 rounded-full flex flex-col items-center justify-center animate-badge-float hover:scale-110 transition-all duration-300 group"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 rounded-full animate-ping opacity-30" style={{animationDuration: '2s'}}></div>
+        <span className="text-white font-bold text-[10px] sm:text-xs md:text-sm relative z-10 text-center leading-tight px-1">Today's<br/>Pick</span>
+        <div className="absolute -top-0.5 -right-0.5 w-3 h-3 sm:w-4 sm:h-4 bg-yellow-400 rounded-full border-2 border-white animate-pulse"></div>
+      </Link>
+      
       {/* Ultra-Modern Hero Section */}
-      <div className="relative min-h-screen overflow-hidden">
+      <div className="relative min-h-screen overflow-x-hidden">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-float-slow"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-20 left-10 w-32 h-32 sm:w-48 sm:h-48 md:w-72 md:h-72 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-3xl animate-float-slow"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[600px] md:h-[600px] lg:w-[800px] lg:h-[800px] bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
         </div>
 
         {/* Grid Pattern Overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[90vh]">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 pt-16 pb-6 sm:pt-16 sm:pb-8 md:pt-20 md:pb-12 lg:py-16 xl:py-20">
+          <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-16">
             {/* Left Content */}
-            <div className="space-y-10">
-            <div className="space-y-8">
+            <div className="space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 order-1 lg:order-1">
+            <div className="space-y-4 sm:space-y-5 md:space-y-6">
                 {/* Status Badge */}
-                <div className="inline-flex items-center px-6 py-3 rounded-full glass animate-shimmer">
-                  <div className="relative">
-                    <span className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></span>
+                <div className="inline-flex flex-wrap items-center gap-2 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full glass animate-shimmer max-w-full">
+                  <div className="relative flex-shrink-0">
+                    <span className="w-2 h-2 bg-green-400 rounded-full mr-2 sm:mr-3 animate-pulse"></span>
                     <span className="absolute inset-0 w-2 h-2 bg-green-400 rounded-full animate-ping opacity-75"></span>
                   </div>
-                  <span className="text-sm font-semibold text-white">Live Now - 50,000+ Users Creating</span>
-                  <div className="ml-3 px-2 py-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full border border-green-500/30">
-                    <span className="text-xs text-green-300">+2,857 this week</span>
+                  <span className="text-xs sm:text-sm font-semibold text-white whitespace-nowrap">Live Now - 10,000+ Users</span>
+                  <div className="px-2 py-1 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-full border border-green-500/30 flex-shrink-0">
+                    <span className="text-xs text-green-300 whitespace-nowrap">+2,857 this week</span>
                   </div>
                 </div>
                 
                 {/* Main Headline */}
-                <div className="space-y-6">
-                  <h1 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-[1.3] tracking-tight pt-1 pb-1">
+                <div className="space-y-3 sm:space-y-4 md:space-y-5">
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-black leading-[1.2] sm:leading-[1.25] md:leading-[1.3] tracking-tight">
                     <span className="text-white">Get Ready-Made</span><br/>
                     <span className="gradient-text animate-gradient">Marketing Materials</span><br/>
                     <span className="text-white">for Your Business</span>
                 </h1>
                   
+                  {/* Scrolling Images Component */}
+                  <div className="relative w-full overflow-hidden py-2 sm:py-3 rounded-xl sm:rounded-4xl">
+                    <div className="flex animate-scroll gap-2 sm:gap-3 md:gap-4">
+                      {/* First set of images */}
+                      {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+                        <div key={num} className="flex-shrink-0 w-28 h-9 sm:w-40 sm:h-14 md:w-56 md:h-18 lg:w-72 lg:h-24 rounded-lg sm:rounded-xl glass border border-white/10 overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300">
+                          <Image
+                            src={`/hero-scroller/Image-${num}.png`}
+                            alt={`Marketing material ${num}`}
+                            width={288}
+                            height={96}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ))}
+                      {/* Duplicate set for seamless loop */}
+                      {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+                        <div key={`dup-${num}`} className="flex-shrink-0 w-28 h-9 sm:w-40 sm:h-14 md:w-56 md:h-18 lg:w-72 lg:h-24 rounded-lg sm:rounded-xl glass border border-white/10 overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300">
+                          <Image
+                            src={`/hero-scroller/Image-${num}.png`}
+                            alt={`Marketing material ${num}`}
+                            width={288}
+                            height={96}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
                   {/* Subtitle */}
-                  <p className="text-xl lg:text-2xl text-gray-300 font-light leading-relaxed max-w-3xl">
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-300 font-light leading-relaxed break-words">
                     Professional posters & videos in 1 minute with your business details.
                   </p>
                 </div>
                 
-                <p className="text-lg text-gray-400 leading-relaxed max-w-2xl font-light">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-400 leading-relaxed font-light break-words">
                   Stop struggling with expensive designers. Get professional marketing materials instantly. 
                   Download our app, choose from 1000+ ready-made templates, and boost your business today.
                 </p>
               </div>
               
               {/* App Store Download Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center" id="start">
+              <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 lg:gap-4 w-full mt-4 sm:mt-5 lg:mt-6 lg:justify-center" id="start">
                 {/* Google Play Store Button */}
                 <DownloadButton
                   href="https://play.google.com/store/apps/details?id=com.marketbrand"
                   source="hero_google_play"
                   ariaLabel="Download from Google Play Store"
-                  className="btn-secondary text-sm px-8 py-4 rounded-xl font-semibold group flex items-center justify-center space-x-3 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                  className="btn-secondary px-4 sm:px-5 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-3.5 lg:py-4 rounded-lg sm:rounded-xl font-semibold group flex items-center gap-2.5 sm:gap-3 md:gap-4 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden w-full max-w-sm mx-auto sm:max-w-none sm:mx-0 lg:w-auto"
                 >
                   {/* Google Logo SVG */}
-                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-8 lg:h-8 flex-shrink-0" viewBox="0 0 24 24" fill="none">
                     <path d="M3.609 1.814L13.792 12L3.609 22.186C3.386 22.409 3.386 22.773 3.609 22.996C3.832 23.219 4.196 23.219 4.419 22.996L14.602 12.814C14.825 12.591 14.825 12.227 14.602 12.004L4.419 1.814C4.196 1.591 3.832 1.591 3.609 1.814Z" fill="#4285F4"/>
                     <path d="M14.602 11.186L4.419 1.004C4.196 0.781 3.832 0.781 3.609 1.004C3.386 1.227 3.386 1.591 3.609 1.814L13.792 12L3.609 22.186C3.386 22.409 3.386 22.773 3.609 22.996C3.832 23.219 4.196 23.219 4.419 22.996L14.602 12.814C14.825 12.591 14.825 12.227 14.602 12.004Z" fill="#34A853"/>
                     <path d="M20.391 11.186L10.208 1.004C9.985 0.781 9.621 0.781 9.398 1.004C9.175 1.227 9.175 1.591 9.398 1.814L19.581 12L9.398 22.186C9.175 22.409 9.175 22.773 9.398 22.996C9.621 23.219 9.985 23.219 10.208 22.996L20.391 12.814C20.614 12.591 20.614 12.227 20.391 12.004Z" fill="#FBBC04"/>
                     <path d="M20.391 12.814L10.208 22.996C9.985 23.219 9.621 23.219 9.398 22.996C9.175 22.773 9.175 22.409 9.398 22.186L19.581 12L9.398 1.814C9.175 1.591 9.175 1.227 9.398 1.004C9.621 0.781 9.985 0.781 10.208 1.004L20.391 11.186C20.614 11.409 20.614 11.773 20.391 11.996Z" fill="#EA4335"/>
                   </svg>
-                  <div className="flex flex-col items-start relative z-10">
-                    <span className="text-xs opacity-75 flex items-center gap-1"><FaRocket className="inline" /> FREE DOWNLOAD</span>
-                    <span className="font-bold">Google Play</span>
+                  <div className="flex flex-col items-start relative z-10 flex-1 min-w-0">
+                    <span className="text-[10px] sm:text-xs lg:text-sm opacity-75 flex items-center gap-1 whitespace-nowrap"><FaRocket className="inline text-[10px] sm:text-xs lg:text-sm" /> FREE DOWNLOAD</span>
+                    <span className="font-bold text-sm sm:text-base lg:text-base">Google Play</span>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </DownloadButton>
@@ -126,102 +166,105 @@ export default function HomePage() {
                 {/* Apple App Store Button */}
                 <Link 
                   href="/app-store-coming-soon"
-                  className="btn-secondary text-sm px-8 py-4 rounded-xl font-semibold group flex items-center justify-center space-x-3 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                  className="btn-secondary px-4 sm:px-5 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-3.5 lg:py-4 rounded-lg sm:rounded-xl font-semibold group flex items-center gap-2.5 sm:gap-3 md:gap-4 shadow-xl hover:scale-105 transition-all duration-300 relative overflow-hidden w-full max-w-sm mx-auto sm:max-w-none sm:mx-0 lg:w-auto"
                 >
                   {/* Apple Logo SVG */}
-                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-8 lg:h-8 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
                   </svg>
-                  <div className="flex flex-col items-start relative z-10">
-                    <span className="text-xs opacity-75 flex items-center gap-1"><FaMobileAlt className="inline" /> FREE DOWNLOAD</span>
-                    <span className="font-bold">App Store</span>
+                  <div className="flex flex-col items-start relative z-10 flex-1 min-w-0">
+                    <span className="text-[10px] sm:text-xs lg:text-sm opacity-75 flex items-center gap-1 whitespace-nowrap"><FaMobileAlt className="inline text-[10px] sm:text-xs lg:text-sm" /> FREE DOWNLOAD</span>
+                    <span className="font-bold text-sm sm:text-base lg:text-base">App Store</span>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </Link>
               </div>
-              
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400">
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  <span>1000+ Professional Templates</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  <span>Download in Under 2 Minutes</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
-                  </svg>
-                  <span>No Design Skills Required</span>
-                </div>
-              </div>
-              
-              {/* Business Benefits */}
-              <div className="flex flex-wrap items-center gap-6 text-xs">
-                <div className="flex items-center space-x-2 glass px-3 py-2 rounded-full">
-                  <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse"></div>
-                  <span className="font-medium text-white">50,000+ Businesses</span>
-                </div>
-                <div className="flex items-center space-x-2 glass px-3 py-2 rounded-full">
-                  <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
-                  <span className="font-medium text-white">Ready-Made Templates</span>
-                </div>
-                <div className="flex items-center space-x-2 glass px-3 py-2 rounded-full">
-                  <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
-                  <span className="font-medium text-white">No Design Skills Needed</span>
-                </div>
-              </div>
             </div>
             
             {/* Right Content - Hero Image */}
-            <div className="relative">
-              <div className="relative mx-auto w-full max-w-[280px] md:max-w-xs lg:max-w-sm animate-float">
+            <div className="relative mt-4 sm:mt-6 lg:mt-0 flex flex-col items-center lg:items-start lg:pl-8 xl:pl-12 order-2 lg:order-2">
+              <div className="relative w-full max-w-[240px] sm:max-w-[280px] md:max-w-xs lg:max-w-xs xl:max-w-s animate-float">
                 <Image
                   src="/hero-image.png"
                   alt="MarketBrand Hero"
                   width={400}
                   height={320}
-                  className="w-full h-auto object-contain rounded-2xl shadow-2xl"
+                  className="w-full h-auto object-contain rounded-xl sm:rounded-2xl shadow-2xl"
                   priority
                 />
               </div>
               
-              {/* Floating Elements */}
-              <div className="absolute -top-8 -right-8 w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-float shadow-2xl"></div>
-              <div className="absolute -bottom-8 -left-8 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-float-slow shadow-2xl"></div>
+              {/* Floating Elements - Hidden on mobile */}
+              <div className="hidden md:block absolute -top-8 -right-8 w-12 md:w-16 h-12 md:h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-float shadow-2xl"></div>
+              <div className="hidden md:block absolute -bottom-8 -left-8 w-10 md:w-12 h-10 md:h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-float-slow shadow-2xl"></div>
               
-              {/* Secondary Phone */}
-              <div className="absolute top-20 -right-12 w-48 h-80 glass rounded-2xl p-1 shadow-xl rotate-12 animate-float-slow">
+              {/* Secondary Phone - Hidden on mobile, smaller on tablet */}
+              <div className="hidden lg:block absolute top-20 -right-12 w-48 h-80 glass rounded-2xl p-1 shadow-xl rotate-12 animate-float-slow">
                 <div className="w-full h-full bg-gray-900 rounded-xl overflow-hidden">
                   <div className="px-4 py-3 text-center border-b border-white/10">
                     <div className="text-white font-bold text-sm">Templates</div>
                   </div>
                   <div className="p-4 space-y-3">
-                    <Link href="/templates/business" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer">
+                    <Link href="/categories" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer">
                       <span className="text-white font-bold text-sm">Business</span>
                     </Link>
-                    <Link href="/templates/festival" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer" style={{animationDelay: '0.5s'}}>
-                      <span className="text-white font-bold text-sm">Festival</span>
+                    <Link href="/templates/festive-alerts" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer" style={{animationDelay: '0.5s'}}>
+                      <span className="text-white font-bold text-sm">Festive Alerts</span>
                     </Link>
-                    <Link href="/templates/general" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer" style={{animationDelay: '1s'}}>
-                      <span className="text-white font-bold text-sm">General</span>
+                    <Link href="/templates/greetings" className="glass rounded-lg h-16 flex items-center justify-center animate-shimmer hover:scale-105 transition-transform duration-300 cursor-pointer" style={{animationDelay: '1s'}}>
+                      <span className="text-white font-bold text-sm">Greetings</span>
                     </Link>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Icons */}
-              <div className="absolute top-10 -left-10 w-8 h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center animate-bounce shadow-lg">
-                <HiSparkles className="text-white text-sm" />
+              {/* Floating Icons - Hidden on mobile */}
+              <div className="hidden md:flex absolute top-10 -left-10 w-6 md:w-8 h-6 md:h-8 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full items-center justify-center animate-bounce shadow-lg">
+                <HiSparkles className="text-white text-xs md:text-sm" />
               </div>
-              <div className="absolute bottom-20 -right-16 w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center animate-bounce shadow-lg" style={{animationDelay: '1s'}}>
-                <FaPalette className="text-white text-sm" />
+              <div className="hidden md:flex absolute bottom-20 -right-16 w-8 md:w-10 h-8 md:h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full items-center justify-center animate-bounce shadow-lg" style={{animationDelay: '1s'}}>
+                <FaPalette className="text-white text-xs md:text-sm" />
+              </div>
+              
+              {/* Trust Indicators & Business Benefits - Bottom of Hero Image */}
+              <div className="mt-4 sm:mt-5 md:mt-6 lg:mt-8 space-y-2.5 sm:space-y-3 md:space-y-4 w-full">
+                {/* Trust Indicators */}
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm text-gray-400">
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                    </svg>
+                    <span className="whitespace-nowrap">1000+ Templates</span>
+                  </div>
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                    </svg>
+                    <span className="whitespace-nowrap">Under 2 Minutes</span>
+                  </div>
+                  <div className="flex items-center space-x-1 sm:space-x-2">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                    </svg>
+                    <span className="whitespace-nowrap">No Skills Required</span>
+                  </div>
+                </div>
+                
+                {/* Business Benefits */}
+                <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 md:gap-4 text-xs">
+                  <div className="flex items-center space-x-1 sm:space-x-2 glass px-2 sm:px-3 py-1.5 sm:py-2 rounded-full">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse flex-shrink-0"></div>
+                    <span className="font-medium text-white whitespace-nowrap">10,000+ Businesses</span>
+                  </div>
+                  <div className="flex items-center space-x-1 sm:space-x-2 glass px-2 sm:px-3 py-1.5 sm:py-2 rounded-full">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full animate-pulse flex-shrink-0" style={{animationDelay: '0.5s'}}></div>
+                    <span className="font-medium text-white whitespace-nowrap">Ready-Made</span>
+                  </div>
+                  <div className="flex items-center space-x-1 sm:space-x-2 glass px-2 sm:px-3 py-1.5 sm:py-2 rounded-full">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-pulse flex-shrink-0" style={{animationDelay: '1s'}}></div>
+                    <span className="font-medium text-white whitespace-nowrap">No Skills Needed</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -229,62 +272,62 @@ export default function HomePage() {
       </div>
 
       {/* Premium Features Section */}
-      <div className="relative py-32">
+      <div className="relative py-16 sm:py-24 md:py-32">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/50 to-transparent"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Why 50,000+ Businesses Trust MarketBrand?</h2>
-            <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black gradient-text mb-4 px-4 break-words">Why 10,000+ Businesses Trust MarketBrand?</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto px-4 break-words">
               Transform your marketing with professional designs that drive real business results
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="card-premium group text-center space-y-6">
-              <div className="w-24 h-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                <FaBolt className="text-white text-4xl" />
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="card-premium group text-center space-y-4 sm:space-y-6">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                <FaBolt className="text-white text-3xl sm:text-4xl" />
               </div>
-              <h3 className="text-3xl font-bold text-white flex items-center justify-center gap-2"><FaBolt className="text-indigo-400" /> Instant Download</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white flex flex-wrap items-center justify-center gap-2 break-words px-2"><FaBolt className="text-indigo-400 flex-shrink-0" /> <span>Instant Download</span></h3>
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed break-words px-2">
                 Get professional marketing materials in under 2 minutes. 
                 Skip the design process entirely - download, customize, and share immediately.
               </p>
-              <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg px-4 py-2">
-                <Link href="/features" className="text-green-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1"><FaBolt className="inline" /> 2-Minute Download Time Guaranteed</Link>
+              <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg px-3 sm:px-4 py-2">
+                <Link href="/features" className="text-green-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1 text-xs sm:text-sm break-words"><FaBolt className="inline flex-shrink-0" /> <span className="text-center">2-Minute Download Time Guaranteed</span></Link>
               </div>
               <div className="flex justify-center">
                 <div className="w-16 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"></div>
               </div>
             </div>
             
-            <div className="card-premium group text-center space-y-6">
-              <div className="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                <FaPalette className="text-white text-4xl" />
+            <div className="card-premium group text-center space-y-4 sm:space-y-6">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                <FaPalette className="text-white text-3xl sm:text-4xl" />
               </div>
-              <h3 className="text-3xl font-bold text-white flex items-center justify-center gap-2"><FaPalette className="text-purple-400" /> Expert-Designed Templates</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white flex flex-wrap items-center justify-center gap-2 break-words px-2"><FaPalette className="text-purple-400 flex-shrink-0" /> <span>Expert-Designed Templates</span></h3>
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed break-words px-2">
                 Marketing materials crafted by professional designers. 
                 Perfect for restaurants, retail stores, events, salons, gyms, and 20+ business types.
               </p>
-              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-4 py-2">
-                <Link href="/templates" className="text-purple-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1"><FaPalette className="inline" /> 1000+ Professional Templates Available</Link>
+              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-3 sm:px-4 py-2">
+                <Link href="/templates" className="text-purple-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1 text-xs sm:text-sm break-words"><FaPalette className="inline flex-shrink-0" /> <span className="text-center">1000+ Professional Templates Available</span></Link>
               </div>
               <div className="flex justify-center">
                 <div className="w-16 h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
               </div>
             </div>
             
-            <div className="card-premium group text-center space-y-6">
-              <div className="w-24 h-24 bg-gradient-to-r from-pink-500 to-orange-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
-                <FaMobileAlt className="text-white text-4xl" />
+            <div className="card-premium group text-center space-y-4 sm:space-y-6">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-pink-500 to-orange-500 rounded-3xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                <FaMobileAlt className="text-white text-3xl sm:text-4xl" />
               </div>
-              <h3 className="text-3xl font-bold text-white flex items-center justify-center gap-2"><FaMobileAlt className="text-pink-400" /> Smart Mobile App</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white flex flex-wrap items-center justify-center gap-2 break-words px-2"><FaMobileAlt className="text-pink-400 flex-shrink-0" /> <span>Smart Mobile App</span></h3>
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed break-words px-2">
                 Access thousands of templates on-the-go. 
                 Simply add your business details and get customized marketing materials in seconds.
               </p>
-              <div className="bg-gradient-to-r from-pink-500/20 to-orange-500/20 border border-pink-500/30 rounded-lg px-4 py-2">
-                <span className="text-pink-300 font-semibold flex items-center justify-center gap-1"><FaMobileAlt className="inline" /> No Design Skills Required - Try Free for 7 Days</span>
+              <div className="bg-gradient-to-r from-pink-500/20 to-orange-500/20 border border-pink-500/30 rounded-lg px-3 sm:px-4 py-2">
+                <span className="text-pink-300 font-semibold flex items-center justify-center gap-1 text-xs sm:text-sm break-words"><FaMobileAlt className="inline flex-shrink-0" /> <span className="text-center">No Design Skills Required - Try Free for 7 Days</span></span>
               </div>
               <div className="flex justify-center">
                 <div className="w-16 h-1 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full"></div>
@@ -295,86 +338,86 @@ export default function HomePage() {
       </div>
 
       {/* How It Works Section */}
-      <div className="relative py-32 bg-gradient-to-b from-gray-900 to-gray-800">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">How It Works</h2>
-            <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
+      <div className="relative py-16 sm:py-24 md:py-32 bg-gradient-to-b from-gray-900 to-gray-800">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black gradient-text mb-4 px-4 break-words">How It Works</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto px-4 break-words">
               Get professional marketing materials in just 3 simple steps
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
             {/* Step 1 */}
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-4 sm:space-y-6">
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto shadow-2xl">
-                  <span className="text-white text-3xl font-bold">1</span>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center mx-auto shadow-2xl">
+                  <span className="text-white text-2xl sm:text-3xl font-bold">1</span>
                 </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <div className="absolute -top-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-white">Download & Install</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <h3 className="text-xl sm:text-2xl font-bold text-white break-words px-2">Download & Install</h3>
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed break-words px-2">
                 Download our app from Google Play Store or Apple App Store. 
                 Installation takes less than 2 minutes.
               </p>
-              <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg px-4 py-2">
-                <Link href="/download" className="text-indigo-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1"><FaMobileAlt className="inline" /> Free Download • No Credit Card Required</Link>
+              <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg px-3 sm:px-4 py-2">
+                <Link href="/download" className="text-indigo-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1 text-xs sm:text-sm break-words"><FaMobileAlt className="inline flex-shrink-0" /> <span className="text-center">Free Download • No Credit Card Required</span></Link>
               </div>
             </div>
 
             {/* Step 2 */}
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-4 sm:space-y-6">
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto shadow-2xl">
-                  <span className="text-white text-3xl font-bold">2</span>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto shadow-2xl">
+                  <span className="text-white text-2xl sm:text-3xl font-bold">2</span>
                 </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <div className="absolute -top-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-white">Choose Your Template</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <h3 className="text-xl sm:text-2xl font-bold text-white break-words px-2">Choose Your Template</h3>
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed break-words px-2">
                 Browse 1000+ professional templates. Select from business categories, 
                 festivals, or general marketing materials.
               </p>
-              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-4 py-2">
-                <Link href="/templates" className="text-purple-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1"><FaPalette className="inline" /> 1000+ Templates • All Business Types</Link>
+              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-3 sm:px-4 py-2">
+                <Link href="/templates" className="text-purple-300 font-semibold hover:text-white transition-colors flex items-center justify-center gap-1 text-xs sm:text-sm break-words"><FaPalette className="inline flex-shrink-0" /> <span className="text-center">1000+ Templates • All Business Types</span></Link>
               </div>
             </div>
 
             {/* Step 3 */}
-            <div className="text-center space-y-6">
+            <div className="text-center space-y-4 sm:space-y-6">
               <div className="relative">
-                <div className="w-20 h-20 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center mx-auto shadow-2xl">
-                  <span className="text-white text-3xl font-bold">3</span>
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-pink-500 to-orange-500 rounded-full flex items-center justify-center mx-auto shadow-2xl">
+                  <span className="text-white text-2xl sm:text-3xl font-bold">3</span>
                 </div>
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <div className="absolute -top-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                   </svg>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-white">Customize & Download</h3>
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <h3 className="text-xl sm:text-2xl font-bold text-white break-words px-2">Customize & Download</h3>
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed break-words px-2">
                 Add your business details, customize frames, and download your 
                 professional marketing materials in under 1 minutes.
               </p>
-              <div className="bg-gradient-to-r from-pink-500/20 to-orange-500/20 border border-pink-500/30 rounded-lg px-4 py-2">
-                <span className="text-pink-300 font-semibold flex items-center justify-center gap-1"><FaBolt className="inline" /> Customize & Instant Download</span>
+              <div className="bg-gradient-to-r from-pink-500/20 to-orange-500/20 border border-pink-500/30 rounded-lg px-3 sm:px-4 py-2">
+                <span className="text-pink-300 font-semibold flex items-center justify-center gap-1 text-xs sm:text-sm break-words"><FaBolt className="inline flex-shrink-0" /> <span className="text-center">Customize & Instant Download</span></span>
               </div>
             </div>
           </div>
 
           {/* CTA Button */}
-          <div className="text-center mt-16">
-            <Link href="/download" className="btn-primary text-lg px-12 py-4 rounded-xl font-bold shadow-2xl hover:scale-105 transition-all duration-300 inline-block">
+          <div className="text-center mt-12 sm:mt-16 px-4">
+            <Link href="/download" className="btn-primary text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-12 py-3 sm:py-4 rounded-xl font-bold shadow-2xl hover:scale-105 transition-all duration-300 inline-block w-full sm:w-auto">
               Start Creating Now - Free Download
             </Link>
           </div>
@@ -382,11 +425,11 @@ export default function HomePage() {
       </div>
 
       {/* Premium Categories Section */}
-      <div className="relative py-32">
-        <div className="mx-auto max-w-7xl px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-black text-white mb-4">Ready-Made Materials for Every Business</h2>
-            <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
+      <div className="relative py-16 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 px-4 break-words">Ready-Made Materials for Every Business</h2>
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto px-4 break-words">
               Professional marketing materials for events, fitness, retail, healthcare, beauty, and automotive businesses
             </p>
           </div>
@@ -395,13 +438,13 @@ export default function HomePage() {
       </div>
 
       {/* Premium Testimonials */}
-      <div className="relative py-32">
+      <div className="relative py-16 sm:py-24 md:py-32">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10"></div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4">
-          <div className="text-center mb-20">
-            <h2 className="text-6xl lg:text-7xl font-black gradient-text mb-6">What Our Customers Say</h2>
-            <p className="text-2xl text-gray-300 font-light max-w-3xl mx-auto">
-              Join 50,000+ businesses already creating amazing marketing materials
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="text-center mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black gradient-text mb-4 sm:mb-6 px-4 break-words">What Our Customers Say</h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 font-light max-w-3xl mx-auto px-4 break-words">
+              Join 10,000+ businesses already creating amazing marketing materials
             </p>
           </div>
           <Testimonial />
@@ -420,35 +463,39 @@ export default function HomePage() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
         </div>
         
-        <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-          <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 leading-[1.3] pt-1 pb-1">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 md:px-8 lg:px-12 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 sm:mb-6 leading-[1.3] pt-1 pb-1 px-4 break-words">
             Ready to Boost Your Business?
           </h2>
-          <p className="text-xl text-white/90 mb-10 font-light max-w-3xl mx-auto">
-            Join 50,000+ businesses already using our app to get ready-made marketing materials
+          <p className="text-base sm:text-lg md:text-xl text-white/90 mb-8 sm:mb-10 font-light max-w-3xl mx-auto px-4 break-words">
+            Join 10,000+ businesses already using our app to get ready-made marketing materials
           </p>
           
           {/* Free Download Badge */}
-          <div className="mb-8">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full text-green-300 font-semibold">
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <div className="mb-6 sm:mb-8 px-4">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full text-green-300 font-semibold text-xs sm:text-sm">
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
               </svg>
-              Free Download • No Credit Card Required • 7-Day Free Trial
+              <span className="whitespace-nowrap">Free Download</span>
+              <span className="hidden sm:inline">•</span>
+              <span className="whitespace-nowrap">No Credit Card</span>
+              <span className="hidden sm:inline">•</span>
+              <span className="whitespace-nowrap">7-Day Free Trial</span>
             </div>
           </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             {/* App Store Download Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full sm:w-auto">
               {/* Google Play Store Button */}
               <Link 
                 href="https://play.google.com/store/apps/details?id=com.marketbrand"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-white text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-3"
+                className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-xs sm:text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-2 sm:space-x-3 w-full sm:w-auto"
               >
                 {/* Google Logo SVG */}
-                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none">
+                <svg className="w-6 h-6 sm:w-8 sm:h-8 flex-shrink-0" viewBox="0 0 24 24" fill="none">
                   <path d="M3.609 1.814L13.792 12L3.609 22.186C3.386 22.409 3.386 22.773 3.609 22.996C3.832 23.219 4.196 23.219 4.419 22.996L14.602 12.814C14.825 12.591 14.825 12.227 14.602 12.004L4.419 1.814C4.196 1.591 3.832 1.591 3.609 1.814Z" fill="currentColor"/>
                   <path d="M14.602 11.186L4.419 1.004C4.196 0.781 3.832 0.781 3.609 1.004C3.386 1.227 3.386 1.591 3.609 1.814L13.792 12L3.609 22.186C3.386 22.409 3.386 22.773 3.609 22.996C3.832 23.219 4.196 23.219 4.419 22.996L14.602 12.814C14.825 12.591 14.825 12.227 14.602 12.004Z" fill="currentColor"/>
                   <path d="M20.391 11.186L10.208 1.004C9.985 0.781 9.621 0.781 9.398 1.004C9.175 1.227 9.175 1.591 9.398 1.814L19.581 12L9.398 22.186C9.175 22.409 9.175 22.773 9.398 22.996C9.621 23.219 9.985 23.219 10.208 22.996L20.391 12.814C20.614 12.591 20.614 12.227 20.391 12.004Z" fill="currentColor"/>
@@ -456,14 +503,14 @@ export default function HomePage() {
                 </svg>
                 <div className="flex flex-col items-start">
                   <span className="text-xs opacity-75">GET IT ON</span>
-                  <span className="font-bold">Google Play</span>
+                  <span className="font-bold text-sm sm:text-base">Google Play</span>
                 </div>
               </Link>
               
               {/* Apple App Store Button */}
               <Link 
                 href="/app-store-coming-soon"
-                className="border-2 border-white text-white px-8 py-4 rounded-xl text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-3"
+                className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-xs sm:text-sm font-semibold hover:bg-white hover:text-indigo-600 transition-all duration-300 shadow-xl transform hover:scale-105 group flex items-center justify-center space-x-2 sm:space-x-3 w-full sm:w-auto"
               >
                 {/* Apple Logo SVG */}
                 <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
@@ -478,47 +525,47 @@ export default function HomePage() {
           </div>
           
           {/* Trust Indicators */}
-          <div className="mt-16 space-y-8">
-            <div className="flex flex-wrap justify-center items-center gap-8 text-white/80">
+          <div className="mt-12 sm:mt-16 space-y-6 sm:space-y-8 px-4">
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 text-white/80 text-sm sm:text-base">
               <div className="flex items-center space-x-2">
-                <span className="text-2xl">✓</span>
-                <span className="font-semibold">Ready-Made Materials</span>
+                <span className="text-xl sm:text-2xl flex-shrink-0">✓</span>
+                <span className="font-semibold whitespace-nowrap">Ready-Made Materials</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-2xl">✓</span>
-                <span className="font-semibold">No Design Skills Needed</span>
+                <span className="text-xl sm:text-2xl flex-shrink-0">✓</span>
+                <span className="font-semibold whitespace-nowrap">No Design Skills Needed</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-2xl">✓</span>
+                <span className="text-xl sm:text-2xl flex-shrink-0">✓</span>
                 <span className="font-semibold">Instant Download</span>
               </div>
             </div>
             
             {/* Security & Trust Badges */}
-            <div className="flex flex-wrap justify-center items-center gap-8 text-white/60">
+            <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 text-white/60 text-xs sm:text-sm">
               <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd"/>
                 </svg>
-                <span className="text-sm">Secure Payment</span>
+                <span className="whitespace-nowrap">Secure Payment</span>
               </div>
               <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
-                <span className="text-sm">Money-Back Guarantee</span>
+                <span className="whitespace-nowrap">Money-Back Guarantee</span>
               </div>
               <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clipRule="evenodd"/>
                 </svg>
-                <span className="text-sm">24/7 Customer Support</span>
+                <span className="whitespace-nowrap">24/7 Customer Support</span>
               </div>
               <div className="flex items-center space-x-2">
-                <svg className="w-5 h-5 text-orange-400" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-orange-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"/>
                 </svg>
-                <span className="text-sm">Unlimited Downloads</span>
+                <span className="whitespace-nowrap">Unlimited Downloads</span>
               </div>
             </div>
           </div>
@@ -533,7 +580,7 @@ export default function HomePage() {
           <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
         </div>
         
-        <div className="relative z-10 mx-auto max-w-5xl px-4">
+        <div className="relative z-10 mx-auto max-w-5xl px-6 md:px-8 lg:px-12">
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl mb-6">
               <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -708,7 +755,7 @@ export default function HomePage() {
 
       {/* Contact & Support Section */}
       <div className="relative py-32 bg-gradient-to-r from-indigo-500/10 to-purple-500/10">
-        <div className="mx-auto max-w-4xl px-4 text-center">
+        <div className="mx-auto max-w-4xl px-6 md:px-8 lg:px-12 text-center">
           <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-6">Need Help? We're Here for You</h2>
           <p className="text-xl text-gray-300 mb-12">
             Our support team is ready to help you get the most out of MarketBrand

@@ -1,10 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { FaRocket, FaPalette, FaBolt, FaComments } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "About Us | MarketBrand.ai - Empowering Businesses with Professional Marketing",
-  description: "Learn about MarketBrand.ai's mission to make professional marketing simple and affordable for every business. Join 50,000+ businesses already using our platform.",
+  description: "Learn about MarketBrand.ai's mission to make professional marketing simple and affordable for every business. Join 10,000+ businesses already using our platform.",
   keywords: "about MarketBrand, company mission, business marketing, professional design, team, vision",
   alternates: { canonical: "/about" },
   robots: {
@@ -61,7 +60,7 @@ export default function AboutPage() {
       <div className="min-h-screen bg-gray-900">
         {/* Breadcrumb Navigation */}
         <div className="bg-gray-800/50 border-b border-white/10">
-          <div className="mx-auto max-w-7xl px-4 py-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
             <nav className="flex items-center space-x-2 text-sm">
               <Link href="/" className="text-gray-400 hover:text-white transition-colors">
                 Home
@@ -73,80 +72,46 @@ export default function AboutPage() {
         </div>
 
         {/* Enhanced Hero Section */}
-        <div className="relative py-24 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
+        <div className="relative py-12 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
           {/* Animated Background Elements */}
           <div className="absolute inset-0">
             <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
-            <div className="text-center">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+            <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-6 lg:gap-8">
+              {/* Heading */}
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-4xl lg:text-5xl font-black gradient-text leading-[1.3] pt-1 pb-1">
+                  About MarketBrand.ai
+                </h1>
+              </div>
+
               {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
-                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-4 py-2">
-                  <span className="text-green-300 text-sm font-semibold">✓ 50,000+ Businesses</span>
+              <div className="flex flex-wrap justify-center lg:justify-end items-center gap-2">
+                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
+                  <span className="text-green-300 text-xs font-semibold whitespace-nowrap">✓ 10,000+ Businesses</span>
                 </div>
-                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-4 py-2">
-                  <span className="text-blue-300 text-sm font-semibold">🎨 1,000+ Templates</span>
+                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
+                  <span className="text-blue-300 text-xs font-semibold whitespace-nowrap">🎨 1,000+ Templates</span>
                 </div>
-                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-4 py-2">
-                  <span className="text-purple-300 text-sm font-semibold">🚀 Founded 2024</span>
+                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
+                  <span className="text-purple-300 text-xs font-semibold whitespace-nowrap">🚀 Founded 2024</span>
                 </div>
-              </div>
-
-              <h1 className="text-6xl lg:text-7xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
-                About MarketBrand.ai
-              </h1>
-              
-              <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-8 leading-relaxed">
-                We're on a mission to make professional marketing simple and affordable for every business. 
-                <span className="text-white font-semibold">No design skills required, just results.</span>
-              </p>
-
-              {/* Statistics */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">50,000+</div>
-                  <div className="text-gray-400 text-sm">Happy Businesses</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">1,000+</div>
-                  <div className="text-gray-400 text-sm">Professional Templates</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">6</div>
-                  <div className="text-gray-400 text-sm">Business Categories</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">1-Min</div>
-                  <div className="text-gray-400 text-sm">Creation Time</div>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  href="/download"
-                  className="inline-flex items-center px-10 py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl text-white font-bold text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                >
-                  🚀 Start Free Trial
-                </Link>
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center px-10 py-5 border-2 border-white/20 rounded-2xl text-white font-bold text-xl hover:bg-white/10 transition-all duration-300"
-                >
-                  💬 Contact Us
-                </Link>
               </div>
             </div>
+
+            <p className="text-gray-300 text-base mt-6 text-center lg:text-left max-w-3xl">
+              Professional marketing templates designed specifically for your industry. Each category includes templates, videos, and promotional materials tailored to your business needs.
+            </p>
           </div>
         </div>
 
         {/* Mission & Vision */}
-        <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="py-12 sm:py-16 md:py-20 lg:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center">
               <div className="space-y-8">
                 <div>
                   <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-6">Our Mission</h2>
@@ -217,7 +182,7 @@ export default function AboutPage() {
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+          <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
               Join Our Mission
             </h2>
@@ -264,7 +229,7 @@ export default function AboutPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 50,000+ Businesses • 1,000+ Templates • 1-Minute Creation
+              ⚡ Join 10,000+ Businesses • 1,000+ Templates • 1-Minute Creation
             </p>
           </div>
         </div>

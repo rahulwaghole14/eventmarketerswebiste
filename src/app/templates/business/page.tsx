@@ -64,7 +64,7 @@ export default function BusinessTemplatesPage() {
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center">
               <div className="flex flex-wrap justify-center items-center gap-4 mb-8">
                 <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-4 py-2">
@@ -114,7 +114,7 @@ export default function BusinessTemplatesPage() {
 
         {/* Examples Section */}
         <div className="py-24">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Popular Business Template Types
@@ -136,7 +136,7 @@ export default function BusinessTemplatesPage() {
 
         {/* Features Section */}
         <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
-          <div className="mx-auto max-w-7xl px-4">
+          <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
                 Why Choose Our Business Templates?
@@ -184,12 +184,12 @@ export default function BusinessTemplatesPage() {
             <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+          <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
             <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
               Ready to Create Professional Marketing Materials?
             </h2>
             <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
-              Join 50,000+ businesses already using MarketBrand to create stunning marketing materials
+              Join 10,000+ businesses already using MarketBrand to create stunning marketing materials
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -208,7 +208,7 @@ export default function BusinessTemplatesPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8 flex items-center gap-2 justify-center">
-              <FaBolt className="inline" /> Join 50,000+ Businesses • 500+ Business Templates • 1-Minute Creation
+              <FaBolt className="inline" /> Join 10,000+ Businesses • 500+ Business Templates • 1-Minute Creation
             </p>
           </div>
         </div>

@@ -3,7 +3,7 @@ import {
   FaRocket, FaMobileAlt, FaPalette, FaBolt, FaStar, FaHome, 
   FaEnvelope, FaPhone, FaCheckCircle, FaTimesCircle, FaChartLine,
   FaLock, FaShieldAlt, FaBriefcase, FaGift, FaChartBar, FaHeart,
-  FaLightbulb, FaTrophy, FaFire, FaSparkles, FaDumbbell, FaCamera,
+  FaLightbulb, FaTrophy, FaFire, FaDumbbell, FaCamera,
   FaUtensils, FaMusic, FaFilm, FaGamepad, FaBuilding, FaStore,
   FaHospital, FaCalendarAlt, FaUsers, FaComments, FaDownload, FaPlay,
   FaShoppingBag, FaCoffee, FaBirthdayCake, FaGraduationCap,
@@ -65,6 +65,10 @@ export default function IconReplacer({ emoji, className = '', size }: IconReplac
   
   const style = size ? { fontSize: typeof size === 'number' ? `${size}px` : size } : {};
   
-  return <IconComponent className={className} style={style} />;
+  return (
+    <span style={style} className={className}>
+      <IconComponent />
+    </span>
+  );
 }
 

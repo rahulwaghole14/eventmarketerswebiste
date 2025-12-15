@@ -123,7 +123,7 @@ export default function StatusPage() {
     <div className="min-h-screen bg-gray-900">
       {/* Breadcrumb Navigation */}
       <div className="bg-gray-800/50 border-b border-white/10">
-        <div className="mx-auto max-w-7xl px-4 py-4">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12 py-4">
           <nav className="flex items-center space-x-2 text-sm">
             <Link href="/" className="text-gray-400 hover:text-white transition-colors">
               Home
@@ -141,7 +141,7 @@ export default function StatusPage() {
           <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
         </div>
         
-        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
+        <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12 text-center">
           <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-6 leading-[1.3] pt-1 pb-1">
             System Status
           </h1>
@@ -159,7 +159,7 @@ export default function StatusPage() {
 
       {/* Services Status */}
       <div className="py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Service Status</h2>
             <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -200,7 +200,7 @@ export default function StatusPage() {
 
       {/* Recent Incidents */}
       <div className="py-24 bg-gray-800/30">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Recent Incidents</h2>
             <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -234,7 +234,7 @@ export default function StatusPage() {
 
       {/* Related Pages */}
       <div className="py-24">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">Need Help?</h2>
             <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
@@ -292,7 +292,7 @@ export default function StatusPage() {
           <div className="absolute bottom-10 left-10 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-indigo-500/10 rounded-full blur-3xl animate-float-slow"></div>
         </div>
         
-        <div className="relative z-10 mx-auto max-w-6xl px-4 text-center">
+        <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-8 lg:px-12 text-center">
           <h2 className="text-5xl lg:text-6xl font-black gradient-text mb-6">
             Still Having Issues?
           </h2>

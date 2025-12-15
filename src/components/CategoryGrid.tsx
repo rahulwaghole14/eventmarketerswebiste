@@ -2,46 +2,39 @@ import Link from "next/link";
 
 const categories = [
   { 
-    slug: "events-wedding-vendors", 
-    title: "Events & Wedding Vendors",
-    icon: "🎉",
-    description: "Professional wedding planner promotional videos, event vendor marketing posters, and wedding business promotional materials for, Wedding Planners, Decorators, photographers, caterers, venues and more",
-    gradient: "from-pink-500 to-purple-500"
+    slug: "event-planner", 
+    title: "Event Planner",
+    icon: "📅",
+    description: "Professional event planner promotional videos, marketing posters & business materials for Mandap, Sound, Generator, Decorator services and more",
+    gradient: "from-indigo-500 to-purple-500"
   },
   { 
-    slug: "fitness-gyms-yoga", 
-    title: "Fitness Studios, Gyms & Yoga",
-    icon: "💪",
-    description: "Professional fitness promotional videos, gym marketing posters, and wellness business promotional materials for fitness studios, gyms, yoga centers, personal trainers, and health clubs.",
-    gradient: "from-green-500 to-teal-500"
-  },
-  { 
-    slug: "retail-grocery-fashion", 
-    title: "Retail & Grocery/Kirana & Fashion Boutiques",
-    icon: "🛍️",
-    description: "Professional retail promotional videos, store marketing posters, and business promotional materials for retail stores, grocery shops, fashion boutiques, supermarkets, and shopping centers.",
+    slug: "banquet-hall", 
+    title: "Banquet Hall",
+    icon: "🏰",
+    description: "Professional banquet hall promotional videos, marketing posters & business materials for wedding venues, event venues, and banquet facilities",
     gradient: "from-blue-500 to-indigo-500"
   },
   { 
-    slug: "healthcare-clinics", 
-    title: "Healthcare Clinics & Diagnostics",
-    icon: "🏥",
-    description: "Professional healthcare promotional videos, medical marketing posters, and clinic promotional materials for healthcare clinics, diagnostic centers, hospitals, dental clinics, and medical practices.",
-    gradient: "from-emerald-500 to-blue-500"
+    slug: "catering", 
+    title: "Catering",
+    icon: "🍽️",
+    description: "Professional catering promotional videos, marketing posters & business materials for wedding catering, event catering, and food service businesses",
+    gradient: "from-orange-500 to-red-500"
   },
   { 
-    slug: "beauty-salons-spas", 
-    title: "Beauty Salons, Spas & Aesthetic Clinics",
-    icon: "💄",
-    description: "Professional beauty promotional videos, salon marketing posters, and wellness promotional materials for beauty salons, spas, aesthetic clinics, nail studios, and wellness centers.",
+    slug: "photographer", 
+    title: "Photographer",
+    icon: "📸",
+    description: "Professional photographer promotional videos, marketing posters & business materials for wedding photographers, event photographers, and portrait photographers",
     gradient: "from-purple-500 to-pink-500"
   },
   { 
-    slug: "automotive-services", 
-    title: "Automotive Services",
-    icon: "🚗",
-    description: "Professional automotive promotional videos, service marketing posters, and business promotional materials for automotive workshops, car detailing services, tire shops, and vehicle repair centers.",
-    gradient: "from-gray-500 to-gray-700"
+    slug: "light-supplier", 
+    title: "Light Supplier",
+    icon: "💡",
+    description: "Professional light supplier promotional videos, marketing posters & business materials for event lighting, wedding lighting, and lighting rental services",
+    gradient: "from-yellow-500 to-orange-500"
   },
 ];
 
