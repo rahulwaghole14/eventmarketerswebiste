@@ -12,6 +12,24 @@ function disableRouterInHTML(filePath) {
   const disableRouterScript = `<script>
 (function() {
   'use strict';
+  
+  // Immediately prevent Next.js from intercepting link clicks
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('a[href]');
+    if (target && target.href) {
+      const href = target.getAttribute('href');
+      // Only intercept internal links (not external URLs, mailto, tel, etc.)
+      if (href && !href.match(/^(https?:|mailto:|tel:|#)/)) {
+        // Prevent Next.js from handling this
+        e.stopImmediatePropagation();
+        // Use full page navigation
+        window.location.href = href;
+        e.preventDefault();
+        return false;
+      }
+    }
+  }, true); // Use capture phase to run before Next.js handlers
+  
   // Wait for page to fully load including React
   function init() {
     // Override fetch to prevent Next.js from fetching route data
@@ -25,63 +43,27 @@ function disableRouterInHTML(filePath) {
       return originalFetch.apply(this, arguments);
     };
     
-    // Disable Next.js router
+    // Disable Next.js router (fall back to full page loads)
     if (window.next) {
       window.next.router = {
-        push: function(url) { window.location.href = url; },
-        replace: function(url) { window.location.href = url; },
-        back: function() { window.history.back(); },
-        reload: function() { window.location.reload(); }
+        push: function (url) { window.location.href = url; },
+        replace: function (url) { window.location.href = url; },
+        back: function () { window.history.back(); },
+        reload: function () { window.location.reload(); }
       };
     }
     
-    // Wait much longer for React to fully hydrate and attach all event handlers
-    // Use a longer delay to ensure React is completely ready
-    setTimeout(function() {
-      // Intercept link clicks - but ONLY for navigation, not for interactive elements
-      // Mouse events (mouseenter/mouseleave) are completely separate and won't be affected
-      document.addEventListener('click', function(e) {
-        const link = e.target.closest('a[href]');
-        if (link) {
-          const href = link.getAttribute('href');
-          // Skip external links, anchors, and special protocols
-          if (!href || href.match(/^(http|https|mailto|tel|#|javascript):/i)) {
-            return;
-          }
-          
-          // Check if link is inside the dropdown menu (fixed positioned div with z-50)
-          // This is the mega dropdown menu that appears on hover
-          const isInDropdownMenu = link.closest('div[style*="fixed"]') && 
-                                  (link.closest('div[style*="z-50"]') || 
-                                   link.closest('div[style*="z-index: 50"]') ||
-                                   link.closest('[class*="z-50"]'));
-          
-          // Only skip links inside the dropdown menu (category links in the dropdown)
-          // The dropdown trigger link itself should navigate normally to /categories page
-          // Note: We don't skip target="_blank" links because file:// protocol doesn't support new tabs
-          // So we intercept them and navigate normally
-          if (!isInDropdownMenu) {
-            // fix-relative-paths.js already converted all paths to correct relative paths
-            // Use the href attribute directly - it's already correct for the current page depth
-            // The browser will resolve relative paths correctly when setting window.location.href
-            const targetUrl = href;
-            
-            // Prevent Next.js router and navigate
-            e.stopPropagation();
-            e.preventDefault();
-            e.stopImmediatePropagation();
-            
-            // Navigate using the href attribute (already correctly converted by fix-relative-paths.js)
-            // This ensures paths work correctly from any page depth
-            window.location.href = targetUrl;
-            return false;
-          }
-        }
-      }, true); // Capture phase to intercept before Next.js router
-    }, 1000); // Wait 1 second for React to fully hydrate
+    // Also disable Next.js Link component navigation
+    if (window.__next && window.__next.router) {
+      const originalPush = window.__next.router.push;
+      const originalReplace = window.__next.router.replace;
+      window.__next.router.push = function(url) { window.location.href = url; };
+      window.__next.router.replace = function(url) { window.location.href = url; };
+    }
   }
   
-  // Wait for everything to load
+  // Run immediately and also after load
+  init();
   if (document.readyState === 'complete') {
     setTimeout(init, 100);
   } else {
@@ -92,7 +74,35 @@ function disableRouterInHTML(filePath) {
 })();
 </script>`;
   
-  // Inject at the END of <body> to run AFTER React loads
+  // Inject in <head> for early execution, and also at the END of <body> as fallback
+  if (content.includes('</head>')) {
+    modified = true;
+    // Inject early script in head to intercept clicks before React loads
+    const earlyScript = `<script>
+(function() {
+  'use strict';
+  // Immediately prevent Next.js from intercepting link clicks
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('a[href]');
+    if (target && target.href) {
+      const href = target.getAttribute('href');
+      // Only intercept internal links (not external URLs, mailto, tel, etc.)
+      if (href && !href.match(/^(https?:|mailto:|tel:|#)/) && !href.startsWith('//')) {
+        // Prevent Next.js from handling this
+        e.stopImmediatePropagation();
+        // Use full page navigation
+        window.location.href = href;
+        e.preventDefault();
+        return false;
+      }
+    }
+  }, true); // Use capture phase to run before Next.js handlers
+})();
+</script>`;
+    content = content.replace('</head>', earlyScript + '\n</head>');
+  }
+  
+  // Also inject at the END of <body> to run AFTER React loads
   if (content.includes('</body>')) {
     modified = true;
     content = content.replace('</body>', disableRouterScript + '\n</body>');

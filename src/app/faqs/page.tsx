@@ -16,7 +16,7 @@ export default function FAQsPage() {
       questions: [
         {
           question: "What is MarketBrand.ai?",
-          answer: "MarketBrand.ai is a professional marketing design platform that helps businesses create stunning marketing materials in minutes. We offer 1000+ professional templates, instant customization, and easy download options for posters, videos, and promotional materials tailored to your business needs."
+          answer: "MarketBrand.ai is a professional marketing design platform that helps businesses create stunning marketing materials in minutes. We offer 10,000+ professional templates, instant customization, and easy download options for posters, videos, and promotional materials tailored to your business needs."
         },
         {
           question: "How do I get started?",
@@ -62,7 +62,7 @@ export default function FAQsPage() {
       questions: [
         {
           question: "How many templates are available?",
-          answer: "We have over 1,000+ professional templates covering various business categories including restaurants, events, weddings, healthcare, education, retail, and more. Our template library is constantly growing with new designs added regularly."
+          answer: "We have over 10,000+ professional templates covering various business categories including restaurants, events, weddings, healthcare, education, retail, and more. Our template library is constantly growing with new designs added regularly."
         },
         {
           question: "Can I customize templates?",

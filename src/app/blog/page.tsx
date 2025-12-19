@@ -2,12 +2,12 @@ import Section from "@/components/Section";
 import Link from "next/link";
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
-import { FaPalette, FaBolt, FaMobileAlt, FaFilm, FaBriefcase, FaDumbbell, FaGlobe, FaUtensils, FaHeart, FaRocket } from "react-icons/fa";
+import { FaPalette, FaBolt, FaMobileAlt, FaFilm, FaBriefcase, FaDumbbell, FaGlobe, FaUtensils, FaHeart, FaRocket, FaBook, FaEdit ,FaCreditCard,FaDollarSign} from "react-icons/fa";
 import { BsStarFill } from "react-icons/bs";
 
 export const metadata: Metadata = {
   title: "Marketing Design Features | Professional Templates & Customization Tools | MarketBrand.ai",
-  description: "Discover powerful marketing design features: 1000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes with MarketBrand.ai",
+  description: "Discover powerful marketing design features: 10,000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes with MarketBrand.ai",
   keywords: "marketing design features, professional templates, design customization tools, mobile marketing app, business design software, marketing automation, design templates, business marketing tools",
   alternates: { canonical: "/blog" },
   robots: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Marketing Design Features | Professional Templates & Customization Tools",
-    description: "Discover powerful marketing design features: 1000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
+    description: "Discover powerful marketing design features: 10,000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
     url: "https://www.marketbrand.ai/blog",
     siteName: "MarketBrand.ai",
     images: [{ url: "/og-features.jpg", width: 1200, height: 630 }],
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Marketing Design Features | Professional Templates & Customization Tools",
-    description: "Discover powerful marketing design features: 1000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
+    description: "Discover powerful marketing design features: 10,000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
     images: ["/og-features.jpg"],
   },
 };
@@ -43,7 +43,7 @@ export default function FeaturesPage() {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "MarketBrand.ai - Marketing Design Features",
-    "description": "Professional marketing design features with 1000+ templates, instant customization, multi-language support, and mobile-first design",
+    "description": "Professional marketing design features with 10,000+ templates, instant customization, multi-language support, and mobile-first design",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "iOS, Android, Web",
     "offers": {
@@ -53,11 +53,11 @@ export default function FeaturesPage() {
       "description": "Annual subscription for unlimited marketing materials"
     },
     "featureList": [
-      "1000+ Professional Templates",
+      "10,000+ Professional Templates",
       "Lightning Fast Creation",
       "Mobile-First Design",
       "Multi-Language Support",
-      "Posters & Videos",
+      "Posters",
       "Business Integration"
     ],
     "provider": {
@@ -68,12 +68,48 @@ export default function FeaturesPage() {
   };
 
   const features = [
+    // {
+    //   icon: "book",
+    //   title: "Getting Started",
+    //   description: "A simple guide to help you begin with confidence ,If you’re new to MarketBrand.ai, this is your starting point. This guide explains the basic steps you need to follow to get started smoothly.",
+    //   details: ["Quick sign-up", "Secure login", "Instant dashboard access", "No setup cost", " New users, first-time setup, first design creation",],
+    //   stats: "Getting Started",
+    //   usage: "Used by 10,000+ businesses",
+    //   gradient: "from-pink-500 to-purple-500"
+    // },
+    // {
+    //   icon: "edit",
+    //   title: "Design & Templates",
+    //   description: "Make every design look professional ,Discover how to select templates, edit text, customize colors, and follow brand guidelines. This section helps you create professional designs effortlessly—no design skills required. ",
+    //   details: [" Daily Use, Edits, Branding", "Category-based designs", "Ready-made layouts", " Professional styles", "Change headlines & content",],
+    //   stats: "Design & Templates",
+    //   usage: "Used by 10,000+ businesses",
+    //   gradient: "from-orange-500 to-yellow-500"
+    // },
+    // {
+    //   icon: "mobile",
+    //   title: "Mobile App Guide",
+    //   description: "Create designs anytime, anywhere ,MarketBrand isn’t just a website—it’s built for mobile speed too. Download and install the MarketBrand app on your smartphone. This guide explains the basic steps you need to follow to get started smoothly.",
+    //   details: ["Easy app installation", "Quick creation anytime", "Cloud sync", "Mobile-optimized tools", "App users, phone workflow, ",],
+    //   stats: "Mobile App Guide",
+    //   usage: "Used by 10,000+ businesses",
+    //   gradient: "from-blue-500 to-cyan-500"
+    // },
+    // {
+    //   icon: "credit-card",
+    //   title: "Billing & Plans",
+    //   description: "Clear, simple, transparent ,Manage your subscription with ease. Get clear information on plans, payments, billing history, and upgrades—simple, transparent, and hassle-free. ",
+    //   details: ["Payments, upgrades, plan clarity", " Simple plans", "Secure payments", "Easy upgrades", "Full billing history", "No hidden fees",],
+    //   stats: "Billing & Plans",
+    //   usage: "Used by 10,000+ businesses",
+    //   gradient: "from-red-500 to-pink-500"
+    // },
       {
       icon: "palette",
-      title: "1000+ Professional Templates",
+      title: "10,000+ Professional Templates",
       description: "Beautifully designed templates for every business category - restaurants, events, schools, weddings, fitness, healthcare, and more.",
       details: ["Industry-specific designs", "Seasonal collections", "Trending styles", "Regular updates", "HD quality", "Print-ready"],
-      stats: "1,000+ Templates",
+      stats: "10,000+ Templates",
       usage: "Used by 10,000+ businesses",
       gradient: "from-pink-500 to-purple-500"
     },
@@ -98,19 +134,19 @@ export default function FeaturesPage() {
     {
       icon: "globe",
       title: "Multi-Language Support",
-      description: "Create content in multiple languages including English, Hindi, Marathi, Tamil, Telugu, and more regional languages with cultural designs.",
-      details: ["15+ languages", "Regional fonts", "Cultural designs", "Local templates", "RTL support", "Auto-translation"],
-      stats: "15+ Languages",
+      description: "Create content in multiple languages including English, Hindi, Marathi, and more regional languages with cultural designs.",
+      details: ["3+ languages", "Regional fonts", "Cultural designs", "Local templates", "RTL support", "Auto-translation"],
+      stats: "3+ Languages",
       usage: "Used in 25+ cities",
       gradient: "from-green-500 to-emerald-500"
     },
     {
       icon: "film",
-      title: "Posters & Videos",
-      description: "Create both static posters and dynamic videos for maximum marketing impact across all platforms with professional quality.",
-      details: ["Static posters", "Animated videos", "Social media formats", "Print-ready files", "4K quality", "Multiple formats"],
+      title: "Posters",
+      description: "Create both static posters for maximum marketing impact across all platforms with professional quality.",
+      details: ["Static posters", "Social media formats", "Print-ready files", "4K quality", "Multiple formats"],
       stats: "All Formats",
-      usage: "500+ videos created daily",
+      usage: "500+ posters created daily",
       gradient: "from-purple-500 to-indigo-500"
     },
     {
@@ -134,10 +170,10 @@ export default function FeaturesPage() {
       feature: "Professional Templates"
     },
     {
-      text: "Lightning fast creation is no joke! I can create promotional videos for my gym in under a minute. My social media engagement increased by 300%!",
+      text: "Lightning fast creation is no joke! I can create promotional posters for my social media in under a minute. My social media engagement increased by 300%!",
       author: "Rajesh Kumar",
-      role: "Gym Owner",
-      business: "FitLife Gym",
+      role: "Social Media Manager",
+      business: "Social Media Marketing Agency",
       avatar: "fitness",
       feature: "Lightning Fast Creation"
     },
@@ -154,7 +190,7 @@ export default function FeaturesPage() {
   const technicalSpecs = [
     { category: "File Formats", details: "PNG, JPG, PDF, MP4, MOV, GIF" },
     { category: "Resolution", details: "Up to 4K (3840×2160) for videos, 300 DPI for print" },
-    { category: "Languages", details: "15+ languages with regional font support" },
+    { category: "Languages", details: "3+ languages with regional font support" },
     { category: "Storage", details: "Cloud sync with offline capability" },
     { category: "Compatibility", details: "iOS 12+, Android 8+, Web browsers" },
     { category: "Performance", details: "Sub-second loading, 99.9% uptime" }
@@ -213,7 +249,7 @@ export default function FeaturesPage() {
               {/* Statistics */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">1,000+</div>
+                  <div className="text-3xl font-bold text-white mb-2">10,000+</div>
                   <div className="text-gray-400 text-sm">Professional Templates</div>
                 </div>
                 <div className="text-center">
@@ -221,7 +257,7 @@ export default function FeaturesPage() {
                   <div className="text-gray-400 text-sm">Active Businesses</div>
               </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-white mb-2">15+</div>
+                  <div className="text-3xl font-bold text-white mb-2">3+</div>
                   <div className="text-gray-400 text-sm">Languages Supported</div>
             </div>
                 <div className="text-center">
@@ -267,7 +303,17 @@ export default function FeaturesPage() {
             
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-                <div key={index} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
+            <Link 
+              href={`/blog/${feature.title === '10,000+ Professional Templates' ? '10000-professional-templates' : 
+                feature.title === 'Lightning Fast Creation' ? 'lightning-fast-creation' :
+                feature.title === 'Mobile-First Design' ? 'mobile-first-design' :
+                feature.title === 'Multi-Language Support' ? 'multi-language-support' :
+                feature.title === 'Posters' ? 'posters' :
+                'business-integration'}`}
+              key={index}
+              className="block group"
+            >
+              <div className="h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
                   {/* Gradient Overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl`}></div>
                   
@@ -280,6 +326,10 @@ export default function FeaturesPage() {
                         {feature.icon === "globe" && <FaGlobe className="text-white text-2xl" />}
                         {feature.icon === "film" && <FaFilm className="text-white text-2xl" />}
                         {feature.icon === "briefcase" && <FaBriefcase className="text-white text-2xl" />}
+                        {feature.icon === "book" && <FaBook className="text-white text-2xl" />}
+                        {feature.icon === "edit" && <FaEdit className="text-white text-2xl" />}
+                        {feature.icon === "credit-card" && <FaCreditCard className="text-white text-2xl" />}
+
                     </div>
                       <div>
                         <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
@@ -294,25 +344,27 @@ export default function FeaturesPage() {
                     </p>
                     
                     <div className="space-y-3 mb-6">
-                {feature.details.map((detail, idx) => (
+                      {feature.details.map((detail, idx) => (
                         <div key={idx} className="flex items-center text-gray-300">
                           <div className="w-5 h-5 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                             <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                    </svg>
-                        </div>
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          </div>
                           <span className="text-sm">{detail}</span>
                         </div>
                       ))}
-                      </div>
-                      
-                    <div className={`bg-gradient-to-r ${feature.gradient}/20 border border-white/10 rounded-lg px-4 py-2`}>
-                      <span className="text-sm font-semibold text-white">{feature.stats}</span>
                     </div>
+
+                    {/* Stats Display - Matching Blog Slug Page */}
+                    <div className={`mt-4 inline-block bg-gradient-to-r ${feature.gradient}/20 border border-white/10 rounded-lg px-4 py-1.5`}>
+                      <span className="text-sm font-medium">{feature.stats}</span>
                     </div>
                   </div>
-              ))}
-            </div>
+                </div>
+              </Link>
+          ))}
+        </div>
           </div>
         </div>
 
@@ -365,7 +417,7 @@ export default function FeaturesPage() {
                     </div>
                     
         {/* Technical Specifications */}
-        <div className="py-24">
+        {/* <div className="py-24">
           <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
@@ -385,7 +437,7 @@ export default function FeaturesPage() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* How It Works */}
         <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
@@ -413,10 +465,10 @@ export default function FeaturesPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-white">Choose Template</h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  Browse our extensive library of 1000+ professional templates and select the perfect design for your business.
+                  Browse our extensive library of 10,000+ professional templates and select the perfect design for your business.
                 </p>
                 <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg px-4 py-2">
-                  <span className="text-indigo-300 font-semibold">🎨 1000+ Templates Available</span>
+                  <span className="text-indigo-300 font-semibold">🎨 10,000+ Templates Available</span>
                 </div>
               </div>
 
@@ -498,7 +550,7 @@ export default function FeaturesPage() {
                 </svg>
                 <span className="text-white font-semibold">7-Day Free Trial</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex justify-center items-center space-x-2">
                 <svg className="w-6 h-6 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
                 </svg>
@@ -528,7 +580,7 @@ export default function FeaturesPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8">
-              <span className="flex items-center gap-2"><FaBolt className="inline" /> Join 10,000+ Businesses • 1,000+ Templates • 1-Minute Creation</span>
+              <span className="flex items-center gap-2"><FaBolt className="inline" /> Join 10,000+ Businesses • 10,000+ Templates • 1-Minute Creation</span>
             </p>
           </div>
         </div>

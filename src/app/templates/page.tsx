@@ -1,10 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { FaRocket, FaPalette, FaBolt, FaMobileAlt, FaBriefcase, FaTrophy, FaBullseye, FaSync } from "react-icons/fa";
 
 export const metadata: Metadata = {
-  title: "Template Gallery | 1000+ Professional Marketing Templates | MarketBrand.ai",
-  description: "Browse our collection of 1000+ professional marketing templates. Posters, videos, flyers for restaurants, events, fitness, healthcare, beauty, automotive businesses. Download instantly.",
+  title: "Template Gallery | 10,000+ Professional Marketing Templates | MarketBrand.ai",
+  description: "Browse our collection of 10,000+ professional marketing templates. Posters, videos, flyers for restaurants, events, fitness, healthcare, beauty, automotive businesses. Download instantly.",
   keywords: "marketing templates, professional templates, business templates, poster templates, video templates, design templates, marketing materials",
   alternates: { canonical: "/templates" },
   robots: {
@@ -19,8 +20,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Template Gallery | 1000+ Professional Marketing Templates",
-    description: "Browse our collection of 1000+ professional marketing templates. Posters, videos, flyers for restaurants, events, fitness, healthcare, beauty, automotive businesses.",
+    title: "Template Gallery | 10,000+ Professional Marketing Templates",
+    description: "Browse our collection of 10,000+ professional marketing templates. Posters, videos, flyers for restaurants, events, fitness, healthcare, beauty, automotive businesses.",
     url: "https://www.marketbrand.ai/templates",
     siteName: "MarketBrand.ai",
     images: [{ url: "/og-templates.jpg", width: 1200, height: 630 }],
@@ -29,8 +30,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Template Gallery | 1000+ Professional Marketing Templates",
-    description: "Browse our collection of 1000+ professional marketing templates. Posters, videos, flyers for restaurants, events, fitness, healthcare, beauty, automotive businesses.",
+    title: "Template Gallery | 10,000+ Professional Marketing Templates",
+    description: "Browse our collection of 10,000+ professional marketing templates. Posters, videos, flyers for restaurants, events, fitness, healthcare, beauty, automotive businesses.",
     images: ["/og-templates.jpg"],
   },
 };
@@ -141,85 +142,45 @@ export default function TemplatesPage() {
           </div>
         </div>
 
-        {/* Enhanced Hero Section */}
-        <div className="relative py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
-          {/* Animated Background Elements */}
+        {/* Hero Section */}
+        <div className="relative py-12 sm:py-16 bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-pink-500/20 overflow-hidden">
           <div className="absolute inset-0">
             <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
             <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl animate-float-slow"></div>
           </div>
           
-          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-            <div className="text-center">
-              {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 mb-6 sm:mb-8 px-4">
-                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
-                  <span className="text-green-300 text-xs sm:text-sm font-semibold">✓ 1,000+ Templates</span>
-                </div>
-                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
-                  <span className="text-blue-300 text-xs sm:text-sm font-semibold flex items-center gap-1"><FaPalette className="inline" /> Professional Design</span>
-                </div>
-                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-3 sm:px-4 py-1.5 sm:py-2">
-                  <span className="text-purple-300 text-xs sm:text-sm font-semibold flex items-center gap-1"><FaBolt className="inline" /> 1-Minute Download</span>
-                </div>
+          <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              {/* Main Content */}
+              <div className="flex-1 text-center lg:text-left">
+                <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-4 leading-[1.3]">
+                  Template Gallery
+                </h1>
+                <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto lg:mx-0">
+                  Browse our collection of 10,000+ professional marketing templates. Perfect for any business, any occasion.
+                </p>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black gradient-text mb-4 sm:mb-6 leading-[1.3] pt-1 pb-1 px-4">
-                Template Gallery
-              </h1>
-              
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-6 sm:mb-8 leading-relaxed px-4">
-                Browse our collection of 1,000+ professional marketing templates. 
-                <span className="text-white font-semibold">Perfect for any business, any occasion.</span>
-              </p>
-
-              {/* Statistics */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12 max-w-4xl mx-auto px-4">
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">1,000+</div>
-                  <div className="text-gray-400 text-xs sm:text-sm">Professional Templates</div>
+              {/* Trust Badges - Horizontally Aligned */}
+              <div className="flex flex-row gap-3 justify-center lg:justify-start">
+                <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg px-5 py-3 backdrop-blur-sm hover:scale-105 transition-all duration-300">
+                  <span className="text-green-300 text-sm font-semibold whitespace-nowrap">✓ 10,000+ Templates</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">50+</div>
-                  <div className="text-gray-400 text-xs sm:text-sm">Business Categories</div>
+                <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-lg px-5 py-3 backdrop-blur-sm hover:scale-105 transition-all duration-300">
+                  <span className="text-blue-300 text-sm font-semibold whitespace-nowrap flex items-center gap-2"><FaPalette className="inline text-base" /> Professional</span>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">HD</div>
-                  <div className="text-gray-400 text-xs sm:text-sm">High Quality</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl sm:text-3xl font-bold text-white mb-1 sm:mb-2">1-Min</div>
-                  <div className="text-gray-400 text-xs sm:text-sm">Customization Time</div>
+                <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-5 py-3 backdrop-blur-sm hover:scale-105 transition-all duration-300">
+                  <span className="text-purple-300 text-sm font-semibold whitespace-nowrap flex items-center gap-2"><FaBolt className="inline text-base" /> 1-Minute</span>
                 </div>
               </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-                <Link 
-                  href="/download"
-                  className="inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl sm:rounded-2xl text-white font-bold text-base sm:text-lg md:text-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                >
-                  <span className="flex items-center gap-2"><FaRocket className="inline" /> Start Free Trial</span>
-                </Link>
-                <Link 
-                  href="/categories"
-                  className="inline-flex items-center justify-center px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 border-2 border-white/20 rounded-xl sm:rounded-2xl text-white font-bold text-base sm:text-lg md:text-xl hover:bg-white/10 transition-all duration-300"
-                >
-                  <span className="flex items-center gap-2"><FaBullseye className="inline" /> Browse Categories</span>
-                </Link>
-              </div>
-
-              <p className="text-gray-400 text-xs sm:text-sm mt-4 sm:mt-6 flex flex-wrap items-center justify-center gap-1 sm:gap-2 px-4">
-                <FaBolt className="inline" /> No Credit Card Required • 7-Day Free Trial • Cancel Anytime
-              </p>
             </div>
           </div>
         </div>
 
         {/* Template Categories */}
-        <div className="py-12 sm:py-16 md:py-20 lg:py-24">
+        <div className="py-8 sm:py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <div className="text-center mb-8 sm:mb-10 md:mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black gradient-text mb-4 px-4">
                 Browse by Category
               </h2>
@@ -289,9 +250,9 @@ export default function TemplatesPage() {
         </div>
 
         {/* Features Section */}
-        <div className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gradient-to-b from-gray-800 to-gray-900">
+        <div className="py-8 sm:py-12 md:py-16 bg-gradient-to-b from-gray-800 to-gray-900">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <div className="text-center mb-8 sm:mb-10 md:mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black gradient-text mb-4 px-4">
                 Why Choose Our Templates?
               </h2>
@@ -321,9 +282,9 @@ export default function TemplatesPage() {
         </div>
 
         {/* Template Preview Grid */}
-        <div className="py-12 sm:py-16 md:py-20 lg:py-24">
+        <div className="py-8 sm:py-12 md:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            <div className="text-center mb-8 sm:mb-10 md:mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black gradient-text mb-4 px-4">
                 Popular Templates
               </h2>
@@ -333,26 +294,54 @@ export default function TemplatesPage() {
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3, 4, 5, 6].map((item) => (
-                <div key={item} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:border-white/20 transition-all duration-300 hover:shadow-2xl">
-                  <div className="aspect-[4/5] bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl mb-4 flex items-center justify-center">
-                    <div className="text-center">
-                      <FaPalette className="text-4xl mb-2 mx-auto" />
-                      <div className="text-gray-400 text-sm">Template Preview</div>
-                    </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                // Business Category Templates
+                { name: "Event Planner - Mandap", image: "/Event Planner/Mandap/1.png", category: "Business" },
+                { name: "Event Planner - Decorator", image: "/Event Planner/Decorator/1.png", category: "Business" },
+                { name: "Catering Service", image: "/Catering/1.png", category: "Business" },
+                { name: "Banquet Hall", image: "/Banquat Hall/1.png", category: "Business" },
+                { name: "Photography", image: "/Photography/1.png", category: "Business" },
+                { name: "Light Supplier", image: "/Light Supplier/1.png", category: "Business" },
+                // Greetings Templates
+                { name: "Good Morning", image: "/General/Daily Greetings/Good morning/1.png", category: "Greetings" },
+                { name: "Good Night", image: "/General/Daily Greetings/Good Night/1.png", category: "Greetings" },
+                { name: "Inspirational Quotes", image: "/General/Quotes & Thoughts/Inspirational Quotes/1.png", category: "Greetings" },
+                { name: "Motivational Quote", image: "/General/Quotes & Thoughts/Motivational Quote/1.png", category: "Greetings" },
+                { name: "Business Marketing Tips", image: "/General/Business Mindset/Business Marketing Tips/1.png", category: "Greetings" },
+                { name: "Success Mindset", image: "/General/Business Mindset/Success Mindset/1.png", category: "Greetings" },
+                // Festive Alerts Templates
+                { name: "Festive Alert 1", image: "/Festive Alerts/1.png", category: "Festive Alerts" },
+                { name: "Festive Alert 2", image: "/Festive Alerts/2.png", category: "Festive Alerts" },
+                { name: "Festive Alert 3", image: "/Festive Alerts/3.png", category: "Festive Alerts" },
+                { name: "Festive Alert 4", image: "/Festive Alerts/4.png", category: "Festive Alerts" },
+                { name: "Festive Alert 5", image: "/Festive Alerts/5.png", category: "Festive Alerts" },
+                { name: "Season Greetings", image: "/General/Environment & Public Awareness/Season Greetings/1.png", category: "Festive Alerts" }
+              ].map((template, index) => (
+                <div key={index} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-6 hover:border-white/20 transition-all duration-300 hover:shadow-2xl">
+                  <div className="aspect-[4/5] bg-gradient-to-br from-gray-700 to-gray-800 rounded-xl mb-3 sm:mb-4 flex items-center justify-center overflow-hidden">
+                    <Image
+                      src={template.image}
+                      alt={template.name}
+                      width={400}
+                      height={500}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">Professional Template {item}</h3>
-                  <p className="text-gray-400 text-sm mb-4">
+                  <div className="mb-2">
+                    <span className="text-xs text-indigo-400 font-semibold uppercase tracking-wide">{template.category}</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-white mb-2">{template.name}</h3>
+                  <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
                     Perfect for business promotions and marketing campaigns
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-indigo-400 text-sm font-semibold">
+                    <span className="text-indigo-400 text-xs sm:text-sm font-semibold">
                       {Math.floor(Math.random() * 500) + 100} downloads
                     </span>
                     <Link 
-                      href="/"
-                      className="text-white bg-gradient-to-r from-indigo-500 to-purple-500 px-4 py-2 rounded-lg text-sm font-semibold hover:scale-105 transition-all duration-300"
+                      href="/download"
+                      className="text-white bg-gradient-to-r from-indigo-500 to-purple-500 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold hover:scale-105 transition-all duration-300"
                     >
                       Use Template
                     </Link>
@@ -364,7 +353,7 @@ export default function TemplatesPage() {
         </div>
 
         {/* Enhanced CTA Section */}
-        <div className="py-24 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 relative overflow-hidden">
+        <div className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 relative overflow-hidden">
           {/* Animated Background */}
           <div className="absolute inset-0">
             <div className="absolute top-10 right-10 w-72 h-72 bg-gradient-to-r from-pink-500/10 to-purple-500/10 rounded-full blur-3xl animate-float"></div>
@@ -377,7 +366,7 @@ export default function TemplatesPage() {
             </h2>
             <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
               Join 10,000+ businesses who are already using our professional templates. 
-              Start your free trial and access all 1,000+ templates today!
+              Start your free trial and access all 10,000+ templates today!
             </p>
             
             {/* Trust Indicators */}
@@ -418,7 +407,7 @@ export default function TemplatesPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
-              <FaBolt className="inline" /> Join 10,000+ Businesses • 1,000+ Templates • 1-Minute Creation
+              <FaBolt className="inline" /> Join 10,000+ Businesses • 10,000+ Templates • 1-Minute Creation
             </p>
           </div>
         </div>

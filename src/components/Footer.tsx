@@ -6,10 +6,10 @@ export default function Footer() {
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
       
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12">
+      <div className="relative z-10 mx-auto max-w-7xl pl-6 sm:pl-8 md:pl-12 pr-4 sm:pr-6 py-6 sm:py-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {/* Company Info */}
-          <div className="space-y-6 sm:space-y-8 lg:col-span-1">
+          <div className="space-y-4 sm:space-y-5 lg:col-span-1">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-base sm:text-lg">MB</span>
@@ -40,47 +40,41 @@ export default function Footer() {
           </div>
 
           {/* Product */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-3 sm:space-y-4">
             <h3 className="text-lg sm:text-xl font-bold text-white">Product</h3>
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-2 sm:space-y-2.5">
               <Link href="/features" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Features</Link>
               <Link href="/pricing" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Pricing</Link>
               <Link href="/download" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Download App</Link>
               <Link href="/templates" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Templates</Link>
-              <Link href="/categories" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Categories</Link>
             </div>
           </div>
 
           {/* Company */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-3 sm:space-y-4">
             <h3 className="text-lg sm:text-xl font-bold text-white">Company</h3>
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-2 sm:space-y-2.5">
               <Link href="/about" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">About Us</Link>
               <Link href="/faqs" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">FAQs</Link>
               <Link href="/blog" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Blog</Link>
-              <Link href="/careers" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Careers</Link>
-              <Link href="/press" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Press</Link>
-              <Link href="/partners" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Partners</Link>
             </div>
           </div>
 
           {/* Support */}
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-3 sm:space-y-4">
             <h3 className="text-lg sm:text-xl font-bold text-white">Support</h3>
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-2 sm:space-y-2.5">
               <Link href="/help" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Help Center</Link>
               <Link href="/contact" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Contact Us</Link>
               <Link href="/privacy" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Privacy Policy</Link>
               <Link href="/terms" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Terms of Service</Link>
-              <Link href="/status" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">Status</Link>
-              <Link href="/deleteaccount" className="block text-red-400 hover:text-red-300 hover:translate-x-2 transition-all duration-300">Delete Account</Link>
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-white/10 mt-12 sm:mt-16 pt-6 sm:pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 sm:space-y-6 md:space-y-0">
+        <div className="border-t border-white/10 mt-6 sm:mt-8 pt-4 sm:pt-5">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-3 sm:space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm sm:text-base md:text-lg text-center md:text-left">
               © 2025 MarketBrand.ai. All rights reserved.
             </div>

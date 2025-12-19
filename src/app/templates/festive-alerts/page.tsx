@@ -100,7 +100,7 @@ export default function FestiveAlertsTemplatesPage() {
               {/* Trust Badges - Right Side Horizontal */}
               <div className="flex flex-row gap-1.5 justify-center lg:justify-end lg:items-center">
                 <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-md px-2 py-1.5 backdrop-blur-sm hover:scale-105 transition-all duration-300 flex items-center justify-center min-h-[24px]">
-                  <span className="text-green-300 text-[10px] font-semibold whitespace-nowrap flex items-center gap-1">✓ 1000+ Templates</span>
+                  <span className="text-green-300 text-[10px] font-semibold whitespace-nowrap flex items-center gap-1">✓ 10,000+ Templates</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-md px-2 py-1.5 backdrop-blur-sm hover:scale-105 transition-all duration-300 flex items-center justify-center min-h-[24px]">
                   <span className="text-blue-300 text-[10px] font-semibold flex items-center gap-1 whitespace-nowrap"><BsStarFill className="text-[10px]" /> 4.9/5</span>
@@ -205,7 +205,7 @@ export default function FestiveAlertsTemplatesPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8 flex items-center gap-2 justify-center">
-              <FaBolt className="inline" /> 7-Day Free Trial • No Credit Card Required • 1000+ Templates
+              <FaBolt className="inline" /> 7-Day Free Trial • No Credit Card Required • 10,000+ Templates
             </p>
           </div>
         </div>

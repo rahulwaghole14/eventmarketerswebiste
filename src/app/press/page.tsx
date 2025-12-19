@@ -126,7 +126,7 @@ export default function PressPage() {
 
   const companyStats = [
     { label: "Businesses Served", value: "10,000+" },
-    { label: "Templates Available", value: "1,000+" },
+    { label: "Templates Available", value: "10,000+" },
     { label: "Countries", value: "15+" },
     { label: "Team Members", value: "25+" },
     { label: "Years in Business", value: "3+" },

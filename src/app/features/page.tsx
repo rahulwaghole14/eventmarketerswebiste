@@ -3,12 +3,13 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import Image from "next/image";
+import ScrollingFeatureBoxes from "@/components/ScrollingFeatureBoxes";
 import { FaPalette, FaBolt, FaMobileAlt, FaFilm, FaBriefcase, FaGlobe, FaRocket, FaShareAlt, FaImages, FaBirthdayCake } from "react-icons/fa";
 import { BsStarFill, BsPlayCircle, BsTranslate } from "react-icons/bs";
 
 export const metadata: Metadata = {
   title: "Marketing Design Features | Professional Templates & Customization Tools | MarketBrand.ai",
-  description: "Discover powerful marketing design features: 1000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes with MarketBrand.ai",
+  description: "Discover powerful marketing design features: 10,000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes with MarketBrand.ai",
   keywords: "marketing design features, professional templates, design customization tools, mobile marketing app, business design software, marketing automation, design templates, business marketing tools",
   alternates: { canonical: "/features" },
   robots: {
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Marketing Design Features | Professional Templates & Customization Tools",
-    description: "Discover powerful marketing design features: 1000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
+    description: "Discover powerful marketing design features: 10,000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
     url: "https://www.marketbrand.ai/features",
     siteName: "MarketBrand.ai",
     images: [{ url: "/og-features.jpg", width: 1200, height: 630 }],
@@ -34,17 +35,59 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Marketing Design Features | Professional Templates & Customization Tools",
-    description: "Discover powerful marketing design features: 1000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
+    description: "Discover powerful marketing design features: 10,000+ professional templates, instant customization, multi-language support, mobile-first design. Create stunning marketing materials in minutes.",
     images: ["/og-features.jpg"],
   },
 };
 
 export default function FeaturesPage() {
+  const leftFeatures = [
+    {
+      icon: <FaImages className="text-blue-300 text-lg sm:text-xl" />,
+      title: "Today's Pick",
+      description: "Discover hand-picked trending templates updated daily. Get access to the most popular and featured designs selected by our team for maximum impact.",
+      gradient: "from-blue-500/20 to-cyan-500/20"
+    },
+    {
+      icon: <BsPlayCircle className="text-purple-300 text-lg sm:text-xl" />,
+      title: "Custom Templates",
+      description: "Our Creative Designer will Design specific Customize Poster Design to meet Customers Business Requirements with latest designs.",
+      gradient: "from-purple-500/20 to-pink-500/20"
+    },
+    {
+      icon: <BsTranslate className="text-green-300 text-lg sm:text-xl" />,
+      title: "Multiple Language",
+      description: "Festival Poster & Videos are available in Hindi, English, Marathi etc languages. Includes Poster Text in Indian languages.",
+      gradient: "from-green-500/20 to-emerald-500/20"
+    }
+  ];
+
+  const rightFeatures = [
+    {
+      icon: <FaShareAlt className="text-yellow-300 text-lg sm:text-xl" />,
+      title: "Social Share",
+      description: "Share post on Social Media Apps like WhatsApp, Facebook, Instagram, Twitter, Pinterest, Snapchat, YouTube, Insta Reels etc on one click.",
+      gradient: "from-yellow-500/20 to-orange-500/20"
+    },
+    {
+      icon: <FaImages className="text-indigo-300 text-lg sm:text-xl" />,
+      title: "Easy Download",
+      description: "Download your customized marketing materials instantly in multiple formats. Get high-quality files ready for print, social media, and digital use in seconds.",
+      gradient: "from-indigo-500/20 to-purple-500/20"
+    },
+    {
+      icon: <FaBirthdayCake className="text-pink-300 text-lg sm:text-xl" />,
+      title: "Greetings",
+      description: "Greetings Cards Designs for all occasions such as Happy Birthday, Festival, Product Launch, Anniversary, Congratulations, RIP and more.",
+      gradient: "from-pink-500/20 to-rose-500/20"
+    }
+  ];
+
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "MarketBrand.ai - Marketing Design Features",
-    "description": "Professional marketing design features with 1000+ templates, instant customization, multi-language support, and mobile-first design",
+    "description": "Professional marketing design features with 10,000+ templates, instant customization, multi-language support, and mobile-first design",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "iOS, Android, Web",
     "offers": {
@@ -54,7 +97,7 @@ export default function FeaturesPage() {
       "description": "Annual subscription for unlimited marketing materials"
     },
     "featureList": [
-      "1000+ Professional Templates",
+      "10,000+ Professional Templates",
       "Lightning Fast Creation",
       "Mobile-First Design",
       "Multi-Language Support",
@@ -71,10 +114,10 @@ export default function FeaturesPage() {
   const features = [
     {
       icon: "palette",
-      title: "1000+ Professional Templates",
+      title: "10,000+ Professional Templates",
       description: "Beautifully designed templates for every business category - restaurants, events, schools, weddings, fitness, healthcare, and more.",
       details: ["Industry-specific designs", "Seasonal collections", "Trending styles", "Regular updates", "HD quality", "Print-ready"],
-      stats: "1,000+ Templates",
+      stats: "10,000+ Templates",
       usage: "Used by 10,000+ businesses",
       gradient: "from-pink-500 to-purple-500"
     },
@@ -99,7 +142,7 @@ export default function FeaturesPage() {
     {
       icon: "globe",
       title: "Multi-Language Support",
-      description: "Create content in multiple languages including English, Hindi, Marathi, Tamil, Telugu, and more regional languages with cultural designs.",
+      description: "Create content in multiple languages including English, Hindi, Marathi and more regional languages with cultural designs.",
       details: ["15+ languages", "Regional fonts", "Cultural designs", "Local templates", "RTL support", "Auto-translation"],
       stats: "15+ Languages",
       usage: "Used in 25+ cities",
@@ -165,7 +208,7 @@ export default function FeaturesPage() {
               {/* Heading */}
               <div className="flex-1 text-center lg:text-left">
                 <h1 className="text-4xl lg:text-5xl font-black gradient-text leading-[1.3] pt-1 pb-1">
-                  Powerful Features for <span className="text-white">Every Business</span>
+                  Strength in Every <span className="text-white">Feature</span>
                 </h1>
               </div>
 
@@ -182,10 +225,6 @@ export default function FeaturesPage() {
                 </div>
               </div>
             </div>
-
-            <p className="text-gray-300 text-base mt-6 text-center lg:text-left max-w-3xl">
-              Professional marketing templates designed specifically for your industry. Each category includes templates, videos, and promotional materials tailored to your business needs.
-            </p>
           </div>
         </div>
 
@@ -194,52 +233,12 @@ export default function FeaturesPage() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
             <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 items-center">
               {/* Left Column - Features */}
-              <div className="space-y-4 sm:space-y-6">
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-white/20 transition-all duration-300">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                      <FaImages className="text-blue-300 text-lg sm:text-xl" />
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Custom Frame</h3>
-                      <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        Add your own Photo from Phone Gallery and Set in the Readymade Frame Layout with Company Details like Business Logo, Name, Mobile Number, Gmail ID, Website & Address.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-white/20 transition-all duration-300">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                      <BsPlayCircle className="text-purple-300 text-lg sm:text-xl" />
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Custom Templates</h3>
-                      <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        Our Creative Designer will Design specific Customize Poster Design to meet Customers Business Requirements with latest designs.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-white/20 transition-all duration-300">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                      <BsTranslate className="text-green-300 text-lg sm:text-xl" />
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Multiple Language</h3>
-                      <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        Festival Poster & Videos are available in Hindi, English, Gujarati, Marathi, Tamil etc languages. Includes Poster Text in Indian languages.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <div className="order-2 lg:order-1">
+                <ScrollingFeatureBoxes leftFeatures={leftFeatures} rightFeatures={[]} />
               </div>
 
               {/* Center - Hero Image */}
-              <div className="relative flex justify-center items-center order-first lg:order-none my-6 lg:my-0">
+              <div className="relative flex justify-center items-center order-1 lg:order-2 my-6 lg:my-0">
                 <div className="relative w-full max-w-[280px] sm:max-w-sm md:max-w-md">
                   <Image
                     src="/hero-image.png"
@@ -252,48 +251,8 @@ export default function FeaturesPage() {
               </div>
 
               {/* Right Column - Features */}
-              <div className="space-y-4 sm:space-y-6">
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-white/20 transition-all duration-300">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                      <FaShareAlt className="text-yellow-300 text-lg sm:text-xl" />
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Social Share</h3>
-                      <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        Share post on Social Media Apps like WhatsApp, Facebook, Instagram, Twitter, Pinterest, Snapchat, YouTube, Insta Reels etc on one click.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-white/20 transition-all duration-300">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                      <FaImages className="text-indigo-300 text-lg sm:text-xl" />
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Multiple Image Choice</h3>
-                      <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        Lots of Awesome Posters & Video to opt one of your Choice. Unique Background, Frames Layout, Color Combination, Text, Video Effects, etc.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-white/20 transition-all duration-300">
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-pink-500/20 to-rose-500/20 border border-pink-500/30 rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
-                      <FaBirthdayCake className="text-pink-300 text-lg sm:text-xl" />
-                    </div>
-                    <div>
-                      <h3 className="text-base sm:text-lg font-bold text-white mb-1 sm:mb-2">Greetings</h3>
-                      <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                        Greetings Cards Designs for all occasions such as Happy Birthday, Festival, Product Launch, Anniversary, Congratulations, RIP and more.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <div className="order-3 lg:order-3">
+                <ScrollingFeatureBoxes leftFeatures={[]} rightFeatures={rightFeatures} />
               </div>
             </div>
           </div>
@@ -313,9 +272,11 @@ export default function FeaturesPage() {
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {features.map((feature, index) => (
-                <div key={index} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
-                  {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl sm:rounded-3xl`}></div>
+                <div key={index} className="group relative bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
+                  {/* Enhanced Gradient Overlay on Hover */}
+                  <div className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl sm:rounded-3xl`}></div>
+                  {/* Additional Color Glow Effect */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300 rounded-2xl sm:rounded-3xl`}></div>
                   
                   <div className="relative z-10">
                     <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6">
@@ -352,7 +313,7 @@ export default function FeaturesPage() {
                       ))}
                     </div>
                     
-                    <div className={`bg-gradient-to-r ${feature.gradient}/20 border border-white/10 rounded-lg px-4 py-2`}>
+                    <div className={`bg-gradient-to-r ${feature.gradient}/20 border border-white/10 rounded-lg px-4 py-2 group-hover:bg-gradient-to-r ${feature.gradient}/30 group-hover:border-white/20 transition-all duration-300`}>
                       <span className="text-sm font-semibold text-white">{feature.stats}</span>
                     </div>
                   </div>
@@ -362,8 +323,8 @@ export default function FeaturesPage() {
           </div>
         </div>
 
-        {/* Technical Specifications */}
-        <div className="py-24">
+        {/* Technical Specifications - Commented Out */}
+        {/* <div className="py-24">
           <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
             <div className="text-center mb-16">
               <h2 className="text-4xl lg:text-5xl font-black gradient-text mb-4">
@@ -383,7 +344,7 @@ export default function FeaturesPage() {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* How It Works */}
         <div className="py-24 bg-gradient-to-b from-gray-800 to-gray-900">
@@ -411,10 +372,10 @@ export default function FeaturesPage() {
                 </div>
                 <h3 className="text-2xl font-bold text-white leading-[1.4] pb-1">Choose Template</h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  Browse our extensive library of 1000+ professional templates and select the perfect design for your business.
+                  Browse our extensive library of 10,000+ professional templates and select the perfect design for your business.
                 </p>
                 <div className="bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-lg px-4 py-2">
-                  <span className="text-indigo-300 font-semibold">🎨 1000+ Templates Available</span>
+                  <span className="text-indigo-300 font-semibold">🎨 10,000+ Templates Available</span>
                 </div>
               </div>
 
@@ -526,7 +487,7 @@ export default function FeaturesPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8">
-              <span className="flex items-center gap-2"><FaBolt className="inline" /> Join 10,000+ Businesses • 1,000+ Templates • 1-Minute Creation</span>
+              <span className="flex items-center gap-2"><FaBolt className="inline" /> Join 10,000+ Businesses • 10,000+ Templates • 1-Minute Creation</span>
             </p>
           </div>
         </div>

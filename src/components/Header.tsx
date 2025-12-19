@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import CTAButton from "./CTAButton";
-import Logo from "./Logo";
 import { useState, useEffect, useRef } from "react";
 
 export default function Header() {
@@ -112,6 +111,7 @@ export default function Header() {
         { name: "Life Lessons", slug: "greeting" },
         { name: "English Quotes", slug: "greeting" },
         { name: "Hindi Quotes", slug: "greeting" },
+        { name: "Literature & Authors Quotes", slug: "greeting" },
         { name: "Sports Quotes", slug: "greeting" },
         { name: "Today's Thought", slug: "greeting" },
         { name: "Motivational Quote", slug: "greeting" }
@@ -209,7 +209,11 @@ export default function Header() {
       isScrolled ? 'glass border-b border-white/20 shadow-2xl' : 'glass border-b border-white/10'
     }`}>
       <div className="mx-auto max-w-7xl px-4 h-20 flex items-center justify-between">
-        <Logo size="md" />
+        <Link href="/" aria-label="Home" className="group relative flex items-center">
+          <div className="absolute inset-0 bg-white/20 rounded-lg blur-sm group-hover:bg-white/30 transition-all duration-300 -z-10 scale-95"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-lg group-hover:from-white/20 group-hover:to-white/10 transition-all duration-300 -z-10 scale-95"></div>
+          <img src="/market_brand_logo.png" alt="Market Brand" className="h-12 md:h-14 lg:h-16 w-auto object-contain relative z-10" />
+        </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-8 text-sm font-medium items-center">
@@ -234,8 +238,8 @@ export default function Header() {
                 onMouseEnter={handleDropdownEnter}
                 onMouseLeave={handleDropdownLeave}
               >
-                <div className="w-full max-w-7xl bg-gray-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-8 mt-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="w-full max-w-2xl bg-gray-900/95 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl p-6 mt-4 max-h-[calc(100vh-7rem)] overflow-y-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {businessCategories.map((category, index) => (
                       <div 
                         key={index} 

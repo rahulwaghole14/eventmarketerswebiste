@@ -1,11 +1,20 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { BsStarFill } from "react-icons/bs";
-import { FaUtensils, FaHeart, FaDumbbell, FaShoppingBag, FaHospital, FaCar, FaTrophy, FaSprayCan } from "react-icons/fa";
+import { FaUtensils, FaHeart, FaDumbbell, FaShoppingBag, FaHospital, FaCar, FaTrophy, FaSprayCan, FaSmile } from "react-icons/fa";
 
 export default function Testimonial() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const testimonials = [
+  
+  // Available categories: Events & Wedding, Medical & Diagnostics, Greetings
+  const availableCategories = [
+    "event-planner", "banquet-hall", "catering", "photographer", "light-supplier", // Events & Wedding
+    "dental-clinic", "eye-hospital", "ayurveda-clinic", "skin-aesthetic-clinic", 
+    "homeopathy-clinic", "pathology-lab", "allopathy-clinic", "physiotherapy-clinic", // Medical & Diagnostics
+    "greetings" // Greetings
+  ];
+  
+  const allTestimonials = [
     {
       text: "MarketBrand transformed my restaurant marketing! Professional promotional videos and posters in minutes. Sales increased by 40% in just 2 months! Customer footfall doubled and social media engagement tripled!",
       author: "Arjun Patel",
@@ -13,7 +22,8 @@ export default function Testimonial() {
       role: "Restaurant Owner",
       avatar: "🍽️",
       rating: 5,
-      business: "Spice Garden Restaurant"
+      business: "Spice Garden Restaurant",
+      category: "restaurant" // Not in available categories
     },
     {
       text: "As a wedding planner, I needed professional promotional materials. MarketBrand's wedding vendor templates are perfect! Client bookings increased by 65% and my portfolio looks incredibly professional now!",
@@ -22,7 +32,8 @@ export default function Testimonial() {
       role: "Wedding Planner",
       avatar: "wedding",
       rating: 5,
-      business: "Dream Wedding Planners"
+      business: "Dream Wedding Planners",
+      category: "event-planner" // Events & Wedding
     },
     {
       text: "My fitness studio's marketing looks so professional now! Downloaded promotional videos and posters in under 2 minutes. No design skills needed! New member signups increased by 80% and my gym looks like a premium brand!",
@@ -30,17 +41,19 @@ export default function Testimonial() {
       location: "Delhi",
       role: "Gym Owner",
       avatar: "user1",
-      rating: 5,
-      business: "FitLife Gym"
+      rating: 4,
+      business: "FitLife Gym",
+      category: "fitness" // Not in available categories
     },
     {
-      text: "MarketBrand saved me thousands on designers! Ready-made beauty salon promotional materials. My salon bookings increased by 60%!",
+      text: "MarketBrand's greeting templates are perfect for daily social media posts! Beautiful Good Morning, Good Night, and inspirational quotes. My engagement increased by 50% with these professional designs!",
       author: "Priya Singh",
       location: "Bangalore",
-      role: "Salon Owner",
-      avatar: "beauty",
+      role: "Social Media Manager",
+      avatar: "greetings",
       rating: 5,
-      business: "Glamour Beauty Salon"
+      business: "Digital Marketing Agency",
+      category: "greetings" // Greetings
     },
     {
       text: "Perfect for my retail store! Professional promotional posters and videos for all seasons. Download and use instantly - no waiting!",
@@ -49,7 +62,8 @@ export default function Testimonial() {
       role: "Retail Store Owner",
       avatar: "retail",
       rating: 5,
-      business: "Style Mart Fashion"
+      business: "Style Mart Fashion",
+      category: "retail" // Not in available categories
     },
     {
       text: "MarketBrand's healthcare templates are exactly what I needed! Professional clinic promotional materials that build trust with patients.",
@@ -57,8 +71,9 @@ export default function Testimonial() {
       location: "Hyderabad",
       role: "Clinic Owner",
       avatar: "healthcare",
-      rating: 5,
-      business: "Wellness Care Clinic"
+      rating: 4,
+      business: "Wellness Care Clinic",
+      category: "allopathy-clinic" // Medical & Diagnostics
     },
     {
       text: "My automotive workshop's marketing looks amazing! Professional service promotional videos and posters. Customers love the quality!",
@@ -67,7 +82,8 @@ export default function Testimonial() {
       role: "Auto Workshop Owner",
       avatar: "automotive",
       rating: 5,
-      business: "AutoCare Services"
+      business: "AutoCare Services",
+      category: "automotive" // Not in available categories
     },
     {
       text: "MarketBrand is a game-changer! Professional festival promotional materials for my event business. Downloads in seconds, looks like million bucks!",
@@ -76,9 +92,15 @@ export default function Testimonial() {
       role: "Event Manager",
       avatar: "user2",
       rating: 5,
-      business: "Celebration Events"
+      business: "Celebration Events",
+      category: "event-planner" // Events & Wedding
     }
   ];
+
+  // Filter testimonials to only show those related to available categories
+  const testimonials = allTestimonials.filter(testimonial => 
+    availableCategories.includes(testimonial.category)
+  );
 
   // Duplicate testimonials for seamless infinite scroll
   const duplicatedTestimonials = [...testimonials, ...testimonials];
@@ -146,6 +168,7 @@ export default function Testimonial() {
                 {testimonial.avatar === "user1" && <FaDumbbell className="text-white" />}
                 {testimonial.avatar === "user2" && <FaTrophy className="text-white" />}
                 {testimonial.avatar === "beauty" && <FaSprayCan className="text-white" />}
+                {testimonial.avatar === "greetings" && <FaSmile className="text-white" />}
                 {testimonial.avatar === "retail" && <FaShoppingBag className="text-white" />}
                 {testimonial.avatar === "healthcare" && <FaHospital className="text-white" />}
                 {testimonial.avatar === "automotive" && <FaCar className="text-white" />}

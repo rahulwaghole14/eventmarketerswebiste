@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { trackFormSubmit } from "@/utils/analytics";
-import { FaPhone, FaEnvelope, FaBolt, FaMobileAlt, FaComments } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaBolt, FaMobileAlt, FaComments, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -120,14 +120,14 @@ ${formData.message}`;
         {/* Main Content */}
         <div className="py-12 sm:py-16 md:py-20 lg:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-            <div className="grid lg:grid-cols-3 gap-6 sm:gap-8">
+            <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 items-start lg:items-stretch">
               {/* Contact Information Cards */}
-              <div className="lg:col-span-1 space-y-6">
+              <div className="lg:col-span-1 space-y-6 flex flex-col">
                 {/* Location Card - Moved to Top */}
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-8 sm:p-10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                   <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0 text-xl sm:text-3xl">
-                      📍
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+                      <FaMapMarkerAlt className="text-white text-xl sm:text-3xl" />
                     </div>
                     <div>
                       <h3 className="text-lg sm:text-xl font-bold text-white">Visit Us</h3>
@@ -140,7 +140,7 @@ ${formData.message}`;
                 </div>
 
                 {/* Phone Card - Prominent */}
-                <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+                <div className="bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-indigo-500/30 rounded-2xl sm:rounded-3xl p-8 sm:p-10 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
                       <FaPhone className="text-white text-xl sm:text-3xl" />
@@ -160,7 +160,7 @@ ${formData.message}`;
                 </div>
 
                 {/* Email Card */}
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-6 sm:p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl p-8 sm:p-10 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                   <div className="flex items-center space-x-3 sm:space-x-4 mb-4">
                     <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
                       <FaEnvelope className="text-white text-xl sm:text-3xl" />
@@ -179,7 +179,7 @@ ${formData.message}`;
                 </div>
 
                 {/* Quick Links */}
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
+                {/* <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8">
                   <h3 className="text-xl font-bold text-white mb-6">Quick Links</h3>
                   <div className="space-y-3">
                     <Link href="/pricing" className="block text-gray-300 hover:text-white hover:translate-x-2 transition-all duration-300">
@@ -198,12 +198,12 @@ ${formData.message}`;
                       <FaComments className="inline" /> Help Center
                     </Link>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               {/* Contact Form */}
-              <div className="lg:col-span-2">
-                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 lg:p-12 shadow-2xl">
+              <div className="lg:col-span-2 flex flex-col">
+                <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-6 lg:p-10 shadow-2xl flex-1 flex flex-col">
                   <h2 className="text-3xl font-bold text-white mb-2">Send us a Message</h2>
                   <p className="text-gray-400 mb-8">Fill out the form below and we'll get back to you as soon as possible.</p>
                   

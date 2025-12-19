@@ -11,6 +11,19 @@ export const metadata: Metadata = {
   description: "Download professional marketing materials instantly! Ready-made posters, videos & flyers for restaurants, schools, events. No design skills needed - just download and use!",
   keywords: "marketing materials, business templates, promotional posters, marketing videos, business design, professional templates, marketing tools",
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/fevicon_MB.png", sizes: "16x16", type: "image/png" },
+      { url: "/fevicon_MB.png", sizes: "32x32", type: "image/png" },
+      { url: "/fevicon_MB.png", sizes: "64x64", type: "image/png" },
+      { url: "/fevicon_MB.png", sizes: "192x192", type: "image/png" },
+      { url: "/fevicon_MB.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/fevicon_MB.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/fevicon_MB.png",
+  },
   robots: {
     index: true,
     follow: true,
@@ -86,7 +99,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           "itemOffered": {
             "@type": "Service",
             "name": "Professional Marketing Templates",
-            "description": "1000+ professional marketing templates for all business types"
+            "description": "10,000+ professional marketing templates for all business types"
           }
         },
         {
@@ -104,9 +117,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
-        <link rel="shortcut icon" href="/favicon.svg" />
+        {/* Explicitly set favicon to prevent browser from requesting /favicon.ico */}
+        <link rel="icon" href="/fevicon_MB.png" type="image/png" />
+        <link rel="shortcut icon" href="/fevicon_MB.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/fevicon_MB.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#ffffff" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

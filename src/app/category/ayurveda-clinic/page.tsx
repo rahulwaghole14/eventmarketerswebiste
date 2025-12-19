@@ -41,7 +41,7 @@ export default function AyurvedaClinicPage() {
             {/* Trust Badges - Right Side Horizontal */}
             <div className="flex flex-row gap-1 sm:gap-1.5 justify-center lg:justify-end lg:items-center w-full lg:w-auto">
               <div className="bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 rounded-md px-2 sm:px-2.5 py-1.5 backdrop-blur-sm hover:scale-105 transition-all duration-300 flex items-center justify-center min-h-[28px] sm:min-h-[32px]">
-                <span className="text-green-300 text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1">✓ 1000+ Templates</span>
+                <span className="text-green-300 text-xs sm:text-sm font-semibold whitespace-nowrap flex items-center gap-1">✓ 10,000+ Templates</span>
               </div>
               <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-md px-2 sm:px-2.5 py-1.5 backdrop-blur-sm hover:scale-105 transition-all duration-300 flex items-center justify-center min-h-[28px] sm:min-h-[32px]">
                 <span className="text-blue-300 text-xs sm:text-sm font-semibold flex items-center gap-1 whitespace-nowrap"><BsStarFill className="text-xs" /> 4.9/5</span>
@@ -146,7 +146,7 @@ export default function AyurvedaClinicPage() {
           </div>
           
           <p className="text-gray-400 text-sm sm:text-base md:text-lg mt-6 sm:mt-8 flex flex-wrap items-center gap-2 justify-center px-4">
-            <FaBolt className="inline" /> 7-Day Free Trial • No Credit Card Required • 1000+ Templates
+            <FaBolt className="inline" /> 7-Day Free Trial • No Credit Card Required • 10,000+ Templates
           </p>
         </div>
       </div>

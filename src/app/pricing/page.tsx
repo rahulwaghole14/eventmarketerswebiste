@@ -107,7 +107,7 @@ export default function PricingPage() {
       description: "Most popular for growing businesses",
       features: [
         "Unlimited designs",
-        "All 1000+ templates",
+        "All 10,000+ templates",
         "No watermarks",
         "Priority support",
         "Commercial license",
@@ -121,14 +121,14 @@ export default function PricingPage() {
     },
     {
       name: "Business",
-      price: "₹2,099",
+      price: "₹1,999",
       period: "/year",
       originalPrice: "₹7,998",
-      savings: "Save ₹5,899",
+      savings: "Save ₹5,999",
       description: "Advanced features for teams",
       features: [
         "Unlimited designs",
-        "All 1000+ templates",
+        "All 10,000+ templates",
         "No watermarks",
         "Priority support",
         "Commercial license",
@@ -249,7 +249,7 @@ export default function PricingPage() {
             </div>
 
             <p className="text-gray-300 text-base mt-6 text-center lg:text-left max-w-3xl">
-              Professional marketing templates designed specifically for your industry. Each category includes templates, videos, and promotional materials tailored to your business needs.
+            Choose Your Perfect Plan
             </p>
           </div>
         </div>
@@ -257,14 +257,14 @@ export default function PricingPage() {
         {/* Interactive Pricing Cards */}
         <div className="py-12 sm:py-16 md:py-20 lg:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-12">
-            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+            {/* <div className="text-center mb-10 sm:mb-12 md:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-black gradient-text mb-4 px-4">
                 Choose Your Perfect Plan
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-gray-300 font-light max-w-3xl mx-auto px-4">
                 All plans include access to our full template library. Start free, upgrade anytime.
               </p>
-            </div>
+            </div> */}
             
             <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto px-4">
               {plans.map((plan, index) => (

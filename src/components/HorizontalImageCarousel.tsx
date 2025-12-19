@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { getRelativeImagePath } from "@/utils/imagePath";
 
 interface HorizontalImageCarouselProps {
   images: string[];
@@ -15,18 +16,30 @@ export default function HorizontalImageCarousel({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  
+  // Convert image paths to relative paths for static builds
+  // This ensures images work correctly after scrolling in static exports
+  const [relativeImages, setRelativeImages] = useState<string[]>([]);
+  
+  useEffect(() => {
+    // Convert all image paths to relative paths, filtering out empty strings
+    const converted = images
+      .map(img => getRelativeImagePath(img))
+      .filter(img => img && img.trim() !== ''); // Filter out empty strings
+    setRelativeImages(converted);
+  }, [images]);
 
   // Reset activeIndex when images array changes (only if needed)
   useEffect(() => {
-    if (images.length > 0 && activeIndex >= images.length) {
+    if (relativeImages.length > 0 && activeIndex >= relativeImages.length) {
       setActiveIndex(0);
     }
-  }, [images.length]);
+  }, [relativeImages.length, activeIndex]);
 
   // Auto-scroll timer effect
   useEffect(() => {
     // Don't do anything if no images
-    if (images.length === 0) {
+    if (relativeImages.length === 0) {
       return;
     }
 
@@ -41,7 +54,7 @@ export default function HorizontalImageCarousel({
       // Start the timer immediately
       const timerId = setInterval(() => {
         setActiveIndex((prev) => {
-          return (prev + 1) % images.length;
+          return (prev + 1) % relativeImages.length;
         });
       }, interval);
       
@@ -54,27 +67,36 @@ export default function HorizontalImageCarousel({
         timerRef.current = null;
       }
     };
-  }, [images.length, interval, isPaused]);
+  }, [relativeImages.length, interval, isPaused]);
 
   const goToNext = () => {
-    setActiveIndex((prev) => (prev + 1) % images.length);
+    setActiveIndex((prev) => (prev + 1) % relativeImages.length);
   };
 
   const goToPrevious = () => {
-    setActiveIndex((prev) => (prev - 1 + images.length) % images.length);
+    setActiveIndex((prev) => (prev - 1 + relativeImages.length) % relativeImages.length);
   };
 
   // Get visible images: 2 before, active, 2 after (total 5 images)
   const getVisibleImages = () => {
+    // Return empty array if no images
+    if (relativeImages.length === 0) {
+      return [];
+    }
+    
     const visible = [];
     for (let i = -2; i <= 2; i++) {
-      const index = (activeIndex + i + images.length) % images.length;
+      const index = (activeIndex + i + relativeImages.length) % relativeImages.length;
+      const src = relativeImages[index];
+      // Only add if src is valid (not empty)
+      if (src && src.trim() !== '') {
       visible.push({
         index,
-        src: images[index],
+          src,
         distance: Math.abs(i),
         position: i // Position offset for unique key
       });
+      }
     }
     return visible;
   };
@@ -147,6 +169,11 @@ export default function HorizontalImageCarousel({
           const isActive = item.distance === 0;
           const sizeClasses = getSizeClasses(item.distance);
           
+          // Skip rendering if src is empty or invalid
+          if (!item.src || item.src.trim() === '') {
+            return null;
+          }
+          
           return (
             <div
               key={`${item.index}-${item.position}-${mapIndex}`}
@@ -166,6 +193,13 @@ export default function HorizontalImageCarousel({
                   fill
                   className="object-contain"
                   priority={isActive}
+                  onError={(e) => {
+                    // Fallback: hide broken images
+                    const target = e.target as HTMLImageElement;
+                    if (target) {
+                      target.style.display = 'none';
+                    }
+                  }}
                 />
                 {isActive && (
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
@@ -177,8 +211,8 @@ export default function HorizontalImageCarousel({
       </div>
 
       {/* Dots indicator */}
-      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex gap-2 z-30">
-        {images.map((_, index) => (
+      <div className="absolute bottom-40 left-1/2 transform -translate-x-1/2 flex gap-2 z-30">
+        {relativeImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
@@ -193,7 +227,7 @@ export default function HorizontalImageCarousel({
       </div>
 
       {/* Download Template Button */}
-      <div className="mt-16 flex justify-center pb-4">
+      <div className="mt-24 sm:mt-28 md:mt-32 flex justify-center pb-4">
         <Link
           href="/download"
           className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl text-white font-semibold text-lg hover:shadow-lg hover:scale-105 transition-all duration-300"

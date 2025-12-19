@@ -40,19 +40,19 @@ export const metadata: Metadata = {
 export default function TodaysPickPage() {
   const featuredTemplates = [
     {
-      title: "Today's Business post",
+      title: "Today's Business Post",
       image: "/Todays Business post.png"
     },
     {
-      title: "Today's Marketing tips",
+      title: "Today's Marketing Tips",
       image: "/Todays Marketing tips.png"
     },
     {
-      title: "Today's motivation quotes",
+      title: "Today's Motivation Quotes",
       image: "/Todays motivation quotes.png"
     },
     {
-      title: "Today's festive alert",
+      title: "Today's Festive Alert",
       image: "/Festive Alerts/5.png"
     }
   ];
@@ -100,7 +100,7 @@ export default function TodaysPickPage() {
                 <h1 className="text-5xl lg:text-6xl font-black gradient-text mb-4 leading-[1.3]">
                   Today's Pick
                 </h1>
-                <p className="text-xl text-gray-300 font-light max-w-3xl mx-auto">
+                <p className="text-base sm:text-lg text-gray-300 font-light max-w-3xl mx-auto">
                 Hand-picked templates trending today. Get started with these popular designs.
               </p>
               </div>
@@ -250,7 +250,7 @@ export default function TodaysPickPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8 flex items-center gap-2 justify-center">
-              <FaBolt className="inline" /> 7-Day Free Trial • No Credit Card Required • 1000+ Templates
+              <FaBolt className="inline" /> 7-Day Free Trial • No Credit Card Required • 10,000+ Templates
             </p>
           </div>
         </div>

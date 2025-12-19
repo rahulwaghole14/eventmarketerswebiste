@@ -322,17 +322,17 @@ export default function CategoriesPage() {
                   <span className="text-green-300 text-xs font-semibold whitespace-nowrap">✓ 13 Business Categories</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
-                  <span className="text-blue-300 text-xs font-semibold flex items-center gap-1 whitespace-nowrap"><FaPalette className="text-xs" /> 6,200+ Templates</span>
+                  <span className="text-blue-300 text-xs font-semibold flex items-center gap-1 whitespace-nowrap"><FaPalette className="text-xs" /> 10,000+ Templates</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
-                  <span className="text-purple-300 text-xs font-semibold whitespace-nowrap">👥 28,200+ Users</span>
+                  <span className="text-purple-300 text-xs font-semibold whitespace-nowrap">👥 10,000+ Users</span>
                 </div>
               </div>
             </div>
 
-            <p className="text-gray-300 text-base mt-6 text-center lg:text-left max-w-3xl">
+            {/* <p className="text-gray-300 text-base mt-6 text-center lg:text-left max-w-3xl">
               Professional marketing templates designed specifically for your industry. Each category includes templates, videos, and promotional materials tailored to your business needs.
-            </p>
+            </p> */}
           </div>
         </div>
 
@@ -449,7 +449,7 @@ export default function CategoriesPage() {
                   Choose from posters, videos, and promotional materials.
                 </p>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-lg px-4 py-2">
-                  <span className="text-purple-300 font-semibold flex items-center gap-1"><FaPalette className="inline" /> 6,200+ Templates Available</span>
+                  <span className="text-purple-300 font-semibold flex items-center gap-1"><FaPalette className="inline" /> 10,000+ Templates Available</span>
                 </div>
               </div>
 
@@ -500,7 +500,7 @@ export default function CategoriesPage() {
               Ready to Transform Your Marketing?
             </h2>
             <p className="text-2xl text-gray-300 font-light max-w-4xl mx-auto mb-12 leading-relaxed">
-              Join 28,200+ businesses who are already creating professional marketing materials with our industry-specific templates. 
+              Join 10,000+ businesses who are already creating professional marketing materials with our industry-specific templates. 
               Choose your category and get started today!
             </p>
             
@@ -542,7 +542,7 @@ export default function CategoriesPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
-              <FaBolt className="inline" /> Join 28,200+ Businesses • 6,200+ Templates • 13 Categories
+              <FaBolt className="inline" /> Join 10,000+ Businesses • 10,000+ Templates • 13 Categories
             </p>
           </div>
         </div>

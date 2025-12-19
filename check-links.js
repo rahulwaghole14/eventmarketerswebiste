@@ -25,9 +25,9 @@ while ((match = hrefRegex.exec(content)) !== null) {
     });
   }
 }
-
 console.log(`Found ${matches.length} relevant links:\n`);
 matches.slice(0, 10).forEach((m, i) => {
   console.log(`${i + 1}. href="${m.href}"`);
   console.log(`   Context: ${m.context.replace(/\n/g, ' ').substring(0, 150)}...\n`);
 });
+

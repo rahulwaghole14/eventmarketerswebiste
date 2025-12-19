@@ -82,6 +82,8 @@ export default function HelpPage() {
     }
   };
 
+  const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
   const helpCategories = [
     {
       icon: "rocket",
@@ -240,48 +242,75 @@ export default function HelpPage() {
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {helpCategories.map((category, index) => (
-                <div key={index} className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
-                  {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${category.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-3xl`}></div>
-                  
-                  <div className="relative z-10">
-                    <div className="flex items-center space-x-4 mb-6">
-                      <div className={`w-16 h-16 bg-gradient-to-r ${category.gradient} rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                        {category.icon === "rocket" && <FaRocket className="text-white text-2xl" />}
-                        {category.icon === "palette" && <FaPalette className="text-white text-2xl" />}
-                        {category.icon === "mobile" && <FaMobileAlt className="text-white text-2xl" />}
-                        {category.icon === "creditcard" && <FaCreditCard className="text-white text-2xl" />}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold text-white group-hover:gradient-text transition-all duration-300">
-                          {category.title}
-                        </h3>
-                        <div className="text-sm text-gray-400">{category.articles} Articles</div>
-                      </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+              {[
+                {
+                  slug: 'getting-started',
+                  title: 'Getting Started',
+                  description: 'Learn how to get started with our platform and create your first design in minutes.',
+                  icon: 'rocket',
+                  gradient: 'from-blue-500 to-indigo-500',
+                  stats: 'Help Guide',
+                  topics: ['Account Setup', 'First Template', 'App Navigation']
+                },
+                {
+                  slug: 'templates',
+                  title: 'Using Templates',
+                  description: 'Learn how to make the most of our professional templates for your designs.',
+                  icon: 'palette',
+                  gradient: 'from-purple-500 to-pink-500',
+                  stats: 'Templates',
+                  topics: ['Template Selection', 'Customization', 'Saving']
+                },
+                {
+                  slug: 'mobile-app',
+                  title: 'Mobile App Guide',
+                  description: 'Complete guide to using the MarketBrand mobile app on the go.',
+                  icon: 'mobile',
+                  gradient: 'from-green-500 to-teal-500',
+                  stats: 'Mobile',
+                  topics: ['App Installation', 'Offline Mode', 'Sync']
+                },
+                {
+                  slug: 'billing',
+                  title: 'Billing & Plans',
+                  description: 'Manage your subscription and understand our pricing plans.',
+                  icon: 'creditcard',
+                  gradient: 'from-orange-500 to-red-500',
+                  stats: 'Billing',
+                  topics: ['Subscription', 'Payment', 'Invoices']
+                }
+              ].map((category, index) => (
+                <Link 
+                  key={index} 
+                  href={`/help/${category.slug}`}
+                  className="block group"
+                >
+                  <div className="h-full bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-2">
+                    <div className={`w-12 h-12 mb-6 bg-gradient-to-r ${category.gradient} rounded-2xl flex items-center justify-center text-2xl`}>
+                      {category.icon === 'rocket' && <span>🚀</span>}
+                      {category.icon === 'palette' && <span>🎨</span>}
+                      {category.icon === 'mobile' && <span>📱</span>}
+                      {category.icon === 'creditcard' && <span>💳</span>}
                     </div>
-                    
-                    <p className="text-gray-300 text-base mb-6 leading-relaxed">
+                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                      {category.title}
+                    </h3>
+                    <p className="text-gray-300 mb-4">
                       {category.description}
                     </p>
-                    
-                    <div className="space-y-2 mb-6">
+                    <div className="flex flex-wrap gap-2 mb-4">
                       {category.topics.map((topic, idx) => (
-                        <div key={idx} className="text-sm text-gray-400 bg-gray-800/50 rounded-lg px-3 py-2">
+                        <span key={idx} className="text-xs bg-gray-800/50 text-gray-300 px-3 py-1 rounded-full">
                           {topic}
-                        </div>
+                        </span>
                       ))}
                     </div>
-                    
-                    <Link 
-                      href="#"
-                      className={`w-full block text-center px-8 py-4 bg-gradient-to-r ${category.gradient} rounded-2xl text-white font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300`}
-                    >
-                      Browse Articles
-                    </Link>
+                    <div className={`mt-4 inline-block bg-gradient-to-r ${category.gradient}/20 border border-white/10 rounded-lg px-4 py-1`}>
+                      <span className="text-sm font-medium">{category.stats}</span>
+                    </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -406,7 +435,7 @@ export default function HelpPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 10,000+ Businesses • 1,000+ Templates • 24/7 Support
+              ⚡ Join 10,000+ Businesses • 10,000+ Templates • 24/7 Support
             </p>
           </div>
         </div>

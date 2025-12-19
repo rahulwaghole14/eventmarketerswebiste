@@ -137,9 +137,26 @@ function fixPathsInFile(filePath) {
     // Handle ALL _next paths - these are critical for CSS and JS files
     // Must be fixed for nested directories to work correctly
     if (route.includes('_next/')) {
+      // If path is already relative (starts with ../), check if it's correct
+      if (route.startsWith('../')) {
+        // Extract the _next path part
+        const nextPathMatch = route.match(/_next\/.*$/);
+        if (nextPathMatch) {
+          const nextPath = nextPathMatch[0];
+          // Calculate correct relative path
+          const correctRelativePath = getRelativePath(filePath, nextPath);
+          // Only update if the path is different (to avoid unnecessary modifications)
+          if (correctRelativePath !== route) {
+            modified = true;
+            return `${attr}="${correctRelativePath}"`;
+          }
+          return match;
+        }
+      }
+      // Handle absolute paths or paths without leading ../
       modified = true;
-      // Remove leading / or ./ or ../
-      const cleanRoute = route.replace(/^\/+/, '').replace(/^\.\.?\//, '');
+      // Remove leading / or ./
+      const cleanRoute = route.replace(/^\/+/, '').replace(/^\.\//, '');
       const relativePath = getRelativePath(filePath, cleanRoute);
       return `${attr}="${relativePath}"`;
     }
@@ -249,52 +266,6 @@ function fixPathsInFile(filePath) {
   // Remove data-nextjs-router attributes that might interfere
   content = content.replace(/\s+data-nextjs-router="[^"]*"/gi, '');
   
-  // Inject script to disable Next.js router and force normal link behavior
-  // This MUST run before Next.js router initializes
-  const routerDisableScript = `
-<script>
-(function() {
-  'use strict';
-  // Completely disable Next.js router for file:// protocol
-  // Intercept ALL link clicks BEFORE Next.js can handle them
-  document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[href]');
-    if (link && link.href) {
-      const href = link.getAttribute('href');
-      // Only intercept internal links (not external URLs, mailto, tel, etc.)
-      if (href && !href.startsWith('http') && !href.startsWith('//') && 
-          !href.startsWith('mailto:') && !href.startsWith('tel:') && 
-          !href.startsWith('#') && href !== 'javascript:void(0)') {
-        // Stop all event propagation to prevent Next.js router from handling it
-        e.stopImmediatePropagation();
-        e.stopPropagation();
-        e.preventDefault();
-        
-        // Force normal browser navigation
-        if (href.startsWith('./') || href.startsWith('../') || !href.startsWith('/')) {
-          // Relative path - use as-is
-          window.location.href = href;
-        } else {
-          // Absolute path - convert to relative
-          window.location.href = href.replace(/^\//, './') + (href.endsWith('.html') ? '' : '.html');
-        }
-        return false;
-      }
-    }
-  }, true); // Use capture phase to run BEFORE Next.js handlers
-  
-  // Override router if it exists
-  if (typeof window !== 'undefined' && window.next) {
-    const originalRouter = window.next.router;
-    if (originalRouter && originalRouter.push) {
-      window.next.router.push = function(href) {
-        window.location.href = href.startsWith('/') ? './' + href.replace(/^\//, '') + '.html' : href;
-      };
-    }
-  }
-})();
-</script>`;
-  
   // Ensure all internal links have proper href and remove any JavaScript navigation
   // This regex finds <a> tags and ensures they have proper href attributes
   content = content.replace(/<a\s+([^>]*)>/gi, (match, attrs, offset) => {
@@ -321,12 +292,6 @@ function fixPathsInFile(filePath) {
     
     return `<a ${attrs}>`;
   });
-  
-  // Inject router disable script before closing </body> tag
-  if (content.includes('</body>')) {
-    modified = true;
-    content = content.replace('</body>', routerDisableScript + '\n</body>');
-  }
   
   if (modified) {
     fs.writeFileSync(filePath, content, 'utf8');

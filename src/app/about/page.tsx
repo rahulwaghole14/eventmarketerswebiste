@@ -94,7 +94,7 @@ export default function AboutPage() {
                   <span className="text-green-300 text-xs font-semibold whitespace-nowrap">✓ 10,000+ Businesses</span>
                 </div>
                 <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
-                  <span className="text-blue-300 text-xs font-semibold whitespace-nowrap">🎨 1,000+ Templates</span>
+                  <span className="text-blue-300 text-xs font-semibold whitespace-nowrap">🎨 10,000+ Templates</span>
                 </div>
                 <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full px-2.5 py-1 h-6 flex items-center">
                   <span className="text-purple-300 text-xs font-semibold whitespace-nowrap">🚀 Founded 2024</span>
@@ -103,7 +103,7 @@ export default function AboutPage() {
             </div>
 
             <p className="text-gray-300 text-base mt-6 text-center lg:text-left max-w-3xl">
-              Professional marketing templates designed specifically for your industry. Each category includes templates, videos, and promotional materials tailored to your business needs.
+              Professional marketing templates designed specifically for your industry. Each category includes templates, and promotional materials tailored to your business needs.
             </p>
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function AboutPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8">
-              ⚡ Join 10,000+ Businesses • 1,000+ Templates • 1-Minute Creation
+              ⚡ Join 10,000+ Businesses • 10,000+ Templates • 1-Minute Creation
             </p>
           </div>
         </div>

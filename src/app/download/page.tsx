@@ -171,43 +171,17 @@ export default function DownloadPage() {
                 </div>
               </div>
               
-              {/* Right Content - QR Code & Mobile Preview */}
+              {/* Right Content - Mobile Preview */}
               <div className="relative">
-                {/* QR Code */}
-                <div className="bg-white p-8 rounded-3xl shadow-2xl mb-8 mx-auto w-fit">
-                  <div className="flex flex-col items-center">
-                    <div className="w-48 h-48 relative mb-4">
-                      <Image
-                        src="/App-QR.png"
-                        alt="QR Code to download MarketBrand app"
-                        fill
-                        className="object-contain rounded-2xl"
-                      />
-                    </div>
-                    <div className="text-gray-700 text-sm font-semibold">Scan to Download</div>
-                  </div>
-                </div>
-                
                 {/* Mobile Preview */}
-                <div className="relative mx-auto w-64 h-auto bg-gray-800 rounded-3xl p-2 shadow-2xl">
-                  <div className="w-full bg-gradient-to-b from-indigo-500/10 to-purple-500/10 rounded-2xl overflow-hidden">
-                    <div className="p-4 space-y-4">
-                      <div className="text-center">
-                        <div className="text-white font-bold text-lg">MarketBrand</div>
-                        <div className="text-gray-300 text-sm">Marketing Made Easy</div>
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
-                        <div className="bg-white/10 rounded-lg p-3 text-center">
-                          <FaPalette className="text-2xl mb-1 mx-auto" />
-                          <div className="text-white text-xs">Templates</div>
-                        </div>
-                        <div className="bg-white/10 rounded-lg p-3 text-center">
-                          <FaMobileAlt className="text-2xl mb-1 mx-auto" />
-                          <div className="text-white text-xs">Create</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="relative mx-auto w-full max-w-[240px] h-auto">
+                  <Image
+                    src="/QR-phone.png"
+                    alt="MarketBrand App Preview"
+                    width={400}
+                    height={800}
+                    className="w-full h-auto object-contain rounded-2xl shadow-2xl"
+                  />
                 </div>
               </div>
             </div>
@@ -322,7 +296,7 @@ export default function DownloadPage() {
             </div>
             
             <p className="text-gray-400 text-lg mt-8 flex items-center gap-2">
-              <FaBolt className="inline" /> Join 10,000+ Businesses • 1,000+ Templates • 1-Minute Creation
+              <FaBolt className="inline" /> Join 10,000+ Businesses • 10,000+ Templates • 1-Minute Creation
             </p>
           </div>
         </div>
