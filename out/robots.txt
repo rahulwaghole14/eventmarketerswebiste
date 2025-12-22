@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.marketbrand.ai/sitemap.xml
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow important pages
+Allow: /features
+Allow: /pricing
+Allow: /download
+Allow: /about
+Allow: /blog
+Allow: /contact
+Allow: /categories
+Allow: /templates
+Allow: /help
+Allow: /careers
+Allow: /press
+Allow: /partners
+Allow: /privacy
+Allow: /terms
+Allow: /status
+
+# Allow category pages
+Allow: /category/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
+
+

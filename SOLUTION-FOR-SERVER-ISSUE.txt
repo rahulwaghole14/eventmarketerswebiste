@@ -1,0 +1,42 @@
+========================================
+PERMANENT SOLUTION FOR SERVER ISSUE
+========================================
+
+PROBLEM: You're getting ERR_CONNECTION_TIMED_OUT when trying to access the website.
+
+SOLUTION STEPS:
+
+1. FIRST, FIND YOUR CORRECT IP ADDRESS:
+   - Open Command Prompt
+   - Type: ipconfig
+   - Look for "IPv4 Address" under "Wi-Fi" or "Ethernet"
+   - Note down the IP address (it will be something like 192.168.1.17 or 192.168.0.121)
+
+2. START THE SERVER:
+   - Open Command Prompt as Administrator
+   - Navigate to: cd D:\Marketbrand\marketbrand-marketing-website
+   - Run: npm run dev
+   - Wait for the server to start (you'll see "Ready" message)
+
+3. ACCESS THE WEBSITE:
+   - Use: http://localhost:3000 (for local access)
+   - Use: http://YOUR_IP_ADDRESS:3000 (for network access)
+   - Replace YOUR_IP_ADDRESS with the IP you found in step 1
+
+4. IF STILL NOT WORKING:
+   - Kill any existing processes: taskkill /f /im node.exe
+   - Clear cache: Remove the .next folder if it exists
+   - Restart: npm run dev
+
+WORKING URLS:
+- Local: http://localhost:3000
+- Network: http://192.168.1.17:3000 (replace with your actual IP)
+
+QUICK FIX BATCH FILES CREATED:
+- FIX-SERVER-PERMANENT.bat (Run this to start server with correct IP)
+- START-SERVER.ps1 (PowerShell version)
+- GET-CORRECT-IP.bat (Shows your current IP address)
+
+========================================
+
+

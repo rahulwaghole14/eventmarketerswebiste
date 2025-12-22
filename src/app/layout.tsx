@@ -1,0 +1,152 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import CookieConsent from "@/components/CookieConsent";
+import SkipToContent from "@/components/SkipToContent";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.marketbrand.ai"),
+  title: "MarketBrand.ai — Ready-Made Marketing Materials for Your Business",
+  description: "Download professional marketing materials instantly! Ready-made posters, videos & flyers for restaurants, schools, events. No design skills needed - just download and use!",
+  keywords: "marketing materials, business templates, promotional posters, marketing videos, business design, professional templates, marketing tools",
+  alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/fevicon_MB.png", sizes: "16x16", type: "image/png" },
+      { url: "/fevicon_MB.png", sizes: "32x32", type: "image/png" },
+      { url: "/fevicon_MB.png", sizes: "64x64", type: "image/png" },
+      { url: "/fevicon_MB.png", sizes: "192x192", type: "image/png" },
+      { url: "/fevicon_MB.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/fevicon_MB.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/fevicon_MB.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    title: "MarketBrand.ai — Ready-Made Marketing Materials for Your Business",
+    description: "Download professional marketing materials instantly! Ready-made posters, videos & flyers for restaurants, schools, events. No design skills needed.",
+    url: "https://www.marketbrand.ai",
+    siteName: "MarketBrand.ai",
+    images: [{ url: "/og.jpg", width: 1200, height: 630 }],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MarketBrand.ai — Ready-Made Marketing Materials for Your Business",
+    description: "Download professional marketing materials instantly! Ready-made posters, videos & flyers for restaurants, schools, events.",
+    images: ["/og.jpg"],
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://www.marketbrand.ai/#business",
+    "name": "MarketBrand.ai",
+    "alternateName": "MarketBrand",
+    "description": "Professional marketing materials creation platform for businesses. Create stunning posters, videos, and marketing content in minutes.",
+    "url": "https://www.marketbrand.ai",
+    "logo": "https://www.marketbrand.ai/logo.png",
+    "image": "https://www.marketbrand.ai/og.jpg",
+    "telephone": "+91-8551941415",
+    "email": "support@marketbrand.ai",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Mumbai",
+      "addressLocality": "Mumbai",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "19.0760",
+      "longitude": "72.8777"
+    },
+    "openingHours": "Mo-Fr 09:00-18:00",
+    "priceRange": "₹2000-₹5000",
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "Credit Card, Debit Card, UPI, Net Banking",
+    "sameAs": [
+      "https://www.linkedin.com/company/marketbrand",
+      "https://twitter.com/marketbrand",
+      "https://www.facebook.com/marketbrand"
+    ],
+    "serviceArea": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Marketing Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Professional Marketing Templates",
+            "description": "10,000+ professional marketing templates for all business types"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Custom Design Services",
+            "description": "Custom marketing material design and creation services"
+          }
+        }
+      ]
+    }
+  };
+
+  return (
+    <html lang="en">
+      <head>
+        {/* Explicitly set favicon to prevent browser from requesting /favicon.ico */}
+        <link rel="icon" href="/fevicon_MB.png" type="image/png" />
+        <link rel="shortcut icon" href="/fevicon_MB.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/fevicon_MB.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#ffffff" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-4FLVCB52H4"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-4FLVCB52H4');
+            `,
+          }}
+        />
+      </head>
+      <body>
+        <SkipToContent />
+        <Header />
+        <main id="main-content" className="min-h-screen">{children}</main>
+        <Footer />
+        <CookieConsent />
+      </body>
+    </html>
+  );
+}

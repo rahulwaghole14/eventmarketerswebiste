@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index Navigation Test</title>
+</head>
+<body>
+    <h1>Index Navigation Test</h1>
+    <p>Testing navigation paths from index.html (root level):</p>
+    
+    <script>
+        // Test the navigation script path conversion from root index.html
+        function toRelativePath(path) {
+            if (!path || path.startsWith('http') || path.startsWith('//') || 
+                path.startsWith('mailto:') || path.startsWith('tel:') || 
+                path.startsWith('#') || path.startsWith('./') || path.startsWith('../')) {
+                return path;
+            }
+            if (path.startsWith('/')) {
+                // Get current file path from window.location
+                let currentPath = window.location.pathname;
+                
+                // Handle file:// protocol - extract just the file path relative to 'out' directory
+                // For file:///D:/path/to/out/index.html, we want 'index.html'
+                // For file:///D:/path/to/out/features/index.html, we want 'features/index.html'
+                
+                // Normalize path separators
+                currentPath = currentPath.replace(/\\/g, '/');
+                
+                // Find the 'out' directory in the path
+                const outIndex = currentPath.toLowerCase().indexOf('/out/');
+                if (outIndex !== -1) {
+                    // Extract everything after '/out/'
+                    currentPath = currentPath.substring(outIndex + 5);
+                } else {
+                    // If 'out' not found, try to extract from the end
+                    // Assume we're in the out directory
+                    const parts = currentPath.split('/').filter(p => p);
+                    const outPos = parts.findIndex(p => p.toLowerCase() === 'out');
+                    if (outPos !== -1 && outPos < parts.length - 1) {
+                        currentPath = parts.slice(outPos + 1).join('/');
+                    } else {
+                        // Fallback: use the last part as filename
+                        const parts2 = currentPath.split('/').filter(p => p);
+                        currentPath = parts2[parts2.length - 1] || 'index.html';
+                    }
+                }
+                
+                // Remove .html extension and 'index' if present to get directory path
+                let currentDir = currentPath.replace(/.html$/, '').replace(/\/index$/, '').replace(/^index$/, '');
+                
+                // Calculate depth: how many directories deep are we?
+                // '' (root/index.html) -> depth 0
+                // 'features' (features/index.html) -> depth 0 (same level)
+                // 'templates/greetings' (templates/greetings/index.html) -> depth 1
+                const pathParts = currentDir ? currentDir.split('/').filter(p => p) : [];
+                const pathDepth = pathParts.length;
+                
+                // Clean target path
+                const cleanPath = path.replace(/^\//, '').replace(/\/$/, '');
+                
+                // Next.js with trailingSlash creates directories with index.html
+                // So /features becomes features/index.html
+                const targetPath = cleanPath ? cleanPath + '/index.html' : 'index.html';
+                
+                // If we're at root (index.html), use ./
+                if (pathDepth === 0) {
+                    return './' + targetPath;
+                }
+                
+                // Otherwise, go up pathDepth levels
+                return '../'.repeat(pathDepth) + targetPath;
+            }
+            return path;
+        }
+        
+        // Test navigation paths from index.html (root level)
+        const testPaths = [
+            '/categories/index.html',
+            '/templates/greetings/index.html', 
+            '/pricing/index.html',
+            '/features/index.html',
+            '/about/index.html',
+            '/contact/index.html',
+            '/download/index.html'
+        ];
+        
+        console.log('Testing navigation paths from index.html (root level):');
+        testPaths.forEach(path => {
+            const converted = toRelativePath(path);
+            console.log(`${path} -> ${converted}`);
+            
+            // Create test links
+            const link = document.createElement('a');
+            link.href = converted;
+            link.textContent = `Test: ${path} -> ${converted}`;
+            link.style.display = 'block';
+            link.style.margin = '5px';
+            link.style.padding = '5px';
+            link.style.border = '1px solid #ccc';
+            link.target = '_blank';
+            document.body.appendChild(link);
+        });
+    </script>
+</body>
+</html>
